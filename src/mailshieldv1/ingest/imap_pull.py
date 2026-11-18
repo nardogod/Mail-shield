@@ -14,6 +14,7 @@ from typing import Any
 from mailshieldv1.ingest.pipeline import (
     DEFAULT_REPORTS_DIR,
     analyze_and_write,
+    batch_index_dir,
     safe_name,
     write_batch_index,
 )
@@ -143,6 +144,8 @@ def pull_and_analyze(
                 rows.append(row)
             except RuntimeError as exc:
                 print(f"error: {exc}", file=sys.stderr)
+                # Leave UNSEEN so a later run can retry after a failed analyze.
+                continue
 
             if mark_seen:
                 client.store(num, "+FLAGS", "\\Seen")
@@ -153,7 +156,7 @@ def pull_and_analyze(
             pass
 
     if rows:
-        write_batch_index(rows, output if output and Path(output).is_dir() else reports_dir)
+        write_batch_index(rows, batch_index_dir(output, reports_dir))
     return rows
 
 

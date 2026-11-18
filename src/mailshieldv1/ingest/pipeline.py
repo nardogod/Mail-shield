@@ -35,7 +35,11 @@ def default_report_path(eml: Path, fmt: str, *, reports_dir: Path = DEFAULT_REPO
 
 def resolve_output(path: Path, eml: Path, fmt: str) -> Path:
     raw = path.expanduser()
-    looks_dir = str(path).endswith(("/", "\\")) or (raw.exists() and raw.is_dir())
+    looks_dir = (
+        str(path).endswith(("/", "\\"))
+        or raw.is_dir()
+        or (not raw.exists() and raw.suffix == "")
+    )
     if looks_dir:
         raw.mkdir(parents=True, exist_ok=True)
         return (raw / f"{safe_name(eml.stem)}.{ext_for(fmt)}").resolve()
@@ -120,6 +124,31 @@ def analyze_and_write(
         "from": report.from_addr,
         "message_id": report.message_id,
     }
+
+
+def batch_index_dir(
+    output: Path | None,
+    reports_dir: Path = DEFAULT_REPORTS_DIR,
+) -> Path:
+    """
+    Directory for batch_index.siem.json.
+
+    Treat as a directory when:
+    - the path already exists as a directory, or
+    - the original string ends with / or \\ (CLI ``-o reports/``), or
+    - the path does not exist yet and has no suffix (``-o reports`` before mkdir).
+
+    Otherwise use the parent (file output like ``-o out.siem.json``).
+    """
+    if output is None or str(output) == "-":
+        return reports_dir
+    op = output.expanduser()
+    raw = str(output)
+    if raw.endswith(("/", "\\")) or op.is_dir():
+        return op
+    if not op.exists() and op.suffix == "":
+        return op
+    return op.parent
 
 
 def write_batch_index(rows: list[dict[str, Any]], index_dir: Path) -> Path:

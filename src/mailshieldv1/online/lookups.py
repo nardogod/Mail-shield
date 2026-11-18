@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-import socket
+import concurrent.futures
 from typing import Any
 
 from mailshieldv1.core.domains import IGNORE_URL_DOMAINS, is_esp
@@ -74,13 +74,22 @@ def _dmarc_records(txts: list[str]) -> list[str]:
 
 
 def _resolve_host(host: str, timeout: float = 8.0) -> dict[str, Any]:
+    """Resolve A/AAAA without mutating process-wide socket defaults."""
     if not host:
         return {"host": host, "ok": False, "error": "empty"}
-    socket.setdefaulttimeout(timeout)
+
+    import socket
+
+    def _lookup() -> list[tuple]:
+        return socket.getaddrinfo(host, None)
+
     try:
-        infos = socket.getaddrinfo(host, None)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+            infos = pool.submit(_lookup).result(timeout=timeout)
         addrs = sorted({i[4][0] for i in infos})
         return {"host": host, "ok": True, "addresses": addrs[:10]}
+    except concurrent.futures.TimeoutError:
+        return {"host": host, "ok": False, "error": "timeout"}
     except OSError as exc:
         return {"host": host, "ok": False, "error": str(exc)}
 

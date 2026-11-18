@@ -68,6 +68,53 @@ def test_pull_and_analyze_mocked(tmp_path: Path, monkeypatch: pytest.MonkeyPatch
     assert fake.flags
 
 
+def test_mark_seen_skipped_when_analyze_fails(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    raw = SAMPLE.read_bytes()
+    fake = _FakeIMAP(raw)
+    monkeypatch.setattr(imap_pull, "_connect", lambda **kwargs: fake)
+
+    def _boom(*_a, **_k):  # noqa: ANN002, ANN003
+        raise RuntimeError("analyze failed")
+
+    monkeypatch.setattr(imap_pull, "analyze_and_write", _boom)
+
+    rows = imap_pull.pull_and_analyze(
+        host="imap.example.com",
+        user="u@example.com",
+        password="secret",
+        save_dir=tmp_path / "eml",
+        reports_dir=tmp_path / "reports",
+        quiet=True,
+        mark_seen=True,
+    )
+    assert rows == []
+    assert fake.flags == []
+
+
+def test_imap_batch_index_missing_outdir(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    raw = SAMPLE.read_bytes()
+    fake = _FakeIMAP(raw)
+    monkeypatch.setattr(imap_pull, "_connect", lambda **kwargs: fake)
+    out = tmp_path / "outbox"
+    rows = imap_pull.pull_and_analyze(
+        host="imap.example.com",
+        user="u@example.com",
+        password="secret",
+        save_dir=tmp_path / "eml",
+        reports_dir=tmp_path / "reports",
+        output=out,
+        quiet=True,
+        mark_seen=True,
+    )
+    assert len(rows) == 1
+    assert (out / "batch_index.siem.json").is_file()
+    assert not (tmp_path / "reports" / "batch_index.siem.json").exists()
+
+
 def test_password_from_env(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("MAILSHIELD_IMAP_PASSWORD", "x")
     assert imap_pull.password_from_env("MAILSHIELD_IMAP_PASSWORD") == "x"

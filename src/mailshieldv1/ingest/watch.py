@@ -11,6 +11,7 @@ from typing import Any
 from mailshieldv1.ingest.pipeline import (
     DEFAULT_REPORTS_DIR,
     analyze_and_write,
+    batch_index_dir,
     write_batch_index,
 )
 
@@ -41,6 +42,17 @@ def _fingerprint(path: Path) -> str:
     return f"{st.st_mtime_ns}:{st.st_size}"
 
 
+def _is_stable(path: Path, *, wait: float = 0.15) -> bool:
+    """True when size/mtime did not change across a short settle window."""
+    try:
+        first = _fingerprint(path)
+        time.sleep(max(0.0, wait))
+        second = _fingerprint(path)
+    except OSError:
+        return False
+    return first == second
+
+
 def scan_once(
     watch_dir: Path,
     *,
@@ -51,6 +63,7 @@ def scan_once(
     online_timeout: float = 8.0,
     quiet: bool = False,
     process_existing: bool = False,
+    settle: float = 0.15,
 ) -> list[dict[str, Any]]:
     """Process new (or all) .eml files under watch_dir once."""
     watch_dir = watch_dir.expanduser().resolve()
@@ -66,10 +79,19 @@ def scan_once(
         if path.name.startswith("."):
             continue
         key = str(path.resolve())
-        fp = _fingerprint(path)
+        try:
+            fp = _fingerprint(path)
+        except OSError as exc:
+            print(f"error: {path.name}: {exc}", file=sys.stderr)
+            continue
         if not process_existing and processed.get(key) == fp:
             continue
+        # Slow copies: skip until size/mtime stop changing (retry next poll).
+        if settle > 0 and not _is_stable(path, wait=settle):
+            print(f"watch: {path.name} still growing; defer", file=sys.stderr)
+            continue
         try:
+            fp = _fingerprint(path)
             row = analyze_and_write(
                 path,
                 fmt=fmt,
@@ -88,7 +110,7 @@ def scan_once(
     state["processed"] = processed
     _save_state(state_file, state)
     if rows:
-        write_batch_index(rows, output if output and output.is_dir() else reports_dir)
+        write_batch_index(rows, batch_index_dir(output, reports_dir))
     return rows
 
 
@@ -104,6 +126,7 @@ def watch_loop(
     online_timeout: float = 8.0,
     quiet: bool = False,
     process_existing: bool = False,
+    settle: float = 0.15,
 ) -> int:
     """Poll watch_dir for new .eml files. Ctrl+C to stop."""
     watch_dir = watch_dir.expanduser().resolve()
@@ -123,6 +146,7 @@ def watch_loop(
                 online_timeout=online_timeout,
                 quiet=quiet,
                 process_existing=process_existing and first,
+                settle=settle,
             )
             if rows:
                 print(f"processed {len(rows)} new message(s)", file=sys.stderr)

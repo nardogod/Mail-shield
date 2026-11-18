@@ -39,6 +39,10 @@ def lures_catalog() -> dict[str, Any]:
 
 
 def reload_knowledge() -> None:
-    """Clear caches (tests / hot-reload)."""
+    """Clear caches (tests / hot-reload), including compiled lure regexes."""
     brands_catalog.cache_clear()
     lures_catalog.cache_clear()
+    # Late import: content.analyzers imports this module.
+    from mailshieldv1.analyzers.content import _compiled
+
+    _compiled.cache_clear()

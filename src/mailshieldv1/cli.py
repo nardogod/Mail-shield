@@ -13,6 +13,7 @@ from mailshieldv1.ingest.imap_pull import password_from_env, pull_and_analyze
 from mailshieldv1.ingest.pipeline import (
     DEFAULT_REPORTS_DIR,
     analyze_and_write,
+    batch_index_dir,
     write_batch_index,
 )
 from mailshieldv1.ingest.watch import watch_loop
@@ -101,15 +102,7 @@ def _cmd_analyze(args: argparse.Namespace) -> int:
             file=sys.stderr,
         )
         if args.output is None or (args.output is not None and str(args.output) != "-"):
-            index_dir = DEFAULT_REPORTS_DIR
-            if args.output is not None:
-                op = args.output.expanduser()
-                index_dir = (
-                    op
-                    if (str(args.output).endswith(("/", "\\")) or op.is_dir())
-                    else op.parent
-                )
-            write_batch_index(rows, index_dir)
+            write_batch_index(rows, batch_index_dir(args.output, DEFAULT_REPORTS_DIR))
     return exit_code
 
 
