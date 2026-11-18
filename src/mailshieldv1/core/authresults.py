@@ -138,11 +138,16 @@ def _authserv_id(header: str) -> str:
 
 
 def _matches_authserv(header: str, expected: str) -> bool:
+    """Exact authserv-id match only (case-insensitive).
+
+    Permissive suffix matching (e.g. ``attacker.mx.google.com`` vs ``mx.google.com``)
+    would let a forged topmost Authentication-Results become trusted.
+    """
     got = _authserv_id(header)
     want = expected.lower().strip()
     if not want or not got:
         return False
-    return got == want or got.endswith("." + want) or want.endswith("." + got)
+    return got == want
 
 
 def _parse_blob(blob: str, *, authserv: str = "", trusted: bool = False) -> AuthResults:

@@ -148,6 +148,39 @@ def test_auth_results_top_fail_beats_lower_pass() -> None:
     assert "attacker" not in auth.raw
 
 
+def test_authserv_id_rejects_suffix_forgery() -> None:
+    """attacker.mx.google.com must not match --authserv-id mx.google.com."""
+    from mailshieldv1 import analyze
+
+    raw = (
+        b"Authentication-Results: attacker.mx.google.com; "
+        b"spf=pass; dkim=pass; dmarc=pass\r\n"
+        b"Authentication-Results: mx.google.com; spf=fail; dkim=fail; dmarc=fail\r\n"
+        b"From: CEO <ceo@victim.example>\r\n"
+        b"Subject: Urgent wire - keep confidential\r\n\r\n"
+        b"Please process the payment today and do not tell anyone.\r\n"
+    )
+    report = analyze(raw, authserv_id="mx.google.com")
+    # Top forged suffix must not be trusted; real mx.google.com (fail) should win.
+    assert report.auth.get("trusted") is True
+    assert report.auth.get("authserv_id") == "mx.google.com"
+    assert report.auth.get("spf") == "fail"
+    assert report.auth.get("strong_pass") is False
+
+    forged_only = (
+        b"Authentication-Results: attacker.mx.google.com; "
+        b"spf=pass; dkim=pass; dmarc=pass\r\n"
+        b"From: CEO <ceo@victim.example>\r\n"
+        b"Subject: Urgent wire - keep confidential\r\n\r\n"
+        b"Please process the payment today and do not tell anyone.\r\n"
+    )
+    bad = analyze(forged_only, authserv_id="mx.google.com")
+    assert bad.auth.get("present") is False
+    assert bad.auth.get("trusted") is False
+    assert bad.auth.get("strong_pass") is False
+    assert bad.verdict in {"high", "critical"}
+
+
 def test_auth_results_authserv_id_filter() -> None:
     raw = (
         b"Authentication-Results: mx.google.com; spf=fail\r\n"
