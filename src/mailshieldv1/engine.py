@@ -9,7 +9,12 @@ from email.utils import getaddresses, parsedate_to_datetime
 
 from mailshieldv1.analyzers import DEFAULT_ANALYZERS
 from mailshieldv1.core.attachments import list_attachments
-from mailshieldv1.core.authresults import parse_auth_results
+from mailshieldv1.core.authresults import (
+    parse_auth_results,
+    reset_authserv_id,
+    resolve_authserv_id,
+    set_authserv_id,
+)
 from mailshieldv1.core.domains import org_consistency, url_domain
 from mailshieldv1.core.hops import parse_hops
 from mailshieldv1.core.limits import DEFAULT_LIMITS, Limits
@@ -51,11 +56,40 @@ def analyze(
     limits: Limits = DEFAULT_LIMITS,
     online: bool = False,
     online_timeout: float = 8.0,
+    authserv_id: str | None = None,
 ) -> Report:
     """Analyze raw .eml bytes and return a structured Report.
 
     Offline by default (no network). Pass online=True for optional DNS lookups.
+
+    ``authserv_id`` (or env ``MAILSHIELD_AUTHSERV_ID``) names the receiving MTA's
+    Authentication-Results authserv-id. Score softening (``strong_pass``) only
+    applies when that id matches — forged attacker pass headers cannot zero risk.
     """
+    expected = resolve_authserv_id(authserv_id)
+    token = set_authserv_id(expected)
+    try:
+        return _analyze_inner(
+            raw,
+            analyzers=analyzers,
+            limits=limits,
+            online=online,
+            online_timeout=online_timeout,
+            authserv_id=expected,
+        )
+    finally:
+        reset_authserv_id(token)
+
+
+def _analyze_inner(
+    raw: bytes,
+    *,
+    analyzers: Sequence[Analyzer] | None,
+    limits: Limits,
+    online: bool,
+    online_timeout: float,
+    authserv_id: str | None,
+) -> Report:
     msg = parse_eml(raw, limits=limits)
     subject, from_addr, to_addrs, message_id = _meta(msg)
     urls, url_sources = extract_urls_with_sources(msg)
@@ -63,7 +97,7 @@ def analyze(
     url_groups = group_url_variants(url_items)
     hops = parse_hops(msg)
     attachments = list_attachments(msg)
-    auth = parse_auth_results(msg)
+    auth = parse_auth_results(msg, authserv_id=authserv_id)
     org = org_consistency(
         from_header=from_addr,
         return_path=msg.get("Return-Path") or "",
@@ -166,9 +200,20 @@ def analyze(
         esp_envelope=bool(org.get("esp_envelope")),
     )
 
+    if auth.trusted:
+        report.analyzer_notes.append(
+            f"Authentication-Results trusted for authserv-id={auth.authserv_id!r}; "
+            "strong pass may soften marketing false positives."
+        )
+    else:
+        report.analyzer_notes.append(
+            "Authentication-Results are not trusted for score softening "
+            "(pass --authserv-id / MAILSHIELD_AUTHSERV_ID for your receiving MTA). "
+            "Forged attacker pass headers cannot zero the verdict."
+        )
     report.analyzer_notes.append(
-        "Authentication checks use Authentication-Results headers only "
-        "(MTA-asserted) unless --online DNS hints are enabled."
+        "Authentication checks use the topmost Authentication-Results header only "
+        "(ARC is fallback when AR is absent) unless --online DNS hints are enabled."
     )
     report.analyzer_notes.append(
         "URLs are extracted and defanged locally; destinations are never fetched. "

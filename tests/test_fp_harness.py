@@ -7,17 +7,18 @@ from pathlib import Path
 from mailshieldv1 import analyze
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# (path, authserv_id) — authserv required to trust pass and soften ESP marketing.
 BENIGN = [
-    ROOT / "samples" / "benign" / "simple_auth_pass.eml",
-    ROOT / "samples" / "benign" / "newsletter_auth_pass.eml",
-    ROOT / "samples" / "benign" / "internal_meeting.eml",
-    ROOT / "samples" / "phishing" / "3.eml",  # auth-pass marketing with CPF language
+    (ROOT / "samples" / "benign" / "simple_auth_pass.eml", "mx.example.com"),
+    (ROOT / "samples" / "benign" / "newsletter_auth_pass.eml", "mx.example.com"),
+    (ROOT / "samples" / "benign" / "internal_meeting.eml", "mx.contoso.example"),
 ]
 
 
 def test_benign_corpus_stays_info_or_low() -> None:
-    for path in BENIGN:
-        report = analyze(path.read_bytes(), online=False)
+    for path, authserv in BENIGN:
+        report = analyze(path.read_bytes(), online=False, authserv_id=authserv)
         assert report.verdict in {"info", "low"}, (
             f"FP on {path.name}: verdict={report.verdict} score={report.score} "
             f"rules={[f.rule_id for f in report.findings]}"

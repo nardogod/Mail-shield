@@ -62,6 +62,7 @@ def scan_once(
     reports_dir: Path = DEFAULT_REPORTS_DIR,
     online: bool = False,
     online_timeout: float = 8.0,
+    authserv_id: str | None = None,
     quiet: bool = False,
     process_existing: bool = False,
     settle: float = 0.15,
@@ -104,6 +105,7 @@ def scan_once(
                 reports_dir=reports_dir,
                 online=online,
                 online_timeout=online_timeout,
+                authserv_id=authserv_id,
                 quiet=quiet,
             )
         except (OSError, RuntimeError) as exc:
@@ -132,6 +134,7 @@ def watch_loop(
     reports_dir: Path = DEFAULT_REPORTS_DIR,
     online: bool = False,
     online_timeout: float = 8.0,
+    authserv_id: str | None = None,
     quiet: bool = False,
     process_existing: bool = False,
     settle: float = 0.15,
@@ -152,6 +155,7 @@ def watch_loop(
                 reports_dir=reports_dir,
                 online=online,
                 online_timeout=online_timeout,
+                authserv_id=authserv_id,
                 quiet=quiet,
                 process_existing=process_existing and first,
                 settle=settle,

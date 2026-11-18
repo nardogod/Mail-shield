@@ -73,6 +73,9 @@ mailshieldv1 samples/phishing/replyto_mismatch.eml -f json -o -
 # Day-to-day: watch a drop folder (Outlook/rule → .eml → analyze)
 mailshieldv1 watch ./inbox_eml --once --process-existing
 
+# Trust Authentication-Results only from your receiving MTA (required to soften FPs)
+mailshieldv1 samples/benign/simple_auth_pass.eml --authserv-id mx.example.com
+
 # IMAP pull (optional / WIP — needs MAILSHIELD_IMAP_PASSWORD)
 # mailshieldv1 imap --host imap.gmail.com --user you@gmail.com
 ```

@@ -86,6 +86,7 @@ def pull_and_analyze(
     reports_dir: Path = DEFAULT_REPORTS_DIR,
     online: bool = False,
     online_timeout: float = 8.0,
+    authserv_id: str | None = None,
     quiet: bool = False,
 ) -> list[dict[str, Any]]:
     """
@@ -152,6 +153,7 @@ def pull_and_analyze(
                     reports_dir=reports_dir,
                     online=online,
                     online_timeout=online_timeout,
+                    authserv_id=authserv_id,
                     quiet=quiet,
                     raw=raw_b,
                 )

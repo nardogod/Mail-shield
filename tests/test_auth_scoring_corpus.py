@@ -19,27 +19,38 @@ def test_registrable_br_and_esp() -> None:
     assert registrable_domain("www.example.com") == "example.com"
 
 
-def test_auth_strong_pass_on_cpf_sample() -> None:
+def test_auth_pass_tokens_on_cpf_sample_but_untrusted_without_authserv() -> None:
+    """Outlook-style AR (no authserv-id) surfaces pass but cannot strong_pass alone."""
     msg = parse_eml((SAMPLES / "phishing" / "3.eml").read_bytes())
     auth = parse_auth_results(msg)
     assert auth.present
     assert auth.spf == "pass"
     assert auth.dkim == "pass"
     assert auth.dmarc == "pass"
-    assert auth.strong_pass
+    assert auth.trusted is False
+    assert auth.strong_pass is False
     assert not auth.any_fail
 
 
-def test_marketing_cpf_softened_verdict() -> None:
-    """Real marketing mail with auth pass should not stay 'high' on CPF alone."""
-    report = analyze((SAMPLES / "phishing" / "3.eml").read_bytes())
-    assert report.auth.get("dmarc") == "pass"
+def test_trusted_authserv_softens_benign_newsletter() -> None:
+    """With matching --authserv-id, real pass may soften marketing FP."""
+    report = analyze(
+        (SAMPLES / "benign" / "newsletter_auth_pass.eml").read_bytes(),
+        authserv_id="mx.example.com",
+    )
+    assert report.auth.get("trusted") is True
+    assert report.auth.get("strong_pass") is True
     assert report.verdict in {"info", "low"}
-    assert report.score < 8
+
+
+def test_marketing_cpf_without_authserv_does_not_zero() -> None:
+    """Without authserv-id, CPF marketing must not be zeroed by untrusted pass."""
+    report = analyze((SAMPLES / "phishing" / "3.eml").read_bytes())
+    assert report.auth.get("trusted") is False
+    assert report.auth.get("strong_pass") is False
     page = to_html(report)
     assert "Why this verdict" in page
     assert "Authentication" in page
-    assert "spf" in page.lower()
 
 
 def test_bec_still_elevated() -> None:

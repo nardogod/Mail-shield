@@ -86,6 +86,7 @@ def analyze_and_write(
     reports_dir: Path = DEFAULT_REPORTS_DIR,
     online: bool = False,
     online_timeout: float = 8.0,
+    authserv_id: str | None = None,
     quiet: bool = False,
     raw: bytes | None = None,
 ) -> dict[str, Any]:
@@ -93,7 +94,12 @@ def analyze_and_write(
     path = eml_path.expanduser().resolve()
     data = raw if raw is not None else path.read_bytes()
     try:
-        report = analyze(data, online=online, online_timeout=online_timeout)
+        report = analyze(
+            data,
+            online=online,
+            online_timeout=online_timeout,
+            authserv_id=authserv_id,
+        )
     except (LimitExceeded, ValueError, TypeError, RuntimeError) as exc:
         raise RuntimeError(f"{path.name}: {exc}") from exc
 

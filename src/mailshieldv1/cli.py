@@ -57,6 +57,15 @@ def _add_common_analyze_flags(p: argparse.ArgumentParser) -> None:
         default=8.0,
         help="Per-query DNS timeout seconds for --online (default: 8).",
     )
+    p.add_argument(
+        "--authserv-id",
+        default=None,
+        help=(
+            "Receiving MTA authserv-id to trust in Authentication-Results "
+            "(e.g. mx.google.com). Also reads MAILSHIELD_AUTHSERV_ID. "
+            "Without this, pass results never soften the verdict."
+        ),
+    )
     p.add_argument("--quiet", action="store_true", help="Suppress terminal summary.")
 
 
@@ -84,6 +93,7 @@ def _cmd_analyze(args: argparse.Namespace) -> int:
                 output=args.output,
                 online=args.online,
                 online_timeout=args.online_timeout,
+                authserv_id=args.authserv_id,
                 quiet=args.quiet,
             )
             rows.append(row)
@@ -122,6 +132,7 @@ def _cmd_watch(args: argparse.Namespace) -> int:
         output=args.output,
         online=args.online,
         online_timeout=args.online_timeout,
+        authserv_id=args.authserv_id,
         quiet=args.quiet,
         process_existing=args.process_existing,
     )
@@ -155,6 +166,7 @@ def _cmd_imap(args: argparse.Namespace) -> int:
             output=args.output,
             online=args.online,
             online_timeout=args.online_timeout,
+            authserv_id=args.authserv_id,
             quiet=args.quiet,
         )
     except (OSError, RuntimeError, imaplib.IMAP4.error) as exc:

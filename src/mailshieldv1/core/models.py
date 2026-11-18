@@ -115,6 +115,8 @@ class Report:
                 "dkim": self.auth.get("dkim"),
                 "dmarc": self.auth.get("dmarc"),
                 "compauth": self.auth.get("compauth"),
+                "authserv_id": self.auth.get("authserv_id"),
+                "trusted": self.auth.get("trusted"),
                 "strong_pass": self.auth.get("strong_pass"),
                 "weak": self.auth.get("weak"),
                 "any_fail": self.auth.get("any_fail"),

@@ -12,7 +12,7 @@
 | Input | Trust |
 |-------|-------|
 | Local `.eml` file | **Untrusted** |
-| `Authentication-Results` header | Claim from the **topmost** receiving-MTA header only — useful, not re-proven here |
+| `Authentication-Results` header | Claim from the **topmost** receiving-MTA header only; **score softening** requires matching `--authserv-id` / `MAILSHIELD_AUTHSERV_ID` |
 | Drop folder (`watch`) | Untrusted files appearing on disk |
 | IMAP server | Semi-trusted transport; TLS verified by default |
 | Analyzer code in this repo | Trusted when reviewed |
@@ -28,6 +28,8 @@
 - Path surprises in CLI via resolve + batch `-o` directory checks
 - IMAP TLS: `ssl.create_default_context()` with hostname check + `CERT_REQUIRED`
 - Forged lower `Authentication-Results`: only the top header is scored; ARC is fallback-only
+- Forged attacker `pass` without confirmed authserv-id: never sets `strong_pass` / never zeroes verdict
+- Multiple results for the same mechanism in one header: **worst** result wins
 
 ## What we do not mitigate yet
 

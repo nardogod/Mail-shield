@@ -6,7 +6,7 @@ import re
 from email.message import EmailMessage
 from email.utils import parseaddr
 
-from mailshieldv1.core.authresults import parse_auth_results
+from mailshieldv1.core.authresults import current_authserv_id, parse_auth_results
 from mailshieldv1.core.brands import claimed_brands, display_brand_impersonation
 from mailshieldv1.core.domains import email_domain
 from mailshieldv1.core.knowledge import (
@@ -18,10 +18,6 @@ from mailshieldv1.core.knowledge import (
 from mailshieldv1.core.models import Finding
 from mailshieldv1.core.text import visible_body_text
 
-_AUTH_RESULT_RE = re.compile(
-    r"\b(spf|dkim|dmarc)=(pass|fail|softfail|neutral|none|temperror|permerror)\b",
-    re.IGNORECASE,
-)
 _INFRA_HOST = re.compile(
     r"(?i)(ubuntu|droplet|vps|compute\.amazonaws|digitalocean|"
     r"contabo|ovh|linode|vultr|dedicated|smtp-out)"
@@ -35,7 +31,7 @@ def _addr(value: str | None) -> tuple[str, str]:
 
 def analyze(msg: EmailMessage) -> list[Finding]:
     findings: list[Finding] = []
-    auth = parse_auth_results(msg)
+    auth = parse_auth_results(msg, authserv_id=current_authserv_id())
 
     from_name, from_addr = _addr(msg.get("From"))
     _reply_name, reply_addr = _addr(msg.get("Reply-To"))
@@ -258,13 +254,7 @@ def analyze(msg: EmailMessage) -> list[Finding]:
             )
         )
 
-    auth_headers = msg.get_all("Authentication-Results", []) or []
-    auth_headers += msg.get_all("ARC-Authentication-Results", []) or []
-    auth_blob = " ".join(str(h) for h in auth_headers)
-    results = {
-        m.group(1).lower(): m.group(2).lower() for m in _AUTH_RESULT_RE.finditer(auth_blob)
-    }
-
+    # Use the same parse as the engine (top AR / ARC fallback only) — never mix.
     if not auth.present:
         findings.append(
             Finding(
@@ -272,25 +262,32 @@ def analyze(msg: EmailMessage) -> list[Finding]:
                 category="authentication",
                 severity="low",
                 confidence=0.5,
-                evidence="Authentication-Results header absent",
+                evidence="Authentication-Results header absent or authserv-id unmatched",
                 explanation=(
-                    "No Authentication-Results found. Offline mode cannot prove SPF/DKIM/DMARC; "
-                    "use --online for optional DNS checks, or prefer MTA-exported samples."
+                    "No usable Authentication-Results found (or --authserv-id did not match). "
+                    "Offline mode cannot prove SPF/DKIM/DMARC; use --online for optional DNS "
+                    "checks, or pass --authserv-id for your receiving MTA."
                 ),
                 recommendation="Prefer .eml files that include Authentication-Results.",
             )
         )
     else:
+        results = {
+            "spf": auth.spf,
+            "dkim": auth.dkim,
+            "dmarc": auth.dmarc,
+        }
+        evidence_blob = auth.raw[:500]
         for mech in ("spf", "dkim", "dmarc"):
             status = results.get(mech)
-            if status is None:
+            if status is None or status == "missing":
                 findings.append(
                     Finding(
                         rule_id=f"HDR-{mech.upper()}-MISSING",
                         category="authentication",
                         severity="info",
                         confidence=0.6,
-                        evidence=auth_blob[:500],
+                        evidence=evidence_blob,
                         explanation=(
                             f"No {mech.upper()} result token found in Authentication-Results."
                         ),

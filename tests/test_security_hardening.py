@@ -55,6 +55,82 @@ def test_imap_no_ssl_warns_cleartext(
     assert "cleartext" in err.lower() or "no-ssl" in err.lower()
 
 
+def test_worst_result_wins_inside_same_header() -> None:
+    raw = (
+        b"Authentication-Results: mx.google.com; "
+        b"dkim=fail header.d=a; dkim=pass header.d=b; "
+        b"spf=pass; spf=fail; dmarc=pass; dmarc=fail\r\n"
+        b"From: a@evil.test\r\n\r\nbody\r\n"
+    )
+    parsed = email.message_from_bytes(raw, policy=email.policy.default)
+    assert isinstance(parsed, EmailMessage)
+    auth = parse_auth_results(parsed, authserv_id="mx.google.com")
+    assert auth.dkim == "fail"
+    assert auth.spf == "fail"
+    assert auth.dmarc == "fail"
+
+
+def test_forged_single_attacker_pass_cannot_zero_bec() -> None:
+    from mailshieldv1 import analyze
+
+    raw = (
+        b"Authentication-Results: attacker.example; "
+        b"spf=pass; dkim=pass; dmarc=pass\r\n"
+        b"From: CEO <ceo@victim.example>\r\n"
+        b"To: finance@victim.example\r\n"
+        b"Subject: Urgent wire transfer - keep confidential\r\n"
+        b"\r\n"
+        b"Please process the payment today and do not tell anyone.\r\n"
+        b"Send the wire to the new account immediately.\r\n"
+    )
+    without = analyze(
+        raw.replace(
+            b"Authentication-Results: attacker.example; "
+            b"spf=pass; dkim=pass; dmarc=pass\r\n",
+            b"",
+        )
+    )
+    forged = analyze(raw)
+    assert forged.auth.get("trusted") is False
+    assert forged.auth.get("strong_pass") is False
+    assert forged.auth.get("weak") is True
+    assert forged.verdict in {"high", "critical"}
+    assert forged.score >= 8
+    # Forged pass must not score better (lower) than no auth header.
+    assert forged.score >= without.score - 0.5
+
+
+def test_authserv_id_e2e_cli_and_analyze(tmp_path: Path, monkeypatch, capsys) -> None:
+    from mailshieldv1 import analyze
+
+    raw = (
+        b"Authentication-Results: mx.google.com; spf=pass; dkim=pass; dmarc=pass\r\n"
+        b"Authentication-Results: attacker.example; spf=fail; dkim=fail\r\n"
+        b"From: a@example.com\r\nSubject: hi\r\n\r\nbody\r\n"
+    )
+    trusted = analyze(raw, authserv_id="mx.google.com")
+    assert trusted.auth.get("trusted") is True
+    assert trusted.auth.get("strong_pass") is True
+    assert trusted.auth.get("spf") == "pass"
+
+    ignored = analyze(raw, authserv_id="not-our-mx.example")
+    assert ignored.auth.get("present") is False
+    assert ignored.auth.get("strong_pass") is False
+
+    monkeypatch.setenv("MAILSHIELD_AUTHSERV_ID", "mx.google.com")
+    via_env = analyze(raw)
+    assert via_env.auth.get("trusted") is True
+
+    root = Path(__file__).resolve().parents[1]
+    sample = root / "samples" / "benign" / "simple_auth_pass.eml"
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.delenv("MAILSHIELD_AUTHSERV_ID", raising=False)
+    code = main([str(sample), "-f", "json", "--authserv-id", "mx.example.com", "--quiet"])
+    assert code == 0
+    text = (tmp_path / "reports" / "simple_auth_pass.json").read_text(encoding="utf-8")
+    assert '"trusted": true' in text.replace(" ", "") or '"trusted":true' in text.replace(" ", "")
+
+
 def test_auth_results_top_fail_beats_lower_pass() -> None:
     # First header in the file = topmost receiving-MTA header.
     raw = (
