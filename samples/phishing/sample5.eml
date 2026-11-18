@@ -1,4 +1,4 @@
-Delivered-To: nardogomes.lg@gmail.com
+Delivered-To: victim@example.com
 Received: by 2002:a05:7508:3a17:b0:107:c2fa:28b4 with SMTP id cy23csp2058203gbb;
         Tue, 20 Oct 2026 08:18:55 -0700 (PDT)
 X-Received: by 2002:a05:6808:330a:b0:4e4:4b49:3a2d with SMTP id 5614622812f47-53ccb4e985cmr9332332b6e.19.1792509535686;
@@ -26,19 +26,19 @@ ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=pass header.i=@6protsp.com.br header.s=s1 header.b=GHpWAKmN;
        dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=ZSde0pQm;
-       spf=pass (google.com: domain of bounces+46656684-10d8-nardogomes.lg=gmail.com@em84.6protsp.com.br designates 149.72.87.224 as permitted sender) smtp.mailfrom="bounces+46656684-10d8-nardogomes.lg=gmail.com@em84.6protsp.com.br";
+       spf=pass (google.com: domain of bounces+46656684-10d8-victim=example.com@em84.6protsp.com.br designates 149.72.87.224 as permitted sender) smtp.mailfrom="bounces+46656684-10d8-victim=example.com@em84.6protsp.com.br";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=6protsp.com.br
-Return-Path: <bounces+46656684-10d8-nardogomes.lg=gmail.com@em84.6protsp.com.br>
+Return-Path: <bounces+46656684-10d8-victim=example.com@em84.6protsp.com.br>
 Received: from o34.ptr621.zenvia.com (o34.ptr621.zenvia.com. [149.72.87.224])
         by mx.google.com with ESMTPS id 5614622812f47-538943c2a3esi18691262b6e.107.2026.10.20.08.18.55
-        for <nardogomes.lg@gmail.com>
+        for <victim@example.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
         Tue, 20 Oct 2026 08:18:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bounces+46656684-10d8-nardogomes.lg=gmail.com@em84.6protsp.com.br designates 149.72.87.224 as permitted sender) client-ip=149.72.87.224;
+Received-SPF: pass (google.com: domain of bounces+46656684-10d8-victim=example.com@em84.6protsp.com.br designates 149.72.87.224 as permitted sender) client-ip=149.72.87.224;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@6protsp.com.br header.s=s1 header.b=GHpWAKmN;
        dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=ZSde0pQm;
-       spf=pass (google.com: domain of bounces+46656684-10d8-nardogomes.lg=gmail.com@em84.6protsp.com.br designates 149.72.87.224 as permitted sender) smtp.mailfrom="bounces+46656684-10d8-nardogomes.lg=gmail.com@em84.6protsp.com.br";
+       spf=pass (google.com: domain of bounces+46656684-10d8-victim=example.com@em84.6protsp.com.br designates 149.72.87.224 as permitted sender) smtp.mailfrom="bounces+46656684-10d8-victim=example.com@em84.6protsp.com.br";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=6protsp.com.br
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=6protsp.com.br;
 	h=content-transfer-encoding:content-type:date:from:mime-version:subject:
@@ -92,14 +92,14 @@ X-SG-ID:
  =?us-ascii?Q?0+cW+eI0h3yDxxWBglsynsOXcZBYukRB+zPIAd9?=
  =?us-ascii?Q?=2FiU6W7KwqcBCPNAQDhFaEHDzH+N=2FSSl3TIbNw3N?=
  =?us-ascii?Q?4UgqMY30=3D?=
-To: nardogomes.lg@gmail.com
+To: victim@example.com
 X-Entity-ID: u001.ZO1i3iEFl7rciPbDqClRLg==
 
 <html><head></head><body><p></p><div style=3D"text-align: center;"><span st=
 yle=3D"font-size: 14.4px; text-align: left; background-color: rgb(255, 255,=
  255);"><b style=3D""><font face=3D"Helvetica">6=BA TABELI=C3O DE PROTESTO =
 DE LETRAS E T=CDTULOS DE S=C3O PAULO</font></b></span></div><br><br>Prezado=
-(a) Sr(a):&nbsp;LEONARDO G**** D* C********<br>CPF:&nbsp;389.XXX.518-2X<br>=
+(a) Sr(a):&nbsp;J*** S*******<br>CPF:&nbsp;000.XXX.000-0X<br>=
 <br><p></p><div style=3D"text-align: center;">AVISO DE CUSTAS CARTOR=C1RIAS=
  EM ABERTO<br><br><div style=3D"text-align: justify;">Recebemos a informa=
 =E7=E3o de que sua d=EDvida foi negociada com seu credor. Seu t=EDtulo, no =

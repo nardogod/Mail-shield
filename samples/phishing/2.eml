@@ -46,7 +46,7 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
 Date: Thu, 15 Jan 2026 15:51:47 +0000
 From: =?UTF-8?B?Tm90aWZpY2HDp8OjbyBkZSBkw6liaXRvIOKAkyBTQ1BDIGUgU2VtIFBhcmFy?= <contato@cp.acordocerto.com.br>
 Reply-To: reply-to@contato.acordocerto.com.br
-To: nardogomes@live.com
+To: victim@example.com
 Subject: =?UTF-8?Q?Comunicado_SCPC:_Notifica=C3=A7=C3=A3o_de_d=C3=ADvida?=
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
@@ -248,7 +248,7 @@ dy><tr><td class=3D"mq" style=3D"overflow-wrap:break-word;word-break:break-=
 word;padding:0px 0px 16px;font-family:'Crimson Text',serif;" align=3D"left"=
 >
 <h1 class=3D"ig s" style=3D"margin:0px;line-height:120%;text-align:left;wor=
-d-wrap:break-word;font-size:24px;font-weight:700;"><strong>Leonardo,</stron=
+d-wrap:break-word;font-size:24px;font-weight:700;"><strong>Recipient,</stron=
 g>&nbsp; <p style=3D"line-height:120%;">&nbsp;</p><p style=3D"line-height:1=
 20%;">Sua nova d=C3=ADvida com Sem Parar j=C3=A1 tem desconto.</p></h1>
 
@@ -284,8 +284,8 @@ ation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=3D"0"><tbo=
 dy><tr><td class=3D"mq" style=3D"overflow-wrap:break-word;word-break:break-=
 word;padding:0px;font-family:'Crimson Text',serif;" align=3D"left"><div cla=
 ss=3D"ig s" style=3D"font-size:18px;line-height:140%;text-align:left;word-w=
-rap:break-word;"><p style=3D"line-height:140%;">Prezado(a) Leonardo, inform=
-amos a inclus=C3=A3o de uma nova pend=C3=AAncia em seu CPF (389.***.***-25)
+rap:break-word;"><p style=3D"line-height:140%;">Prezado(a) Recipient, inform=
+amos a inclus=C3=A3o de uma nova pend=C3=AAncia em seu CPF (000.***.***-00)
 na base de dados. A d=C3=ADvida =C3=A9 com o parceiro Sem Parar.</p></div>
 </td></tr></tbody></table>
 </div>

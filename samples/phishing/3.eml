@@ -46,7 +46,7 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
 Date: Tue, 20 Jan 2026 10:55:59 +0000
 From: =?UTF-8?B?SGlzdMOzcmljbyBkZSBhbHRlcmHDp8O1ZXMgbm8gQ1BGIOKAkyBBY29yZG8gQ2VydG8=?= <contato@mkt.acordocerto.com.br>
 Reply-To: reply-to@atende.acordocerto.com.br
-To: nardogomes@live.com
+To: victim@example.com
 Subject: =?UTF-8?Q?Notamos_uma_atualiza=C3=A7=C3=A3o_recente_no_seu_CPF?=
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
@@ -249,7 +249,7 @@ e=3D"line-height:26.4px;"><span style=3D"line-height:26.4px;"><span style=
 "line-height:26.4px;"><span style=3D"line-height:26.4px;"><span style=3D"li=
 ne-height:26.4px;"><span style=3D"line-height:26.4px;"><span style=3D"line-=
 height:26.4px;"><span style=3D"line-height:26.4px;"><span style=3D"line-hei=
-ght:26.4px;"><span style=3D"line-height:26.4px;">Leonardo, quer saber se se=
+ght:26.4px;"><span style=3D"line-height:26.4px;">Recipient, quer saber se se=
 u CPF teve atualiza=C3=A7=C3=B5es nas propostas?</span></span></span></span=
 ></span></span></span></span></span></span></span></span></span></span></sp=
 an></span></span></span></span></span></span></h1>

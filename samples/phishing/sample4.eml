@@ -1,4 +1,4 @@
-Delivered-To: nardogomes.lg@gmail.com
+Delivered-To: victim@example.com
 Received: by 2002:a05:7508:7b4:b0:117:a217:10ff with SMTP id bk52csp4695603gbb;
         Tue, 17 Nov 2026 00:58:05 -0800 (PST)
 X-Received: by 2002:a17:907:8e98:b0:c48:9228:bdcb with SMTP id a640c23a62f3a-c509614e920mr1238817666b.3.1794905885690;
@@ -30,7 +30,7 @@ ARC-Authentication-Results: i=1; mx.google.com;
 Return-Path: <error@info.nordea.se>
 Received: from r194.info.nordea.se (r194.info.nordea.se. [20.93.186.194])
         by mx.google.com with ESMTPS id a640c23a62f3a-c5095bb6c43si920601066b.99.2026.11.17.00.58.05
-        for <nardogomes.lg@gmail.com>
+        for <victim@example.com>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 17 Nov 2026 00:58:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of error@info.nordea.se designates 20.93.186.194 as permitted sender) client-ip=20.93.186.194;
@@ -57,7 +57,7 @@ List-Unsubscribe-Post: List-Unsubscribe=One-Click
 Message-ID: <427228c3-ec60-308d-b22b-afca7ef1cad1@info.nordea.se>
 Reply-To: Nordea <engagemang@nordea.se>
 Subject: =?UTF-8?q?V=C3=A4ntar_du_p=C3=A5_paket=3F_=F0=9F=93=A6?=
-To: <nardogomes.lg@gmail.com>
+To: <victim@example.com>
 x-affinity-id: f9108616-1898-435d-abcf-3158c5e512f9
 x-content-format: rendered
 x-ess-validity: 1795208269

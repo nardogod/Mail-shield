@@ -32,7 +32,7 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=emktbbts; d=emktbbts.com
  b=tuco9iX8H7RRhBWAlRs80l+SGPReEty91anbWRCGYF0wB0pGXBoilv1EY2tM2/ueyPzQt4iSQYOf
    H6dURX0du2Vir+gooxT3xTBQLbiVmehNzKKOuPPn9gWaa0ex3Day+a2v6SZBObKRGmCidKjoA2tB
    y8hN92VpWWUxIcxP/2U=
-Received: from [127.0.0.1] (10.197.3.234) by pmta.emktbbts.com.br id h2sdti3aul87 for <nardogomes@live.com>; Fri, 14 Nov 2025 08:23:30 -0300 (envelope-from <negociacao@emktbbts.com.br>)
+Received: from [127.0.0.1] (10.197.3.234) by pmta.emktbbts.com.br id h2sdti3aul87 for <victim@example.com>; Fri, 14 Nov 2025 08:23:30 -0300 (envelope-from <negociacao@emktbbts.com.br>)
 Campaign: EMKT_1311PF_LT2
 Tenant: facilita
 List-ID: <emails.emktbbts.com.br>
@@ -42,7 +42,7 @@ List-Unsubscribe: <https://facilita.intevia.com.br/api/email/customer/subscripti
 X-Job: facilita
 From: =?UTF-8?Q?Negocia=C3=A7=C3=A3o_-_BB_Tecnologia_e_S?=
  =?UTF-8?Q?ervi=C3=A7os?= <negociacao@emktbbts.com.br>
-To: nardogomes@live.com
+To: victim@example.com
 Reply-To: negociacao@bbts.com.br
 Subject: BBTS - Aproveite a nossa Black Friday!
 Message-ID: <90f7c60b-e4dc-8dea-d6d8-e6eb3a0fcdba@emktbbts.com.br>
