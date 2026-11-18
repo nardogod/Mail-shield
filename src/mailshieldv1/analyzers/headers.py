@@ -186,7 +186,9 @@ def analyze(msg: EmailMessage) -> list[Finding]:
                     "From display name is unusually long and contains call-to-action / "
                     "payment language — the lure is smuggled into the sender name."
                 ),
-                recommendation="Do not follow instructions in the display name; report the message.",
+                recommendation=(
+                    "Do not follow instructions in the display name; report the message."
+                ),
             )
         )
 

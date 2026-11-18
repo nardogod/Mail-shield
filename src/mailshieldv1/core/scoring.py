@@ -5,9 +5,10 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from typing import Any
 
-from mailshieldv1.core.knowledge_store import lures_catalog
+from mailshieldv1.core.knowledge_store import lures_catalog, scoring_catalog
 from mailshieldv1.core.models import SEVERITY_RANK, Finding, Report
 
+# Defaults used if scoring.yml is incomplete (keep in sync with data/scoring.yml).
 _BASE_WEIGHT = {
     "info": 0,
     "low": 1,
@@ -50,31 +51,6 @@ _STRUCTURED_BRAND = frozenset(
     }
 )
 
-_FAMILY_BY_PREFIX = (
-    ("HDR-BRAND", "brand"),
-    ("HDR-FREEMAIL", "brand"),
-    ("HDR-HOMOGLYPH", "brand"),
-    ("HDR-INVISIBLE", "brand"),
-    ("HDR-LONG-DISPLAY", "brand"),
-    ("HDR-DISPLAY-NAME", "brand"),
-    ("HDR-SPF", "auth"),
-    ("HDR-DKIM", "auth"),
-    ("HDR-DMARC", "auth"),
-    ("HDR-COMPAUTH", "auth"),
-    ("ONLINE-", "auth"),
-    ("ATT-", "attachment"),
-    ("URL-", "url"),
-    ("ORG-", "org"),
-    ("CONTENT-", "lure"),
-    ("BEC-", "lure"),
-    ("HDR-M365", "header"),
-    ("HDR-FROM", "header"),
-    ("HDR-RETURNPATH", "header"),
-    ("HDR-MISSING", "header"),
-    ("HOP-", "header"),
-)
-
-
 @dataclass
 class Contributor:
     rule_id: str
@@ -87,14 +63,31 @@ class Contributor:
         return asdict(self)
 
 
+def _severity_weights() -> dict[str, float]:
+    cat = scoring_catalog()
+    raw = cat.get("severity_weights") or {}
+    out = dict(_BASE_WEIGHT)
+    if isinstance(raw, dict):
+        for k, v in raw.items():
+            out[str(k)] = float(v)
+    return out
+
+
 def _threshold(score: float) -> str:
-    if score >= 12:
+    """Map total score → verdict using thresholds from scoring.yml (4 / 8 / 12)."""
+    cat = scoring_catalog()
+    th = cat.get("thresholds") or {}
+    critical = float(th.get("critical", 12))
+    high = float(th.get("high", 8))
+    medium = float(th.get("medium", 4))
+    low = float(th.get("low", 1))
+    if score >= critical:
         return "critical"
-    if score >= 8:
+    if score >= high:
         return "high"
-    if score >= 4:
+    if score >= medium:
         return "medium"
-    if score >= 1:
+    if score >= low:
         return "low"
     return "info"
 
@@ -109,13 +102,16 @@ def _bump(sev: str) -> str:
 
 
 def _family_for(rule_id: str) -> str:
-    for prefix, fam in _FAMILY_BY_PREFIX:
-        if rule_id.startswith(prefix):
-            return fam
-    if rule_id.startswith("MOD-AUTH"):
-        return "auth"
-    if rule_id.startswith("MOD-ORG"):
-        return "org"
+    cat = scoring_catalog()
+    rows = cat.get("family_prefixes") or []
+    if isinstance(rows, list):
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            prefix = str(row.get("prefix") or "")
+            fam = str(row.get("family") or "other")
+            if prefix and rule_id.startswith(prefix):
+                return fam
     return "other"
 
 
@@ -245,8 +241,9 @@ def apply_calibration(
     commodity_lure = 0.0
     structured_lure_w = 0.0
 
+    weights = _severity_weights()
     for f in report.findings:
-        w = _BASE_WEIGHT.get(f.severity, 0) * f.confidence
+        w = weights.get(f.severity, 0) * f.confidence
         if w <= 0:
             continue
         fam = _family_for(f.rule_id)
@@ -357,10 +354,11 @@ def apply_calibration(
 
     score = sum(family_scores.values())
 
-    # Structured phishing floor: brand impersonation / IRPF / protesto / wallet etc.
-    if structured_phish and score < 8.0:
-        bump = 8.0 - score
-        score = 8.0
+    # Structured phishing floor: at least "high" threshold from scoring.yml.
+    high_floor = float((scoring_catalog().get("thresholds") or {}).get("high", 8))
+    if structured_phish and score < high_floor:
+        bump = high_floor - score
+        score = high_floor
         contributors.append(
             Contributor(
                 rule_id="MOD-STRUCTURED-FLOOR",

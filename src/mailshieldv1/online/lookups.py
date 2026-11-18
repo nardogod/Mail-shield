@@ -74,7 +74,11 @@ def _dmarc_records(txts: list[str]) -> list[str]:
 
 
 def _resolve_host(host: str, timeout: float = 8.0) -> dict[str, Any]:
-    """Resolve A/AAAA without mutating process-wide socket defaults."""
+    """Resolve A/AAAA without mutating process-wide socket defaults.
+
+    Uses a manual ThreadPoolExecutor so ``result(timeout=…)`` can return on
+    timeout without waiting for the worker thread (``shutdown(wait=False)``).
+    """
     if not host:
         return {"host": host, "ok": False, "error": "empty"}
 
@@ -83,15 +87,20 @@ def _resolve_host(host: str, timeout: float = 8.0) -> dict[str, Any]:
     def _lookup() -> list[tuple]:
         return socket.getaddrinfo(host, None)
 
+    pool = concurrent.futures.ThreadPoolExecutor(max_workers=1)
     try:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
-            infos = pool.submit(_lookup).result(timeout=timeout)
+        fut = pool.submit(_lookup)
+        try:
+            infos = fut.result(timeout=timeout)
+        except concurrent.futures.TimeoutError:
+            fut.cancel()
+            return {"host": host, "ok": False, "error": "timeout"}
         addrs = sorted({i[4][0] for i in infos})
         return {"host": host, "ok": True, "addresses": addrs[:10]}
-    except concurrent.futures.TimeoutError:
-        return {"host": host, "ok": False, "error": "timeout"}
     except OSError as exc:
         return {"host": host, "ok": False, "error": str(exc)}
+    finally:
+        pool.shutdown(wait=False, cancel_futures=True)
 
 
 def _worth_resolving(domain: str) -> bool:

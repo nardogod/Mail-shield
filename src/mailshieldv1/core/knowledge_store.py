@@ -7,7 +7,7 @@ from importlib import resources
 from pathlib import Path
 from typing import Any
 
-from mailshieldv1.core.yaml_lite import load_path, loads
+from mailshieldv1.core.yaml_lite import load_path
 
 
 def _read_data(name: str) -> Any:
@@ -38,10 +38,19 @@ def lures_catalog() -> dict[str, Any]:
     return data
 
 
+@lru_cache(maxsize=1)
+def scoring_catalog() -> dict[str, Any]:
+    data = _read_data("scoring.yml")
+    if not isinstance(data, dict):
+        raise ValueError("scoring.yml must be a mapping")
+    return data
+
+
 def reload_knowledge() -> None:
     """Clear caches (tests / hot-reload), including compiled lure regexes."""
     brands_catalog.cache_clear()
     lures_catalog.cache_clear()
+    scoring_catalog.cache_clear()
     # Late import: content.analyzers imports this module.
     from mailshieldv1.analyzers.content import _compiled
 

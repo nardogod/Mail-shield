@@ -9,11 +9,13 @@ from email.message import EmailMessage, Message
 from mailshieldv1.core.limits import DEFAULT_LIMITS, LimitExceeded, Limits
 
 
-def _count_parts(msg: Message, limit: int) -> int:
+def _count_parts(msg: Message, limit: int, *, depth: int = 0, max_depth: int = 50) -> int:
+    if depth > max_depth:
+        raise LimitExceeded(f"message exceeds max_mime_depth={max_depth}")
     count = 1
     if msg.is_multipart():
         for part in msg.iter_parts():
-            count += _count_parts(part, limit)
+            count += _count_parts(part, limit, depth=depth + 1, max_depth=max_depth)
             if count > limit:
                 raise LimitExceeded(f"message exceeds max_parts={limit}")
     return count
@@ -36,8 +38,18 @@ def parse_eml(raw: bytes, limits: Limits = DEFAULT_LIMITS) -> EmailMessage:
         raise LimitExceeded(f"headers exceed max_header_bytes={limits.max_header_bytes}")
 
     # policy.default: modern UTF-8-friendly parsing; does not execute content.
-    msg = email.message_from_bytes(bytes(raw), policy=email.policy.default)
+    try:
+        msg = email.message_from_bytes(bytes(raw), policy=email.policy.default)
+    except RecursionError as exc:
+        raise LimitExceeded(
+            f"message exceeds safe MIME nesting (max_mime_depth={limits.max_mime_depth})"
+        ) from exc
     if not isinstance(msg, EmailMessage):
         raise TypeError("parser did not return EmailMessage")
-    _count_parts(msg, limits.max_parts)
+    try:
+        _count_parts(msg, limits.max_parts, max_depth=limits.max_mime_depth)
+    except RecursionError as exc:
+        raise LimitExceeded(
+            f"message exceeds safe MIME nesting (max_mime_depth={limits.max_mime_depth})"
+        ) from exc
     return msg

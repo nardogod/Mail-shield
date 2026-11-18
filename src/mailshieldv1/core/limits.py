@@ -10,7 +10,7 @@ class Limits:
     max_bytes: int = 5 * 1024 * 1024  # 5 MiB
     max_header_bytes: int = 256 * 1024
     max_parts: int = 200
-    parse_timeout_seconds: float = 5.0
+    max_mime_depth: int = 50
 
 
 DEFAULT_LIMITS = Limits()

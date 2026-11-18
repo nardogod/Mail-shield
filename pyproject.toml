@@ -44,6 +44,11 @@ mailshieldv1 = ["data/*.yml"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+markers = [
+  "network: live DNS / network (set MAILSHIELD_LIVE_TESTS=1)",
+  "pot: requires samples/phishing/badsamples/phishing_pot corpus",
+]
+addopts = ["-m", "not network"]
 
 [tool.ruff]
 line-length = 100
@@ -53,7 +58,7 @@ target-version = "py311"
 select = ["E", "F", "I", "B", "UP", "S"]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**/*.py" = ["S101"]
+"tests/**/*.py" = ["S101", "S105", "S106"]
 
 [tool.bandit]
 skips = ["B101"]

@@ -126,6 +126,17 @@ def analyze_and_write(
     }
 
 
+def output_is_directory(output: Path) -> bool:
+    """True when -o should be treated as a directory (batch-safe)."""
+    op = output.expanduser()
+    raw = str(output)
+    if raw.endswith(("/", "\\")) or op.is_dir():
+        return True
+    if not op.exists() and op.suffix == "":
+        return True
+    return False
+
+
 def batch_index_dir(
     output: Path | None,
     reports_dir: Path = DEFAULT_REPORTS_DIR,
@@ -143,12 +154,26 @@ def batch_index_dir(
     if output is None or str(output) == "-":
         return reports_dir
     op = output.expanduser()
-    raw = str(output)
-    if raw.endswith(("/", "\\")) or op.is_dir():
-        return op
-    if not op.exists() and op.suffix == "":
+    if output_is_directory(output):
         return op
     return op.parent
+
+def require_batch_directory(output: Path | None) -> str | None:
+    """
+    Return an error message if batch/watch -o is a single file path.
+
+    ``None`` means OK (default reports dir, stdout rejected elsewhere, or a directory).
+    """
+    if output is None:
+        return None
+    if str(output) == "-":
+        return "batch/watch mode cannot write all reports to stdout (-)"
+    if output_is_directory(output):
+        return None
+    return (
+        f"batch/watch mode requires -o to be a directory "
+        f"(got file path {output}); use a dir, trailing slash, or omit -o"
+    )
 
 
 def write_batch_index(rows: list[dict[str, Any]], index_dir: Path) -> Path:

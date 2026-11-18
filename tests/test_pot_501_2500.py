@@ -12,6 +12,8 @@ from mailshieldv1.core.brands import brand_supported_by_domain, claimed_brands
 ROOT = Path(__file__).resolve().parents[1]
 POT = ROOT / "samples" / "phishing" / "badsamples" / "phishing_pot" / "email"
 
+pytestmark = pytest.mark.pot
+
 
 def _need_pot(*files: str) -> None:
     if not POT.is_dir():

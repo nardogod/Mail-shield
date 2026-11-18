@@ -7,6 +7,7 @@ import email.header
 import imaplib
 import os
 import re
+import ssl
 import sys
 from pathlib import Path
 from typing import Any
@@ -46,16 +47,22 @@ def _message_filename(raw: bytes, uid: str) -> str:
     return f"{stem}.eml"
 
 
+def imap_ssl_context() -> ssl.SSLContext:
+    """TLS context with hostname check + CERT_REQUIRED (default trust store)."""
+    return ssl.create_default_context()
+
+
 def _connect(
     *,
     host: str,
     port: int,
     user: str,
     password: str,
-    ssl: bool = True,
+    ssl_enabled: bool = True,
 ) -> imaplib.IMAP4:
-    if ssl:
-        client: imaplib.IMAP4 = imaplib.IMAP4_SSL(host, port)
+    if ssl_enabled:
+        ctx = imap_ssl_context()
+        client: imaplib.IMAP4 = imaplib.IMAP4_SSL(host, port, ssl_context=ctx)
     else:
         client = imaplib.IMAP4(host, port)
     client.login(user, password)
@@ -89,8 +96,16 @@ def pull_and_analyze(
     save_dir = save_dir.expanduser().resolve()
     save_dir.mkdir(parents=True, exist_ok=True)
 
+    if not ssl:
+        print(
+            "warning: IMAP --no-ssl: login credentials (password) are sent in cleartext",
+            file=sys.stderr,
+        )
+
     print(f"imap: connecting {host}:{port} as {user} mailbox={mailbox!r}", file=sys.stderr)
-    client = _connect(host=host, port=port, user=user, password=password, ssl=ssl)
+    client = _connect(
+        host=host, port=port, user=user, password=password, ssl_enabled=ssl
+    )
     rows: list[dict[str, Any]] = []
     try:
         typ, _ = client.select(mailbox, readonly=not mark_seen)
@@ -118,7 +133,7 @@ def pull_and_analyze(
             if not isinstance(part, tuple) or len(part) < 2:
                 continue
             raw = part[1]
-            if not isinstance(raw, (bytes, bytearray)):
+            if not isinstance(raw, bytes | bytearray):
                 continue
             raw_b = bytes(raw)
             fname = _message_filename(raw_b, uid)
@@ -152,8 +167,8 @@ def pull_and_analyze(
     finally:
         try:
             client.logout()
-        except Exception:  # noqa: BLE001
-            pass
+        except Exception as exc:  # noqa: BLE001 — logout best-effort
+            print(f"imap: logout warning: {exc}", file=sys.stderr)
 
     if rows:
         write_batch_index(rows, batch_index_dir(output, reports_dir))

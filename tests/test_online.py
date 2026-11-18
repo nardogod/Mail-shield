@@ -1,7 +1,8 @@
-"""Optional --online DNS enrichments — live network lookups (no mocks)."""
+"""Optional --online DNS enrichments — live network lookups (gated)."""
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 import pytest
@@ -15,7 +16,14 @@ BENIGN = ROOT / "samples" / "benign" / "simple_auth_pass.eml"
 CPF = ROOT / "samples" / "phishing" / "3.eml"
 
 
+def _require_live() -> None:
+    if os.environ.get("MAILSHIELD_LIVE_TESTS") != "1":
+        pytest.skip("set MAILSHIELD_LIVE_TESTS=1 to run live DNS tests")
+
+
+@pytest.mark.network
 def test_live_dns_enrich_online_example_com() -> None:
+    _require_live()
     dns = pytest.importorskip("dns.resolver")
     _ = dns  # presence check
     result = enrich_online(
@@ -28,7 +36,6 @@ def test_live_dns_enrich_online_example_com() -> None:
     assert isinstance(result["spf_txt"], list)
     assert isinstance(result["dmarc_txt"], list)
     assert result["resolutions"]
-    # IANA example.com publishes SPF and resolves publicly.
     assert any(
         (not str(x).startswith("error:")) and "v=spf1" in str(x).lower()
         for x in result["spf_txt"]
@@ -38,7 +45,9 @@ def test_live_dns_enrich_online_example_com() -> None:
     ]
 
 
+@pytest.mark.network
 def test_analyze_online_live_on_real_sample() -> None:
+    _require_live()
     pytest.importorskip("dns.resolver")
     report = analyze(CPF.read_bytes(), online=True, online_timeout=8.0)
     assert report.online.get("enabled") is True
@@ -52,7 +61,9 @@ def test_analyze_online_live_on_real_sample() -> None:
     assert "SPF TXT" in page
 
 
+@pytest.mark.network
 def test_cli_online_live(tmp_path: Path, monkeypatch) -> None:
+    _require_live()
     pytest.importorskip("dns.resolver")
     monkeypatch.chdir(tmp_path)
     code = main([str(BENIGN), "--online", "-f", "json"])

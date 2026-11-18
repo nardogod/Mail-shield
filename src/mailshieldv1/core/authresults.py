@@ -12,6 +12,8 @@ _RESULT_RE = re.compile(
     re.IGNORECASE,
 )
 _COMPAUTH_RE = re.compile(r"\bcompauth=(pass|fail|softpass|none)\b", re.IGNORECASE)
+# authserv-id is the first token before ';' (RFC 8601).
+_AUTHSERV_RE = re.compile(r"^\s*([^;\s]+)", re.IGNORECASE)
 
 
 @dataclass
@@ -22,6 +24,7 @@ class AuthResults:
     compauth: str = "missing"
     raw: str = ""
     present: bool = False
+    authserv_id: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -62,13 +65,20 @@ class AuthResults:
         return False
 
 
-def parse_auth_results(msg: EmailMessage) -> AuthResults:
-    headers: list[str] = []
-    for name in ("Authentication-Results", "ARC-Authentication-Results"):
-        headers.extend(msg.get_all(name, []) or [])
-    if not headers:
-        return AuthResults()
-    blob = " ".join(str(h) for h in headers)
+def _authserv_id(header: str) -> str:
+    m = _AUTHSERV_RE.match(header.strip())
+    return (m.group(1) if m else "").lower()
+
+
+def _matches_authserv(header: str, expected: str) -> bool:
+    got = _authserv_id(header)
+    want = expected.lower().strip()
+    if not want:
+        return True
+    return got == want or got.endswith("." + want) or want.endswith("." + got)
+
+
+def _parse_blob(blob: str, *, authserv: str = "") -> AuthResults:
     found = {m.group(1).lower(): m.group(2).lower() for m in _RESULT_RE.finditer(blob)}
     comp = _COMPAUTH_RE.search(blob)
     return AuthResults(
@@ -78,4 +88,47 @@ def parse_auth_results(msg: EmailMessage) -> AuthResults:
         compauth=(comp.group(1).lower() if comp else "missing"),
         raw=blob[:1000],
         present=True,
+        authserv_id=authserv or _authserv_id(blob),
     )
+
+
+def _pick_header(headers: list[str], authserv_id: str | None) -> str | None:
+    """Prefer the topmost (first) header; optionally require matching authserv-id."""
+    if not headers:
+        return None
+    if not authserv_id:
+        return str(headers[0])
+    for h in headers:
+        if _matches_authserv(str(h), authserv_id):
+            return str(h)
+    return None
+
+
+def parse_auth_results(
+    msg: EmailMessage,
+    *,
+    authserv_id: str | None = None,
+) -> AuthResults:
+    """
+    Parse auth results from the receiving MTA.
+
+    Uses only the topmost ``Authentication-Results`` header (first in the message).
+    ``ARC-Authentication-Results`` is a fallback when no AR header exists — never
+    mixed with AR. When ``authserv_id`` is set, headers from other servers are ignored.
+    """
+    ar_headers = [str(h) for h in (msg.get_all("Authentication-Results") or [])]
+    chosen = _pick_header(ar_headers, authserv_id)
+    if chosen is not None:
+        return _parse_blob(chosen, authserv=_authserv_id(chosen))
+
+    # No usable Authentication-Results → ARC fallback only (do not merge with AR).
+    if ar_headers and authserv_id:
+        # AR present but none matched expected authserv-id → do not fall through to ARC
+        # of a different trust domain; treat as missing.
+        return AuthResults()
+
+    arc_headers = [str(h) for h in (msg.get_all("ARC-Authentication-Results") or [])]
+    chosen_arc = _pick_header(arc_headers, authserv_id)
+    if chosen_arc is None:
+        return AuthResults()
+    return _parse_blob(chosen_arc, authserv=_authserv_id(chosen_arc))

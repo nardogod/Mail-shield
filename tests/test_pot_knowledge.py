@@ -17,6 +17,8 @@ from mailshieldv1.core.knowledge import (
 ROOT = Path(__file__).resolve().parents[1]
 POT = ROOT / "samples" / "phishing" / "badsamples" / "phishing_pot" / "email"
 
+pytestmark = pytest.mark.pot
+
 
 def _need_pot(*files: str) -> None:
     if not POT.is_dir():

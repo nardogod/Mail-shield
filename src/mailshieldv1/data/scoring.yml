@@ -1,0 +1,68 @@
+# Scoring v2 configuration (weights, verdict thresholds, rule→family map).
+#
+# Per-finding weight = severity_weight[severity] * confidence.
+# Family scores are summed; commodity lures are capped; structured brand/lure
+# findings apply a floor toward high. See core/scoring.py.
+
+severity_weights:
+  info: 0
+  low: 1
+  medium: 3
+  high: 6
+  critical: 10
+
+# Verdict thresholds on the calibrated total score.
+thresholds:
+  critical: 12
+  high: 8
+  medium: 4
+  low: 1
+
+# First matching prefix wins (longest / most specific prefixes listed first).
+family_prefixes:
+  - prefix: HDR-BRAND
+    family: brand
+  - prefix: HDR-FREEMAIL
+    family: brand
+  - prefix: HDR-HOMOGLYPH
+    family: brand
+  - prefix: HDR-INVISIBLE
+    family: brand
+  - prefix: HDR-LONG-DISPLAY
+    family: brand
+  - prefix: HDR-DISPLAY-NAME
+    family: brand
+  - prefix: HDR-SPF
+    family: auth
+  - prefix: HDR-DKIM
+    family: auth
+  - prefix: HDR-DMARC
+    family: auth
+  - prefix: HDR-COMPAUTH
+    family: auth
+  - prefix: ONLINE-
+    family: auth
+  - prefix: MOD-AUTH
+    family: auth
+  - prefix: ATT-
+    family: attachment
+  - prefix: URL-
+    family: url
+  - prefix: ORG-
+    family: org
+  - prefix: MOD-ORG
+    family: org
+  - prefix: CONTENT-
+    family: lure
+  - prefix: BEC-
+    family: lure
+  - prefix: HDR-M365
+    family: header
+  - prefix: HDR-FROM
+    family: header
+  - prefix: HDR-RETURNPATH
+    family: header
+  - prefix: HDR-MISSING
+    family: header
+  - prefix: HOP-
+    family: header

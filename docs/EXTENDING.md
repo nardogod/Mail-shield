@@ -28,14 +28,15 @@ report = analyze(raw_bytes, analyzers=[*DEFAULT_ANALYZERS, my_rules])
 
 Keep analyzers free of network I/O.
 
-## Knowledge data (brands / lures)
+## Knowledge data (brands / lures / scoring)
 
 Edit package YAML instead of hardcoding Python:
 
 - `src/mailshieldv1/data/brands.yml` — brand tokens + domain support rules
 - `src/mailshieldv1/data/lures.yml` — simple/composite content regex lures + commodity vs structured lists
+- `src/mailshieldv1/data/scoring.yml` — severity weights, verdict thresholds (4/8/12), rule-id → family prefixes
 
-Requires runtime dependency `PyYAML`. After edits, restart the process (catalogs are cached).
+Requires runtime dependency `PyYAML`. After edits, call `reload_knowledge()` or restart the process (catalogs are cached).
 
 ## FP harness
 

@@ -22,14 +22,15 @@ def _state_path(watch_dir: Path) -> Path:
 
 def _load_state(path: Path) -> dict[str, Any]:
     if not path.is_file():
-        return {"processed": {}}
+        return {"processed": {}, "failed": {}}
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
-        return {"processed": {}}
+        return {"processed": {}, "failed": {}}
     if not isinstance(data, dict):
-        return {"processed": {}}
+        return {"processed": {}, "failed": {}}
     data.setdefault("processed", {})
+    data.setdefault("failed", {})
     return data
 
 
@@ -73,6 +74,7 @@ def scan_once(
     state_file = _state_path(watch_dir)
     state = _load_state(state_file)
     processed: dict[str, str] = dict(state.get("processed") or {})
+    failed: dict[str, str] = dict(state.get("failed") or {})
     rows: list[dict[str, Any]] = []
 
     for path in sorted(watch_dir.rglob("*.eml")):
@@ -85,6 +87,9 @@ def scan_once(
             print(f"error: {path.name}: {exc}", file=sys.stderr)
             continue
         if not process_existing and processed.get(key) == fp:
+            continue
+        # Same fingerprint already failed — do not spin forever until the file changes.
+        if failed.get(key) == fp:
             continue
         # Slow copies: skip until size/mtime stop changing (retry next poll).
         if settle > 0 and not _is_stable(path, wait=settle):
@@ -103,11 +108,14 @@ def scan_once(
             )
         except (OSError, RuntimeError) as exc:
             print(f"error: {exc}", file=sys.stderr)
+            failed[key] = fp
             continue
+        failed.pop(key, None)
         processed[key] = fp
         rows.append(row)
 
     state["processed"] = processed
+    state["failed"] = failed
     _save_state(state_file, state)
     if rows:
         write_batch_index(rows, batch_index_dir(output, reports_dir))

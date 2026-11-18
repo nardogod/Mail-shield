@@ -14,6 +14,7 @@ from mailshieldv1.ingest.pipeline import (
     DEFAULT_REPORTS_DIR,
     analyze_and_write,
     batch_index_dir,
+    require_batch_directory,
     write_batch_index,
 )
 from mailshieldv1.ingest.watch import watch_loop
@@ -67,9 +68,11 @@ def _cmd_analyze(args: argparse.Namespace) -> int:
         return 2
 
     batch = len(inputs) > 1
-    if batch and args.output is not None and str(args.output) == "-":
-        print("error: batch mode cannot write all reports to stdout (-)", file=sys.stderr)
-        return 2
+    if batch:
+        bad = require_batch_directory(args.output)
+        if bad:
+            print(f"error: {bad}", file=sys.stderr)
+            return 2
 
     rows = []
     exit_code = 0
@@ -94,19 +97,23 @@ def _cmd_analyze(args: argparse.Namespace) -> int:
             print(f"error: {path.name}: {exc}", file=sys.stderr)
             exit_code = 1
 
-    if batch and not args.quiet and rows:
-        c = Counter(r["verdict"] for r in rows)
-        print(
-            f"batch: {len(rows)} files  "
-            + " ".join(f"{k}={v}" for k, v in sorted(c.items())),
-            file=sys.stderr,
-        )
-        if args.output is None or (args.output is not None and str(args.output) != "-"):
-            write_batch_index(rows, batch_index_dir(args.output, DEFAULT_REPORTS_DIR))
+    if batch and rows:
+        if not args.quiet:
+            c = Counter(r["verdict"] for r in rows)
+            print(
+                f"batch: {len(rows)} files  "
+                + " ".join(f"{k}={v}" for k, v in sorted(c.items())),
+                file=sys.stderr,
+            )
+        write_batch_index(rows, batch_index_dir(args.output, DEFAULT_REPORTS_DIR))
     return exit_code
 
 
 def _cmd_watch(args: argparse.Namespace) -> int:
+    bad = require_batch_directory(args.output)
+    if bad:
+        print(f"error: {bad}", file=sys.stderr)
+        return 2
     return watch_loop(
         args.dir,
         interval=args.interval,

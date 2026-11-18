@@ -10,7 +10,8 @@ analyze(raw_bytes) -> Report
 
 ## What it does
 
-- Safely parses local `.eml` input under size/structure limits
+- Safely parses local `.eml` input under hard limits (default: 5 MiB body, 256 KiB
+  headers, 200 MIME parts, MIME depth 50)
 - Runs deterministic analyzers (headers/auth, hops + offline geo hints, static URLs,
   content/BEC, attachments, org/ESP consistency)
 - Weighted, explainable verdict (HTML **Why this verdict** + Authentication panel)
@@ -88,9 +89,11 @@ print(to_json(report))
 
 ## Security notes
 
-Treat every `.eml` as hostile input. The engine applies hard limits and does not open
-network connections unless you pass `--online` / `online=True` (DNS only). HTML output
-escapes all dynamic values. See [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md).
+Treat every `.eml` as hostile input. The engine applies the limits above (there is no
+separate parse wall-clock timeout). It does not open network connections unless you pass
+`--online` / `online=True` (DNS only). HTML output escapes all dynamic values.
+IMAP uses verified TLS by default; `--no-ssl` sends credentials in cleartext.
+See [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md).
 
 ## License
 
