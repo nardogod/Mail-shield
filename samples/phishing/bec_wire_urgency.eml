@@ -1,0 +1,16 @@
+From: "CFO Office" <cfo@attacker.example>
+To: finance@acme.example
+Subject: Urgent wire transfer - keep confidential
+Message-ID: <bec-001@attacker.example>
+Date: Mon, 17 Nov 2026 12:00:00 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Reply-To: payments@attacker.example
+Authentication-Results: mx.acme.example; spf=fail; dkim=fail; dmarc=fail
+
+Do not discuss this on Slack.
+
+I need an urgent wire transfer today for the vendor invoice.
+Please process the payment immediately and send confirmation only to me.
+
+CFO

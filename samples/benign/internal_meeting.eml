@@ -1,0 +1,19 @@
+From: Ops Team <ops@contoso.example>
+To: staff@contoso.example
+Subject: Weekly standup notes
+Message-ID: <benign-meeting-001@contoso.example>
+Date: Tue, 18 Nov 2026 09:00:00 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Authentication-Results: mx.contoso.example;
+	spf=pass smtp.mailfrom=contoso.example;
+	dkim=pass header.d=contoso.example;
+	dmarc=pass header.from=contoso.example
+Return-Path: <ops@contoso.example>
+
+Hi team,
+
+Notes from standup: deploy window Thursday, no payment changes, no urgent action.
+
+Thanks
+Ops

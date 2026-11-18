@@ -1,0 +1,229 @@
+# Brand knowledge for impersonation checks (offline).
+# kind: commercial | crypto | institutional | support
+# domain.mode:
+#   contains     — any needle in From domain
+#   exact_label  — a DNS label equals id (underscores stripped)
+#   institutional— gov suffixes + optional domain_tokens
+#   custom       — use domain.contains / domain.equals lists only
+
+brands:
+  - id: bradesco
+    tokens: [bradesco]
+    kind: commercial
+  - id: livelo
+    tokens: [livelo]
+    kind: commercial
+  - id: itau
+    tokens: ["itaú", itau]
+    kind: commercial
+  - id: nubank
+    tokens: [nubank]
+    kind: commercial
+  - id: santander
+    tokens: [santander]
+    kind: commercial
+  - id: caixa
+    tokens: ["caixa econômica", "caixa economica", "caixa.gov"]
+    kind: commercial
+    domain:
+      mode: contains
+      contains: ["caixa.gov.br", caixa]
+  - id: banco_do_brasil
+    tokens:
+      - banco do brasil
+      - bb.com.br
+      - "[bb]"
+      - banco brasil
+      - "bb -"
+      - "bb –"
+      - "bb:"
+      - informe bb
+      - informa bb
+      - bbinforma
+      - bb informa
+      - realize seu resgate
+      - notificacao de credito
+      - "notificação de crédito"
+      - ourocard
+    kind: commercial
+    domain:
+      mode: contains
+      contains: [bb.com.br]
+  - id: nordea
+    tokens: [nordea]
+    kind: commercial
+  - id: paypal
+    tokens: [paypal]
+    kind: commercial
+  - id: microsoft
+    tokens: [microsoft, "office 365", office365]
+    kind: commercial
+  - id: apple
+    tokens: ["apple id", icloud, "apple support", "apple account", "apple inc"]
+    kind: commercial
+  - id: amazon
+    tokens: [amazon.com, "aws.amazon", "amazon "]
+    kind: commercial
+  - id: netflix
+    tokens: [netflix]
+    kind: commercial
+  - id: dhl
+    tokens: ["dhl ", "dhl.", "dhl express"]
+    kind: commercial
+  - id: fedex
+    tokens: [fedex]
+    kind: commercial
+  - id: ups
+    tokens: ["ups shipping", ups.com, " ups "]
+    kind: commercial
+    domain:
+      mode: custom
+      equals: [ups.com]
+      contains: [".ups.com"]
+  - id: correios
+    tokens: [correios]
+    kind: commercial
+  - id: docusign
+    tokens: [docusign, docuSign]
+    kind: commercial
+  - id: allianz
+    tokens: [allianz]
+    kind: commercial
+  - id: lowes
+    tokens: ["lowe's", lowes]
+    kind: commercial
+  - id: norton
+    tokens: ["norton antivirus", "norton "]
+    kind: commercial
+  - id: openai
+    tokens: [openai, "open ai"]
+    kind: commercial
+  - id: proton
+    tokens: ["proton mail", protonmail, "proton account"]
+    kind: commercial
+  - id: dropbox
+    tokens: [dropbox, "drop box"]
+    kind: commercial
+
+  # Crypto / Web3
+  - id: binance
+    tokens: [binance]
+    kind: crypto
+  - id: metamask
+    tokens: [metamask, "meta mask", meta-mask]
+    kind: crypto
+  - id: coinbase
+    tokens: [coinbase]
+    kind: crypto
+  - id: kraken
+    tokens: [kraken]
+    kind: crypto
+  - id: okx
+    tokens: [okx]
+    kind: crypto
+  - id: coindesk
+    tokens: [coindesk]
+    kind: crypto
+  - id: ripple
+    tokens: [ripple]
+    kind: crypto
+  - id: lido
+    tokens: ["lido dao", "lido ", steth]
+    kind: crypto
+  - id: moonpay
+    tokens: [moonpay]
+    kind: crypto
+  - id: coldcard
+    tokens: [coldcard]
+    kind: crypto
+  - id: bisq
+    tokens: [bisq]
+    kind: crypto
+  - id: electrum
+    tokens: [electrum]
+    kind: crypto
+  - id: phantom
+    tokens: ["phantom wallet", "phantom invite", "phantom "]
+    kind: crypto
+  - id: trust_wallet
+    tokens: ["trust wallet", trustwallet]
+    kind: crypto
+    domain:
+      mode: exact_label
+      labels: [trustwallet, trust]
+  - id: tether
+    tokens: [tether, usdt]
+    kind: crypto
+  - id: crypto_com
+    tokens: [crypto.com, "crypto com"]
+    kind: crypto
+    domain:
+      mode: custom
+      equals: [crypto.com]
+      suffix: [".crypto.com"]
+
+  # Support / VIP
+  - id: geek_squad
+    tokens: ["geek squad", geeksquad]
+    kind: support
+    domain:
+      mode: contains
+      contains: [geeksquad, bestbuy]
+  - id: imf
+    tokens:
+      - kristalina
+      - georgieva
+      - international monetary fund
+      - imf through money
+      - money gram
+      - moneygram
+    kind: institutional
+    domain:
+      mode: custom
+      equals: [imf.org]
+      suffix: [".imf.org", ".int"]
+
+  # Official / quasi-official
+  - id: tabeliao
+    tokens: ["tabelião", tabeliao, tabelionato]
+    kind: institutional
+    domain:
+      mode: institutional
+      domain_tokens: [tabel, tabelion]
+  - id: cartorio
+    tokens: ["cartório de protesto", "cartorio de protesto", "cartório", cartorio]
+    kind: institutional
+    domain:
+      mode: institutional
+      domain_tokens: [cartor]
+  - id: receita_federal
+    tokens: ["receita federal", receita.gov, irpf]
+    kind: institutional
+    domain:
+      mode: institutional
+      domain_tokens: [receita, rfb]
+  - id: detran
+    tokens: [detran]
+    kind: institutional
+    domain:
+      mode: institutional
+      domain_tokens: [detran]
+  - id: inss
+    tokens: [inss]
+    kind: institutional
+    domain:
+      mode: institutional
+      domain_tokens: [inss]
+  - id: cenprot
+    tokens: [cenprot, "central do protesto"]
+    kind: institutional
+    domain:
+      mode: institutional
+      domain_tokens: [cenprot]
+  - id: antai
+    tokens: [antai, "agence nationale de traitement"]
+    kind: institutional
+    domain:
+      mode: institutional
+      domain_tokens: [antai]
+      require_gov: true

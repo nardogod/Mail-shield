@@ -1,0 +1,37 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.env
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.DS_Store
+Thumbs.db
+
+# Local secrets / tooling
+.kilo/
+
+# Generated HTML anywhere except docs
+*.html
+!docs/**
+
+# CLI output (keep folder stub + docs)
+reports/*
+!reports/.gitkeep
+!reports/README.md
+
+# Watch / IMAP drop folder
+inbox_eml/*
+!inbox_eml/.gitkeep
+!inbox_eml/README.md
+**/.mailshield_watch_state.json
+
+# Third-party phishing corpus (too large; clone separately)
+samples/phishing/badsamples/phishing_pot/

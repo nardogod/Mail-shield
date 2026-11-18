@@ -1,0 +1,47 @@
+From: attacker@evil.example
+To: victim@acme.example
+Subject: Invoice attached
+Message-ID: <att-001@evil.example>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============5195271211095234932=="
+
+--===============5195271211095234932==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Please see attached invoice and open immediately.
+
+--===============5195271211095234932==
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="invoice.pdf.exe"
+MIME-Version: 1.0
+
+bm90LWEtcmVhbC1leGU=
+
+--===============5195271211095234932==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="doc.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iajw8IC9PcGVuQWN0aW9uIDw8IC9TIC9KYXZhU2NyaXB0IC9KUyAoMSkg
+Pj4gPj5lbmRvYmoK
+
+--===============5195271211095234932==
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="pay.lnk"
+MIME-Version: 1.0
+
+TAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+--===============5195271211095234932==
+Content-Type: application/vnd.ms-office
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="macro.docm"
+MIME-Version: 1.0
+
+UEsDBHdvcmQvdmJhUHJvamVjdC5iaW4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+
+--===============5195271211095234932==--

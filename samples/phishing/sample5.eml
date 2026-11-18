@@ -1,0 +1,196 @@
+Delivered-To: nardogomes.lg@gmail.com
+Received: by 2002:a05:7508:3a17:b0:107:c2fa:28b4 with SMTP id cy23csp2058203gbb;
+        Tue, 20 Oct 2026 08:18:55 -0700 (PDT)
+X-Received: by 2002:a05:6808:330a:b0:4e4:4b49:3a2d with SMTP id 5614622812f47-53ccb4e985cmr9332332b6e.19.1792509535686;
+        Tue, 20 Oct 2026 08:18:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792509535; cv=none;
+        d=google.com; s=arc-20260327;
+        b=hnAqIwjV8koVwlEkVRElk5T6v6lzrPIfujJLzUP2MlGyXMtGo39G2K74RGv44Ng4AT
+         KCKVtEzlfprSukwzwZcWpDuXLRI7UnSvjDehu8ljKHaoGLaE8EKaeQ8L6vhwxh1BGrfg
+         /QfC8uolC3qisHCoJK99NBBsJvcZGVhAURdBPaVbq3OHUfX1NCtQn0m3WNTu++5qWsXc
+         ntmm6Lbeh+X7OovC9UduzP6hVOaobiTNAqXgW14zTpAZyGVVZ7aqFRKqXpCa4v07TVq+
+         t9AHIT+x2mzRP9tUSx5QKHWBPubSnFwYLW6k9YLSv0v+2a9BLgsokcE0kuBnrmJSiu2L
+         KqVQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=to:reply-to:subject:message-id:mime-version:from:date
+         :content-transfer-encoding:dkim-signature:dkim-signature;
+        bh=TTcwBIIB2r0XU6+60nBkrc21tGz+uqDN03HVUvzCZc4=;
+        fh=/F/5QjduMPsxDja5j7DdkqNEFI1So56/oTXA7RZOpD4=;
+        b=qxyTiGGQY9mKl66EqiDb/sjzQEIQO5YluFGWN3bv/gd5VIDeKJm+x1DNWzD/385cHw
+         7V5+UAtlI8NV6mNbPattHK49gyHKBuLgpxxRDaPOLptrGWKJB9jZ1M/6VojerhgP1yQ4
+         wGMBQIvDRMZ/hWt5+9vRvGGX3e/xn68+XUipPs2OA52nXtxk8pCEBHHZHZMuPYdiXcXg
+         NV99FmZw1E9CTvdHHJ/LbBDCE22ixWrVVIU9oQFNMQiN3J9GUbDAwnv6FEyEtbpKM4Lp
+         MILheI0ekF9pGPihI2Dsh3v4b7+YFsyFGxx1QxAgvo0+xkp01TVNL+d/KfyvB5a5NTB7
+         Xfdg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@6protsp.com.br header.s=s1 header.b=GHpWAKmN;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=ZSde0pQm;
+       spf=pass (google.com: domain of bounces+46656684-10d8-nardogomes.lg=gmail.com@em84.6protsp.com.br designates 149.72.87.224 as permitted sender) smtp.mailfrom="bounces+46656684-10d8-nardogomes.lg=gmail.com@em84.6protsp.com.br";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=6protsp.com.br
+Return-Path: <bounces+46656684-10d8-nardogomes.lg=gmail.com@em84.6protsp.com.br>
+Received: from o34.ptr621.zenvia.com (o34.ptr621.zenvia.com. [149.72.87.224])
+        by mx.google.com with ESMTPS id 5614622812f47-538943c2a3esi18691262b6e.107.2026.10.20.08.18.55
+        for <nardogomes.lg@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 20 Oct 2026 08:18:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+46656684-10d8-nardogomes.lg=gmail.com@em84.6protsp.com.br designates 149.72.87.224 as permitted sender) client-ip=149.72.87.224;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@6protsp.com.br header.s=s1 header.b=GHpWAKmN;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=ZSde0pQm;
+       spf=pass (google.com: domain of bounces+46656684-10d8-nardogomes.lg=gmail.com@em84.6protsp.com.br designates 149.72.87.224 as permitted sender) smtp.mailfrom="bounces+46656684-10d8-nardogomes.lg=gmail.com@em84.6protsp.com.br";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=6protsp.com.br
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=6protsp.com.br;
+	h=content-transfer-encoding:content-type:date:from:mime-version:subject:
+	reply-to:to:cc:content-type:date:feedback-id:from:subject:to;
+	s=s1; t=1792509535;
+	bh=TTcwBIIB2r0XU6+60nBkrc21tGz+uqDN03HVUvzCZc4=;
+	b=GHpWAKmNIEVDhQdcXEYHdgJH1KPZTS8M6HpuFZdy308T1Rf0EZOLDnLAhiFPcXLQ9VH5
+	MjbCj5LPKJs/oJyzwJV7M+R266sS2PvXgwrKOmGtZN3tOr0vZCaP5Bb04YxJ0/3mKXeJBZ
+	f2TBjc0Jtq0NUTgN5No+X80INqk6D6Ex94/dxOCHcMnmHmuT/x30NOJ/ExJBwYyHf8yjfw
+	iergpJ5ML4mWX1WpahD1H2bmEEeQUTAUtltRia6tX0N8YI1uvG2/IlDWDAeMPi0iy1Xuwx
+	M87SZeATkGAPVk/Bz0hcq9Nz1Vy34nR43NtGR75YqrtwA1h3yyzzfDElyAI7fzEw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-transfer-encoding:content-type:date:from:mime-version:subject:
+	reply-to:to:cc:content-type:date:feedback-id:from:subject:to;
+	s=smtpapi; t=1792509535;
+	bh=TTcwBIIB2r0XU6+60nBkrc21tGz+uqDN03HVUvzCZc4=;
+	b=ZSde0pQmX9ZmPVADF0kqHoN6drW5trwOlieJI4dO3X8cz+dDdPsw3ptjAjELxWrUDh67
+	fu+XFWAy3ae5NmHWbwbM9pg3Uen3BlMDerLoVTIE6HE1mPuqzHDr8gkRTNBnfGJoHh5czI
+	QZMGbcE8X6NYo8SmIG0upkOssVTn1tsSQ=
+Received: by recvd-6cd5f4b4b8-hmnh5 with SMTP id recvd-6cd5f4b4b8-hmnh5-1-6AD7865F-11
+	2026-10-20 15:18:55.042436719 +0000 UTC m=+1808303.579279661
+Received: from NDY2NTY2ODQ (unknown)
+	by geopod-ismtpd-162 (SG) with HTTP
+	id 54xiqnzuQCG6lxaMxMSQEg
+	Tue, 20 Oct 2026 15:18:55.038 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=iso-8859-1
+Date: Tue, 20 Oct 2026 15:18:55 +0000 (UTC)
+From: =?iso-8859-1?q?6=BA_Tabeli=E3o_de_Protesto_de_S=E3o?= Paulo
+	<naoresponda@6protsp.com.br>
+Mime-Version: 1.0
+Message-ID: <54xiqnzuQCG6lxaMxMSQEg@geopod-ismtpd-162>
+Subject: Protestos - Cancelamento Autorizado pelo Credor
+Reply-To: =?iso-8859-1?q?6=BA_Tabeli=E3o_de_Protesto_de_S=E3o?= Paulo
+	<naoresponda@6protsp.com.br>
+X-SG-EID: 
+ =?us-ascii?Q?u001=2ETVS41awmob2mUcQBcJ0WKKHX2RW4KP7V7n6NQsxVQvkIQBpl+xu+kOgrF?=
+ =?us-ascii?Q?S4m5qVIbuY9Xv4edPsoZLAwIDrtsvkPuRGXhaiE?=
+ =?us-ascii?Q?kXkXAW5FbLrpCuNuLTmCJrF1MPKjjXbGhSuJs4I?=
+ =?us-ascii?Q?7efC6l2ZUuF88w+9VaJLLdcLxjlVeOxbI9xbN+g?=
+ =?us-ascii?Q?KIRMfU=2F6OP0iAahWhtAkAe4T5MSbUKSm0nUam8O?=
+ =?us-ascii?Q?igsq6ZQ6sFkVSgiQ2pEoJv90iaVHPycBghF4GtP?=
+ =?us-ascii?Q?270IXP9vroORpTHLQp1aQ0ssvj=2FZTAYqqVF41Jf?=
+ =?us-ascii?Q?1jJIurzI=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BpTL9BgbK5wfSJMJGMsmprDbkSEK3QDIuYtGW?=
+ =?us-ascii?Q?fwpwxj41yE9gDhHgC4SALEYFASN8tU5pmnaOqly?=
+ =?us-ascii?Q?JR0qE=2F3Ejeb4fvnNN401n7xzXRQXFa1IjqcMwot?=
+ =?us-ascii?Q?XlmeZ7WkCLKdECu8gb1P9zIJRmcqNEy+x6L=2FNGc?=
+ =?us-ascii?Q?yB3l2x2=2FufYcMWb958oZQ6sgvXLbVGAZrotqmEf?=
+ =?us-ascii?Q?0+cW+eI0h3yDxxWBglsynsOXcZBYukRB+zPIAd9?=
+ =?us-ascii?Q?=2FiU6W7KwqcBCPNAQDhFaEHDzH+N=2FSSl3TIbNw3N?=
+ =?us-ascii?Q?4UgqMY30=3D?=
+To: nardogomes.lg@gmail.com
+X-Entity-ID: u001.ZO1i3iEFl7rciPbDqClRLg==
+
+<html><head></head><body><p></p><div style=3D"text-align: center;"><span st=
+yle=3D"font-size: 14.4px; text-align: left; background-color: rgb(255, 255,=
+ 255);"><b style=3D""><font face=3D"Helvetica">6=BA TABELI=C3O DE PROTESTO =
+DE LETRAS E T=CDTULOS DE S=C3O PAULO</font></b></span></div><br><br>Prezado=
+(a) Sr(a):&nbsp;LEONARDO G**** D* C********<br>CPF:&nbsp;389.XXX.518-2X<br>=
+<br><p></p><div style=3D"text-align: center;">AVISO DE CUSTAS CARTOR=C1RIAS=
+ EM ABERTO<br><br><div style=3D"text-align: justify;">Recebemos a informa=
+=E7=E3o de que sua d=EDvida foi negociada com seu credor. Seu t=EDtulo, no =
+entanto, ainda est=E1 <b>PROTESTADO</b>, pois est=E1 pendente o recolhiment=
+o das custas cartor=E1rias para a baixa do protesto (negativa=E7=E3o).<br><=
+br></div><div style=3D"text-align: justify;">Para que seu t=EDtulo saia da =
+condi=E7=E3o de <b>PROTESTADO </b>e haja baixa na <b>RESTRI=C7=C3O EM CART=
+=D3RIO</b>/=F3rg=E3os de Prote=E7=E3o ao Cr=E9dito, acesse o nosso site&nbs=
+p;6protsp.com.br e digite o seu CPF/CNPJ para imprimir e efetuar o pagament=
+o do <b>boleto de cancelamento </b>(caso o devedor seja ME/EPP, favor conta=
+tar o cart=F3rio para obter a redu=E7=E3o no valor do boleto).&nbsp;Para su=
+a maior comodidade, juntamente com este comunicado, foi gerado o boleto/DDA=
+. Em caso de vencimento, favor entrar em contato com o 6=BA Tabeli=E3o de P=
+rotesto para obten=E7=E3o de um novo boleto com novo prazo.<br><br></div><d=
+iv style=3D"text-align: justify;">Estamos tamb=E9m =E0 disposi=E7=E3o para =
+auxiliar em nossos canais de comunica=E7=E3o: <b>WhatsApp/Fone: </b>(11) 31=
+19-6060 ou <b>e-mail: </b>certidao@sextoprotestosp.com.br.<br><br></div><di=
+v style=3D"text-align: justify;">DIVERSAS FORMAS DE PAGAMENTO PARA VOC=CA C=
+ANCELAR SEU PROTESTO!<br><br></div><div style=3D"text-align: justify;">Esta=
+mos com diversas formas de pagamentos via Website ou diretamente no balc=E3=
+o de atendimento: PIX, Boleto, D=E9bito (Sem custos adicionais) e Cr=E9dito=
+ (<a href=3D"http://link.6protsp.com.br/ls/click?upn=3Du001.xJu5h8bhgRRceAN=
+mCK4F-2Fhas4XY-2BHtkiBP7trDHWnTISnvmt3fPp8S6ItZ4r8YkLpIrc_D2IvwNFWaKPb277Lh=
+rAZocTLs00K8MvodYg42ILJ2lztMQQ7X4Lb31z4R8-2BBuW8knodg3MDwR9Q15s0qPUpqE1tx4U=
+lbxueWsmlMN6pd7giclpzCtNMsFs29mkIjvZAG-2FqLD9fNLXC5kG1JBJ7NkcfNh6qmRftZy5mO=
+itVz-2FFGieHZ4kuI0LcysAMWDm6wdDGIDKgTrUB4nXcuMEnPAJfIZiv1EEaCAHPqUERgbTFRMs=
+rSvoO-2BxeEJh2AeQKh4TjAuoD5Thp1pwVaqpLRM-2Bywj4s3gz9Hdr7OVHpaExZVmly0H-2BoN=
+9Zn0XNPS7uaibOIErb368RprdZUpyZvqoEXq1-2Fvt-2F8Xx3cZFlfOgeMe3RxBPJYcw-2FvuH2=
+NT0kpODcdILtHIa4KmYdVkPwsOCq7lSoQe7ehC67sM8wQej8DPOqPjVpfTSdpJ1nDXZ4Qb0jMXJ=
+0OJIiKG6h0ius-2BegUVAqQ-3D-3D" target=3D"_blank" style=3D"background-color:=
+ rgb(255, 255, 255);">Via Cenprot</a>).<br><br></div><div style=3D"text-ali=
+gn: justify;">Um dia =FAtil ap=F3s o pagamento do boleto, o protesto ser=E1=
+ automaticamente cancelado, e, no segundo dia =FAtil, a informa=E7=E3o ser=
+=E1 repassada ao Serasa e =E0 Central do Protesto (com a baixa ocorrendo em=
+ at=E9 5 dias =FAteis).<br><br></div><div style=3D"text-align: justify;">Ev=
+ite fraudes e v=EDrus! N=E3o efetue dep=F3sitos em nome de poss=EDveis Tabe=
+li=E3es e n=E3o acesse outro link a n=E3o ser o acima indicado (site oficia=
+l do cart=F3rio - pode ser verificado em 6protsp.com.br).<br><br></div><div=
+ style=3D"text-align: justify;">Caso tenha alguma d=FAvida quanto =E0 verac=
+idade deste e-mail, favor comparecer no 6=BA Tabeli=E3o de Protesto de S=E3=
+o Paulo ou ligar/entrar em contato via WhatsApp: (11) 3119-6060.<br><br></d=
+iv><div style=3D"text-align: justify;">Atenciosamente,&nbsp;<br><br></div><=
+div style=3D"text-align: justify;"><span style=3D"background-color: rgb(255=
+, 255, 255);"><b>6=BA Tabeli=E3o de Protesto de Letras e T=EDtulos de S=E3o=
+ Paulo</b></span> - R S=EDlvia, n=BA 110, 6=BA ANDAR - BELA VISTA - S=C3O P=
+AULO/SP - Hor=E1rio de Funcionamento: dias =FAteis 10:00 =E0s 17:00h -&nbsp=
+;6protsp.com.br</div><div style=3D"text-align: justify;"><p style=3D"font-f=
+amily: &quot;Segoe UI&quot;, &quot;Segoe UI Web (West European)&quot;, -app=
+le-system, BlinkMacSystemFont, Roboto, &quot;Helvetica Neue&quot;, sans-ser=
+if; font-size: 15px; text-align: start;"></p><div style=3D"border: 0px; fon=
+t-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-=
+alternates: inherit; font-variant-position: inherit; font-variant-emoji: in=
+herit; font-stretch: inherit; font-size: 9px; line-height: inherit; font-fa=
+mily: &quot;Segoe UI&quot;, &quot;Segoe UI Web (West European)&quot;, -appl=
+e-system, BlinkMacSystemFont, Roboto, &quot;Helvetica Neue&quot;, sans-seri=
+f; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: i=
+nherit; font-feature-settings: inherit; font-variation-settings: inherit; f=
+ont-language-override: inherit; margin: 0px; padding: 0px; vertical-align: =
+baseline; text-align: center;"></div></div></div><p></p>
+      <div style=3D"font-size: 9px;text-align: center;">
+        <p>
+          Se quiser parar de receber essas mensagens, <a href=3D"http://lin=
+k.6protsp.com.br/ls/click?upn=3Du001.xJu5h8bhgRRceANmCK4F-2Fr3DquCNcGSM7IQ9=
+PgLFrET7EnNQj5LbE1K0rBAvm3jRQq-2BTPeA-2FgL7oWHpXBUoXyLLx8iMPLivxX6ELEEcDNA-=
+2FfrlQ-2FRxNv7nHlgMHNVz7Ojp160rg8w8tnOzwVyy3FvdoIR243htIObUjKjIn3qDybA-2Fcj=
+HdUm7ujmSLbhZZQfPvcCa826KQpYLYPBu39mJ6IV-2BHQO-2BoGGQ4vdbZOfZtQISZEfZZkrkLj=
+kBUpk-2Ba-2FKZ-2FRtPm-2BwpYvTqc6d0zVkp9cyIjNFhkta72FVPxGmJqFerntvDDf0cjJHMa=
+ay2mm0nXggZYATBvyoY1Q-2FhjF-2BwUJsxxbLZV5JH1Y9YKa5VOsMAgzKK-2FpRfzWi83eegh-=
+2Bm00TdQFzgDFf7RcJAHsRHJkUaIvkcKhFXa13CKu8gOwahKde72S0tckj8aDwFGCeRJfQmee8S=
+RYZZfTOpqJpJaylQGD4YDoo-2BPLGvPtn4uJAve-2B3A057myge-2F9J-2BjObtl1p765GY7hH1=
+W4Xv5YI-2FUbg-3D-3DOGK5_D2IvwNFWaKPb277LhrAZocTLs00K8MvodYg42ILJ2lztMQQ7X4L=
+b31z4R8-2BBuW8knodg3MDwR9Q15s0qPUpqE1tx4UlbxueWsmlMN6pd7giclpzCtNMsFs29mkIj=
+vZAG-2FqLD9fNLXC5kG1JBJ7NkcfNh6qmRftZy5mOitVz-2FFGieHZ4kuI0LcysAMWDm6wdDGID=
+KgTrUB4nXcuMEnPAJfIZiv1EEaCAHPqUERgbTFRMsrSvoO-2BxeEJh2AeQKh4TjAuoD5Thp1pwV=
+aqpLRM-2Bywj4s3gz9Hdr7OVHpaExZVmly0H-2BoN9Zn0XNPS7uaibOIhzlP0Kft-2Fs3CmWlul=
+rGhuDJAriap55V-2BCVtlst5SSKqD-2Fnmwfk1OoFb1HX4rGr5Tx3NKwIH-2Fy8SR243tk3z7-2=
+BF99mmSVa9ThtfqFN1YeYi7gnlyuBMmg24kK5bSJMhG1ICVewn1eeQPgKc1DsjKsxQ-3D-3D">
+            clique aqui.
+          </a>
+        </p>
+      </div>
+    <img src=3D"http://link.6protsp.com.br/wf/open?upn=3Du001.Yz0-2FNzprpaF=
+WVM2IWRZ3hwqJN4c0btOg7Dj6cNVbqVXM-2FKyonlgWETONwBEfyU-2F-2Fu9rxAUCwhstafcqK=
+9DyzmSg1odxd-2BgZll8ws7M5CcdWD-2FnipWRvdezUZpHQVuwq5jBJ2WEytLvjZVUAoph94r7p=
+WhpKHZ4NlwiiyUD6rzKEwnYetyRhI0Fm1cuZw38Omf5iq2jODLXRVYrJ5uh-2BD1CwXXa0-2FLW=
+i-2FU-2F3x43kjx7Tj16lDWNQW1-2F1dEY7NjI5taRN1inbeld2dTP-2F4bij2UrgHbtNSonI8S=
+Uhnj-2FIhdfySBHVeI-2BC39G-2BILwafKK8pZtK0O7rRMoqdgcHGV26CyrtoZBr4qR0g-2BC40=
+-2FdYosE1tJrD23G3swhPEMobCAXc3TGy2MPmZr-2FlXkrE9VytLVJaExxpYp9irs7RDJeSAz8X=
+r37nOiCnYT5J204g8K5GuCUVSalMO-2FpNk8Rywo0aA-2Fg-3D-3D" alt=3D"" width=3D"1"=
+ height=3D"1" border=3D"0" style=3D"height:1px !important;width:1px !import=
+ant;border-width:0 !important;margin-top:0 !important;margin-bottom:0 !impo=
+rtant;margin-right:0 !important;margin-left:0 !important;padding-top:0 !imp=
+ortant;padding-bottom:0 !important;padding-right:0 !important;padding-left:=
+0 !important;"/></body></html>

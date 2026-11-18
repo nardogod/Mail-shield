@@ -1,0 +1,19 @@
+Received: from mx.acme.example (mx.acme.example [192.0.2.10])
+	by mailbox.acme.example with ESMTPS id abc123;
+	Mon, 17 Nov 2026 12:05:00 +0000
+Received: from mail.attacker.example (unknown [203.0.113.50])
+	by mx.acme.example with ESMTP id def456;
+	Mon, 17 Nov 2026 12:04:00 +0000
+Received: from forged-internal.victim.example (forged-internal.victim.example [10.0.0.1])
+	by mail.attacker.example with SMTP id ghi789;
+	Mon, 17 Nov 2026 12:03:00 +0000
+From: "IT Support" <it@victim.example>
+To: user@acme.example
+Subject: Urgent password reset
+Message-ID: <hops-001@attacker.example>
+Date: Mon, 17 Nov 2026 12:03:00 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Authentication-Results: mx.acme.example; spf=fail; dkim=fail; dmarc=fail
+
+Please verify your account immediately and confirm your password.

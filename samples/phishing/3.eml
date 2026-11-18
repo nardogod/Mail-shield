@@ -1,0 +1,486 @@
+Received: from DS7PR07MB8272.namprd07.prod.outlook.com (2603:10b6:5:3b0::14)
+ by DM6PR07MB6059.namprd07.prod.outlook.com with HTTPS; Tue, 20 Jan 2026
+ 10:56:05 +0000
+Received: from PS2PR02CA0089.apcprd02.prod.outlook.com (2603:1096:300:5c::29)
+ by DS7PR07MB8272.namprd07.prod.outlook.com (2603:10b6:5:3b0::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.6; Tue, 20 Jan
+ 2026 10:56:04 +0000
+Received: from TY2PEPF0000AB84.apcprd03.prod.outlook.com
+ (2603:1096:300:5c:cafe::2f) by PS2PR02CA0089.outlook.office365.com
+ (2603:1096:300:5c::29) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9520.12 via Frontend Transport; Tue,
+ 20 Jan 2026 10:56:02 +0000
+Authentication-Results: spf=pass (sender IP is 23.251.225.94)
+ smtp.mailfrom=ses-sa.mkt.acordocerto.com.br; dkim=pass (signature was
+ verified) header.d=mkt.acordocerto.com.br;dkim=pass (signature was verified)
+ header.d=amazonses.com;dmarc=pass action=none
+ header.from=mkt.acordocerto.com.br;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of
+ ses-sa.mkt.acordocerto.com.br designates 23.251.225.94 as permitted sender)
+ receiver=protection.outlook.com; client-ip=23.251.225.94;
+ helo=e225-94.smtp-out.sa-east-1.amazonses.com; pr=C
+Received: from e225-94.smtp-out.sa-east-1.amazonses.com (23.251.225.94) by
+ TY2PEPF0000AB84.mail.protection.outlook.com (10.167.253.9) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.4
+ via Frontend Transport; Tue, 20 Jan 2026 10:56:01 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:5EEB6CD41237E7951C2EE7487E0991994F28257619C32BC0CF9FA51A94A16B4E;UpperCasedChecksum:B68A2F4AD90E183E97583534F073AE1F66F3E8857494060A8374A9CEA97887AB;SizeAsReceived:2556;Count:15
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=hrd6qjbdn7ewjhuioa2ovzysbc6hmrp5; d=mkt.acordocerto.com.br;
+	t=1768906559;
+	h=Date:From:Reply-To:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID:List-Unsubscribe:List-Unsubscribe-Post;
+	bh=fHaitcZroeqO8XeWpb0sgAuUPS8FiATT44AZCp9XuXA=;
+	b=AofiJIRl1wHdPFuMp+rH9W2sagxBZQycpSncMaClVJmI+fsXsMHAfqRbz0+NYQNW
+	exdUfLX0MMuEofSu1t+D39o2mYckyu4sWfVDBFBWpiM5uE5L71QluXmQeJsvV3tILzr
+	8YxqaK/n/Dn/6Oo1VBNbDwzlzgSFZpm8t8jMbbflVqgqcEL4FHV0V12+oOFlsy+pTSH
+	tw2HaKo6dvLT4K0GNv0e6LDUuUIK37cvlndUuNabVb8khn7Jf5/EjPrJe5FMa7fWUZe
+	zvhNbfLgnVNAJSHdgeb1Ah844m/xAqIffy+hAAr0sdrAaPCdFPmAZfWtlELvU71iv/J
+	ucmvDa8NlA==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=bm3ypaoivbtdzmy3b6w37fzb5voa2uru; d=amazonses.com; t=1768906559;
+	h=Date:From:Reply-To:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID:List-Unsubscribe:List-Unsubscribe-Post:Feedback-ID;
+	bh=fHaitcZroeqO8XeWpb0sgAuUPS8FiATT44AZCp9XuXA=;
+	b=cJP5QJShViHKxJpisopczBRGQBXHY5dhenTRN5F12N3x+5G6DPOg3grDI7TBgzAU
+	3/elyCWbAVg/KMoYlwNH2+KgMGaisS+P4SlTzTfx7wJkeu7SL6tqCGtuEqA7S7fe83L
+	7wfAzcMRkNBUgL0OTf5u4Xc9KhlyiHpnOzdFiSfw=
+Date: Tue, 20 Jan 2026 10:55:59 +0000
+From: =?UTF-8?B?SGlzdMOzcmljbyBkZSBhbHRlcmHDp8O1ZXMgbm8gQ1BGIOKAkyBBY29yZG8gQ2VydG8=?= <contato@mkt.acordocerto.com.br>
+Reply-To: reply-to@atende.acordocerto.com.br
+To: nardogomes@live.com
+Subject: =?UTF-8?Q?Notamos_uma_atualiza=C3=A7=C3=A3o_recente_no_seu_CPF?=
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Message-ID: <0103019bdb0c0ec2-48ac789e-5dba-4b42-a5f2-082fcd48c529-000000@sa-east-1.amazonses.com>
+List-Unsubscribe: <mailto:unsubscribe-0103019bdb0c0ec2-48ac789e-5dba-4b42-a5f2-082fcd48c529-000000@sa-east-1.amazonses.com?subject=https://o.sa-east-1.user-subscription.com/oc/784e0d2e-754d-4626-9f50-88969044f875/5dbde12c-c126-4e8b-99b5-14e462f44fab/0103019bdb0c0ec2-48ac789e-5dba-4b42-a5f2-082fcd48c529-000000%3Ft%3De0c53791-1d52-4b71-b6e7-152008016f49>, <https://o.sa-east-1.user-subscription.com/oc/784e0d2e-754d-4626-9f50-88969044f875/5dbde12c-c126-4e8b-99b5-14e462f44fab/0103019bdb0c0ec2-48ac789e-5dba-4b42-a5f2-082fcd48c529-000000?t=e0c53791-1d52-4b71-b6e7-152008016f49>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-ID: 4b3b9578-29dd-4691-8cb0-d9de44de3e0c:d14300860ec9093f0a37b637f2910de0b0112994:1.sa-east-1.4YShpgJEbBh7pAh/knH5wdrwgq0K1WFd2sD2DlJdavU=:AmazonSES
+X-SES-Outgoing: 2026.01.20-23.251.225.94
+X-IncomingHeaderCount: 15
+Return-Path: 0103019bdb0c0ec2-48ac789e-5dba-4b42-a5f2-082fcd48c529-000000@ses-sa.mkt.acordocerto.com.br
+X-MS-Exchange-Organization-ExpirationStartTime: 20 Jan 2026 10:56:02.6211
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: f743c51b-737b-4dfe-9562-08de581280c4
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TY2PEPF0000AB84:EE_|DS7PR07MB8272:EE_|DM6PR07MB6059:EE_
+X-MS-Exchange-Organization-AuthSource: TY2PEPF0000AB84.apcprd03.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 1/20/2026 10:09:35 AM
+X-MS-Office365-Filtering-Correlation-Id: f743c51b-737b-4dfe-9562-08de581280c4
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 23.251.225.94
+X-SID-PRA: CONTATO@MKT.ACORDOCERTO.COM.BR
+X-SID-Result: PASS
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:4;ARA:1444111002|68400799013|1680799066|58200799021|461199028|9000799056|9400799043|47200799024|32080799006|10300799038|1290799030|3412199025|440099028|1122599022|1380799030|1360799030|1370799030|30041999003|4302099013|56899033|1602099012|2406899039;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jan 2026 10:56:01.6309
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: f743c51b-737b-4dfe-9562-08de581280c4
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: TY2PEPF0000AB84.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR07MB8272
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:03.8799352
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.9542.003
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;ex:0;auth:1;dest:I;ENG:(5062000311)(920221119095)(90000117)(920221120095)(90012020)(91020020)(91040095)(9050020)(9100341)(944500132)(2008001181)(4810010)(4910033)(9575002)(10195002)(9320005)(120001);
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MTtHRD0xO1NDTD0z
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?RER4ZmtIc24wMXd3aGRUTm43d0tjcDFhZHVjaTJYaXkwSk10YlV0MjhaNGtR?=
+ =?utf-8?B?UUxpdGYvMVU1bkFvcVpWZlRnYno5NnJEWjlEZTBJNXlTQjhRUUlUb3NRYXNP?=
+ =?utf-8?B?emNLOTlNRjU1NzdqMjMzK3Y5RnRCVVNad3dBNS91OWFtZjF4N2xuMlQzUm9Q?=
+ =?utf-8?B?ZEFWMEd3OFFvMmpneHdwMjVFaEF3NW9IMC9oMEh1ZlFtQkduSUpkYjd0Ujg2?=
+ =?utf-8?B?bnNvYWNOdzdUQS9VWFNzWnhpdDJQelR4THNUSkNoWDJEUy9SQkxsaGl6UVVI?=
+ =?utf-8?B?emd6WTVkRHk4cE91dXFzUzNXLzdHdWp2SUZWYlpqZ1N2MnZYRkhlQmwvaFNx?=
+ =?utf-8?B?MFUxRmJobHhjT0Y4K3U4RU9Lc3gxay9BM05XY3JwK2VLQnpPTnNDVWp1c0pE?=
+ =?utf-8?B?c0RYR3A0aEtxUVliVGQrRkFjVGsxMHJHd1ByYjFNbTRaOHRrSnZpUWVzNEUv?=
+ =?utf-8?B?TWZGVmFJS2ZSbkU0blVManJvbG13SzZNVUxQK1hsWGptRFY4cUJvMTdkNlFQ?=
+ =?utf-8?B?czFLN0xudGcyZ2pGZmJ3RlRocUpkTGFZMWM1b3B5M2lxalJDMzB4bEdudEVw?=
+ =?utf-8?B?SStyZFZ6c2puZkdjazk0RUwrUTcwaFVicXlLYkhGOWhXLzNGRlNRSnU1aWlH?=
+ =?utf-8?B?T3N3cWFoSmVOYVptOEhrdWRlL1JFZ2dGUVVHMFUvK0VWbUFTTkJIWGVob3NX?=
+ =?utf-8?B?WVB6SnhTcno5MzY2VEY1YkFpTklCYlFyTFhZYklEbWVPdTlzZU5pVnZBSkx2?=
+ =?utf-8?B?R05SbFVmU3pKRHBXb2x3UExIVzgwTDR6L2luRkttUmN4ZGw3ekVpV29mODdI?=
+ =?utf-8?B?T2Uwc1BuZnRJeDVQM2JUY0h3S1J0a3paWFppTUFjUEpPZVpua25vcExWZHVM?=
+ =?utf-8?B?cUhJa3NkODNyRk1sUlpBWUhLa0x0TVZaV2VSYkdGNkRCNisyK1RzcVFWS1k5?=
+ =?utf-8?B?K2tUWG50b3pYeEJIVzJoL3V5bC9nZnd0Y1d6d0dkbjFvT002OU9YMU01RllP?=
+ =?utf-8?B?TzUxNlA1NkNaVkgrTHJPV3RUU3ZteTV2WUFKN3lzRTFNUTdVL0FpWXN4RjVz?=
+ =?utf-8?B?Ujl2ZGFhWTVlY2RzOS82ZzF0bk9ubXNnZ0xZWFZ1aEpFMEhzQ3liMzhFVE1x?=
+ =?utf-8?B?Q1crNTFRKzEzNjhMemU4U2VTMlR4UWUzVXFPamJEZHNRT0k5dmI3ZUVBVitE?=
+ =?utf-8?B?K1VhZ0FKWG5haXlMVGVCSTM0MWsvV2x4OVFYUDdVUkZ4ZnRLU3FYV21GeGF3?=
+ =?utf-8?B?dUJsY1VjdzlUVWZ0QThJM1VjOW5vYWdsNE84VGl3d3A2SklZcDZVTmhXbFph?=
+ =?utf-8?B?VTZ1N1hweUxXRXY5S1I3RDVZL1FUbVl3c0p3RVRMQ1NGSG0xN2QvZ2dnRml6?=
+ =?utf-8?B?eGkxQnBaUGhFMlFId1E3ekFDNzhFemo0NytlWUxEWTBGNlc2bVBJeDNJL0Rm?=
+ =?utf-8?B?L2VZK3FUaXByUmFOVjlvQXp6eVM0YUwxY1BYMUpLbWNnbFdBUi80cldzU1FO?=
+ =?utf-8?B?RXFqSHFhMVBpaFpITzVMblhqMzI4bCs1Z1lCR0tQOTBPTU93Vi9mSnZsQ1VO?=
+ =?utf-8?B?SnhFeXZvbFBHNVBTL1pydUdEM3dFVHVvUXhZaWFGYkZaMWRZTWNVUDVWVHpm?=
+ =?utf-8?B?V2xBQUVsZjBGazRjUk51c0o2TVdwcWF2R2dodVFYSit3T2Q3QnBvZitUTGdL?=
+ =?utf-8?B?bWw3OGpJTVFlQ1RhM0xnbUc3OFlucWRVdmRRVzZEcVUzTldCTnJnTk9COXZW?=
+ =?utf-8?B?RUlPNHg5Y09mNWw3dnVkZW9JaHM2Q0lENVA2elA4TWNrdzIxYmM3TXdwTlNw?=
+ =?utf-8?B?L2xmdVlzdmpqOVNvMmZCdDdJTlRZSkVyUnN3QzJHWXRBaFNlenVXM0U2VU5J?=
+ =?utf-8?B?WGZtUVBnajk3Y3F5TzNuMFRNanMyUXk5Q1RpMURQL09WQVlNNURxMjVIRDZC?=
+ =?utf-8?B?alFtUGVlVkNjRFd5cDhJUFk2RTBIOUNCMldUeERVRDRHVWNBZkVKZWxwVFJl?=
+ =?utf-8?B?cnYrT1NIMTZseDduZFBhR2tFSHdsK3lDaWFWbkVINXN5WWYvdndHZGowQVVp?=
+ =?utf-8?B?bWJTUWdNZ1BsQjNKcWlUNXVMRmpKOUJSVnhxalZTVnpCbmQxcFExemNjTHla?=
+ =?utf-8?B?K0FRYlYvdUEvOTNZNTRQUkFPUk9lNXZsZmd2TVB4ZzhqOU5xWFB3M1JKTFVv?=
+ =?utf-8?B?a2Vwd3dLUXRsTXlUalAybmlIaXFTUy9ZeVZiZU5aMFZwTi9JczlET2gxNHVU?=
+ =?utf-8?B?aUF2YWxyZVpRR1pWZVZVeFNhelBTNmRRbTkvQnhSNVNkK2Q0U0pHdEZWSUF1?=
+ =?utf-8?B?dWJTVUM4VlBDbWV6TGtWY0Rtc2p5NUdvL2ZoMm15TEI5SDhTT0hBcUdaN09w?=
+ =?utf-8?B?S280RUVyeFR0TnpxN0V0WHBqYnMwUXM1elpVeVpVNVUzSVFTbVJUMGdEblp0?=
+ =?utf-8?B?NHJZUXd6ZEJOejV0RzFCZnlPUzZmU2dHSEpXT2Fjek91Wmk3dzVFSTM0aFky?=
+ =?utf-8?B?d3ppMlozMDRIT0V4V2dkK3FSQXY2dWZMUk9iVDhEL2d1eWMrSUxrbEpncC9r?=
+ =?utf-8?B?TTRhUGxNM0E3OGhHZTBGRHQrMTU0VkEvbmJxZmYwRSt2RTVRMG9NV09qTU5P?=
+ =?utf-8?B?eFNtSjcrNTdnT1NNRHZXeTZnVnpPQXB6T1EveWZBMDJmcUFDeGp5RnNXNWt2?=
+ =?utf-8?B?b2tYcnc4U0F6TkphN1R1SmpSR01pNjZLcHVrU1VkS3BJS1JFQWVYYjI3dzZi?=
+ =?utf-8?B?V3d0QTNvZytxOTVyd0JSc25JTlB2OEhkQUhIRVAyYXJoVUFBaDVnWEwvNkt4?=
+ =?utf-8?B?Z0Z5bHphYldLSHhmMm8xZnI4dnBtOFJtV2pnVmo2VzdLUUg0OWFwcGtTMnF4?=
+ =?utf-8?Q?JVcR7NUhXFMQDXtt0n5nwidbV7ubvlafaLteyTAI=3D?=
+MIME-Version: 1.0
+
+<!DOCTYPE html><html lang=3D"pt-BR" xmlns=3D"http://www.w3.org/1999/xhtml" =
+xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-=
+com:office:office"><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0">
+<meta name=3D"x-apple-disable-message-reformatting">
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+<meta name=3D"reply-to" content=3D"reply-to@contato.acordocerto.com.br">
+<title></title>
+<style type=3D"text/css">
+@media only screen and (min-width:620px){.g{width:600px!important;}.g .gw{v=
+ertical-align:top;}.g .o{width:600px!important;} }
+@media only screen and (max-width:620px){.a{max-width:100%!important;paddin=
+g-left:0px!important;padding-right:0px!important;}.g{width:100%!important;}=
+.g .gw{display:block!important;width:100%!important;min-width:320px!importa=
+nt;max-width:100%!important;}.g .gw>div{margin:0 auto;}.g .gw img{max-width=
+:100%!important;} }body{margin:0;padding:0}table,td,tr{border-collapse:coll=
+apse;vertical-align:top}p{margin:0}*{line-height:inherit}a[x-apple-data-det=
+ectors=3Dtrue]{color:inherit!important;
+text-decoration:none!important}
+@media (min-width:0px){.z{display:table!important;mso-hide:unset!important;=
+} }
+@media (max-width:480px){.p{max-height:0px;overflow:hidden;display:none!imp=
+ortant;} }
+@media (min-width:481px){.pd{max-height:0px;overflow:hidden;display:none!im=
+portant;} }table,td{color:#16181d;}#b a{color:#0048db;text-decoration:under=
+line;}
+@media (max-width:480px){#h .zd{padding:16px!important;}#e .i{width:55%!imp=
+ortant;}#e .pv{max-width:55%!important;}#hd .zd{padding:16px!important;}#t =
+.s{font-size:22px!important;}#br .s{font-size:16px!important;}#t7 .s{font-s=
+ize:14px!important;}#z .s{font-size:16px!important;}#z .aa{padding:16px 48p=
+x!important;}#o .s{font-size:14px!important;}#f .m{padding:16px 16px 0px!im=
+portant;}#x .m{padding:0px 24px!important;}#x .i{width:96%!important;}#x .p=
+v{max-width:96%!important;}#x .ig{text-align:left
+!important;}#n .m{padding:8px 24px!important;}#u .m{padding:8px 24px 24px!i=
+mportant;} }
+</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-text-size-adjust:100%;background-=
+color:#fafbff;color:#16181d"><div data-pre-header=3D"preview" style=3D"disp=
+lay:none;overflow:hidden;line-height:1px;opacity:0;max-height:0px;max-width=
+:0px;">Confira aqui</div>
+<table role=3D"presentation" id=3D"b" style=3D"border-collapse:collapse;tab=
+le-layout:fixed;border-spacing:0;mso-table-lspace:0pt;mso-table-rspace:0pt;=
+vertical-align:top;min-width:320px;Margin:0 auto;background-color:#fafbff;w=
+idth:100%" cellpadding=3D"0" cellspacing=3D"0"><tbody><tr style=3D"vertical=
+-align:top"><td style=3D"word-break:break-word;border-collapse:collapse!imp=
+ortant;vertical-align:top"><div class=3D"a" style=3D"padding:0px;background=
+-color:transparent"><div class=3D"g" style=3D"margin:0 auto;min-width:320px=
+;
+max-width:600px;overflow-wrap:break-word;word-wrap:break-word;word-break:br=
+eak-word;background-color:transparent;"><div style=3D"border-collapse:colla=
+pse;display:table;width:100%;height:100%;background-color:transparent;"><di=
+v id=3D"h" class=3D"gw o" style=3D"max-width:320px;min-width:600px;display:=
+table-cell;vertical-align:top;"><div style=3D"background-color:#0048db;heig=
+ht:100%;width:100%!important;border-radius:0px;-webkit-border-radius:0px;-m=
+oz-border-radius:0px;"><div class=3D"zd" style=3D"box-sizing:border-box;hei=
+ght:100%;padding:24px;border-top:0px solid transparent;border-left:0px soli=
+d transparent;border-right:0px solid transparent;border-bottom:0px solid tr=
+ansparent;border-radius:0px;-webkit-border-radius:0px;-moz-border-radius:0p=
+x;">
+<table id=3D"e" style=3D"font-family:arial,helvetica,sans-serif;" role=3D"p=
+resentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=3D"0=
+"><tbody><tr><td class=3D"m" style=3D"overflow-wrap:break-word;word-break:b=
+reak-word;padding:0px;font-family:arial,helvetica,sans-serif;" align=3D"lef=
+t">
+<table role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tbody><tr><td class=3D"ig" style=3D"padding-right:0px;=
+padding-left:0px;" align=3D"left"> <img align=3D"left" border=3D"0" src=3D"=
+https://assets.acordocerto.com.br/f/114280/455x74/67e55a368c/acordo-certo-b=
+.png" alt=3D"Logo da Acordo Certo" title=3D"Logo da Acordo Certo" style=3D"=
+outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;clear:both=
+;display:inline-block!important;border:none;height:auto;float:none;width:30=
+%;max-width:
+180px;" width=3D"180" class=3D"i pv">
+</td></tr></tbody></table>
+</td></tr></tbody></table></div></div></div></div></div></div><div class=3D=
+"a" style=3D"padding:0px;background-color:transparent"><div class=3D"g" sty=
+le=3D"margin:0 auto;min-width:320px;max-width:600px;overflow-wrap:break-wor=
+d;word-wrap:break-word;word-break:break-word;background-color:transparent;"=
+><div style=3D"border-collapse:collapse;display:table;width:100%;height:100=
+%;background-color:transparent;"><div id=3D"hd" class=3D"gw o" style=3D"max=
+-width:320px;min-width:600px;display:table-cell;vertical-align:top;
+"><div style=3D"background-color:#ffffff;height:100%;width:100%!important;b=
+order-radius:0px;-webkit-border-radius:0px;-moz-border-radius:0px;"><div cl=
+ass=3D"zd" style=3D"box-sizing:border-box;height:100%;padding:24px;border-t=
+op:0px solid transparent;border-left:0px solid transparent;border-right:0px=
+ solid transparent;border-bottom:0px solid transparent;border-radius:0px;-w=
+ebkit-border-radius:0px;-moz-border-radius:0px;">
+<table id=3D"t" style=3D"font-family:arial,helvetica,sans-serif;" role=3D"p=
+resentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=3D"0=
+"><tbody><tr><td class=3D"m" style=3D"overflow-wrap:break-word;word-break:b=
+reak-word;padding:0px 0px 16px;font-family:arial,helvetica,sans-serif;" ali=
+gn=3D"left"><h1 class=3D"ig s" style=3D"margin:0px;color:#0048db;line-heigh=
+t:120%;text-align:left;word-wrap:break-word;font-family:arial,helvetica,san=
+s-serif;font-size:26px;font-weight:400;"><span style=3D"line-height:26.4px;=
+"><span style=3D"line-height:26.4px;"><span style=3D"line-height:26.4px;"><=
+span style=3D"line-height:26.4px;"><span style=3D"line-height:26.4px;"><spa=
+n style=3D"line-height:26.4px;"><span style=3D"line-height:26.4px;"><span s=
+tyle=3D"line-height:26.4px;"><span style=3D"line-height:26.4px;"><span styl=
+e=3D"line-height:26.4px;"><span style=3D"line-height:26.4px;"><span style=
+=3D"line-height:26.4px;"><span style=3D"line-height:26.4px;"><span style=3D=
+"line-height:26.4px;"><span style=3D"line-height:26.4px;"><span style=3D"li=
+ne-height:26.4px;"><span style=3D"line-height:26.4px;"><span style=3D"line-=
+height:26.4px;"><span style=3D"line-height:26.4px;"><span style=3D"line-hei=
+ght:26.4px;"><span style=3D"line-height:26.4px;">Leonardo, quer saber se se=
+u CPF teve atualiza=C3=A7=C3=B5es nas propostas?</span></span></span></span=
+></span></span></span></span></span></span></span></span></span></span></sp=
+an></span></span></span></span></span></span></h1>
+</td></tr></tbody></table>
+<table id=3D"br" style=3D"font-family:arial,helvetica,sans-serif;" role=3D"=
+presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=3D"=
+0"><tbody><tr><td class=3D"m" style=3D"overflow-wrap:break-word;word-break:=
+break-word;padding:0px 0px 16px;font-family:arial,helvetica,sans-serif;" al=
+ign=3D"left"><div class=3D"ig" align=3D"center">
+<a href=3D"https://mail-sa.acordocerto.com.br/CL0/https:%2F%2Fapp.acordocer=
+to.com.br%2Flogin%3Fdelivery_id=3D9d12d485-689d-44c6-879d-00bd2b43563a%26e=
+=3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmQiOiJkODk1OWU2YTFjNzAzOGY0ZGR=
+hMWE2ODVhNmU4ZDRlYWNjZjA4NDdlZmQ1ZWRjODI4YmZiZDcxNmY2NjJiNzljYjFlYWEzMjQ4MD=
+kyMWI5NTdhYmZlYzM0MGQyNiIsImV4cCI6MTc2OTE2NTY3MCwic3ViIjoibmFyZG9nb21lc0Bsa=
+XZlLmNvbSJ9.Ph8dFfxp7IubOCuUYNfZgro8YLEwalEJk1390UfU2iI%26utm_campaign=3D4b=
+3b9578-29dd-4691-8cb0-d9de44de3e0c%26utm_medium=3Demail%26utm_source=3Denga=
+ge/1/0103019bdb0c0ec2-48ac789e-5dba-4b42-a5f2-082fcd48c529-000000/hhDpEctQL=
+lPPClq5rq5EUiKAhC7DTtZiUfWHSRAruuI=3D246" target=3D"_blank" class=3D"s" sty=
+le=3D"box-sizing:border-box;display:inline-block;text-decoration:none;-webk=
+it-text-size-adjust:none;text-align:center;color:#FFFFFF;background-color:#=
+0048db;border-radius:400px;-webkit-border-radius:400px;-moz-border-radius:4=
+00px;width:auto;max-width:100%;overflow-wrap:break-word;word-break:break-wo=
+rd;word-wrap:break-word;mso-border-alt:none;font-family:arial,helvetica,san=
+s-serif;font-size:18px;font-weight:700;">
+<span class=3D"aa" style=3D"display:block;padding:16px 56px;line-height:140=
+%;"><span style=3D"line-height:25.2px;">Consultar CPF</span></span></a></di=
+v>
+</td></tr></tbody></table>
+<table id=3D"t7" style=3D"font-family:arial,helvetica,sans-serif;" role=3D"=
+presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=3D"=
+0"><tbody><tr><td class=3D"m" style=3D"overflow-wrap:break-word;word-break:=
+break-word;padding:0px 0px 16px;font-family:arial,helvetica,sans-serif;" al=
+ign=3D"left"><div class=3D"ig s" style=3D"font-family:arial,helvetica,sans-=
+serif;font-size:16px;line-height:140%;text-align:left;word-wrap:break-word;=
+"><p style=3D"line-height:140%;">Sabia que credores verificam o CPF de seus
+clientes<strong> para decidir sobre a concess=C3=A3o de cr=C3=A9dito</stron=
+g>?</p><p style=3D"line-height:140%;">&nbsp;</p><p style=3D"line-height:140=
+%;">Quando seu CPF n=C3=A3o apresenta pend=C3=AAncias, voc=C3=AA =C3=A9 mai=
+s propenso a ter <strong>acesso a ofertas de cart=C3=B5es de cr=C3=A9dito, =
+empr=C3=A9stimos e diversos outros benef=C3=ADcios.</strong></p></div>
+</td></tr></tbody></table>
+<table style=3D"font-family:arial,helvetica,sans-serif;" role=3D"presentati=
+on" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=3D"0"><tbody>=
+<tr><td class=3D"m" style=3D"overflow-wrap:break-word;word-break:break-word=
+;padding:0px 0px 16px;font-family:arial,helvetica,sans-serif;" align=3D"lef=
+t"><div>
+<style>
+@media only screen and (max-width:480px){.f{display:block!important;width:1=
+00%!important;text-align:left!important;}.m8{padding:16px!important;text-al=
+ign:left!important;font-size:14px!important;} }
+</style>
+<table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" style=3D"max-width:600px;border:2px solid #0048db;border-radius:12px;o=
+verflow:hidden;font-family:Arial,sans-serif;color:#000000;margin:0 auto;"><=
+tbody><tr><td class=3D"f" width=3D"35%"> <img src=3D"https://assets.acordoc=
+erto.com.br/f/114280/763x704/046392acb2/mulher-feliz-consultando-score.png"=
+ alt=3D"Celular mostrando ofertas na Acordo Certo" width=3D"100%" style=3D"=
+display:block;border:0;height:auto;">
+</td><td class=3D"f m8" width=3D"65%" valign=3D"middle" style=3D"font-size:=
+17px;line-height:1.4;padding:16px"> <span style=3D"color:#0048db;font-weigh=
+t:bold;">Na Acordo Certo, voc=C3=AA pode consultar as verifica=C3=A7=C3=B5e=
+s feitas no seu CPF</span> e acompanhar o hist=C3=B3rico de altera=C3=A7=C3=
+=B5es no seu score de forma gratuita e conveniente.
+</td></tr></tbody></table></div>
+</td></tr></tbody></table>
+<table id=3D"z" style=3D"font-family:arial,helvetica,sans-serif;" role=3D"p=
+resentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=3D"0=
+"><tbody><tr><td class=3D"m" style=3D"overflow-wrap:break-word;word-break:b=
+reak-word;padding:0px 0px 16px;font-family:arial,helvetica,sans-serif;" ali=
+gn=3D"left"><div class=3D"ig" align=3D"center">
+<a href=3D"https://mail-sa.acordocerto.com.br/CL0/https:%2F%2Fapp.acordocer=
+to.com.br%2Flogin%3Fdelivery_id=3D9d12d485-689d-44c6-879d-00bd2b43563a%26e=
+=3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmQiOiJkODk1OWU2YTFjNzAzOGY0ZGR=
+hMWE2ODVhNmU4ZDRlYWNjZjA4NDdlZmQ1ZWRjODI4YmZiZDcxNmY2NjJiNzljYjFlYWEzMjQ4MD=
+kyMWI5NTdhYmZlYzM0MGQyNiIsImV4cCI6MTc2OTE2NTY3MCwic3ViIjoibmFyZG9nb21lc0Bsa=
+XZlLmNvbSJ9.Ph8dFfxp7IubOCuUYNfZgro8YLEwalEJk1390UfU2iI%26utm_campaign=3D4b=
+3b9578-29dd-4691-8cb0-d9de44de3e0c%26utm_medium=3Demail%26utm_source=3Denga=
+ge/2/0103019bdb0c0ec2-48ac789e-5dba-4b42-a5f2-082fcd48c529-000000/PGMiZgaDS=
+PTEvo12KlX_SYEX8wOmJ9P1hheuHjJ6NXc=3D246" target=3D"_blank" class=3D"s" sty=
+le=3D"box-sizing:border-box;display:inline-block;text-decoration:none;-webk=
+it-text-size-adjust:none;text-align:center;color:#FFFFFF;background-color:#=
+0048db;border-radius:400px;-webkit-border-radius:400px;-moz-border-radius:4=
+00px;width:auto;max-width:100%;overflow-wrap:break-word;word-break:break-wo=
+rd;word-wrap:break-word;mso-border-alt:none;font-family:arial,helvetica,san=
+s-serif;font-size:18px;font-weight:700;">
+<span class=3D"aa" style=3D"display:block;padding:16px 56px;line-height:140=
+%;"><span style=3D"line-height:25.2px;"></span><span style=3D"line-height:2=
+5.2px;"></span><span style=3D"line-height:25.2px;">Verificar agora</span></=
+span></a></div>
+</td></tr></tbody></table>
+<table id=3D"o" style=3D"font-family:arial,helvetica,sans-serif;" role=3D"p=
+resentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=3D"0=
+"><tbody><tr><td class=3D"m" style=3D"overflow-wrap:break-word;word-break:b=
+reak-word;padding:0px;font-family:arial,helvetica,sans-serif;" align=3D"lef=
+t"><div class=3D"ig s" style=3D"font-size:16px;line-height:140%;text-align:=
+left;word-wrap:break-word;"><p style=3D"line-height:140%;"><span style=3D"l=
+ine-height:22.4px;">N=C3=A3o deixe para depois, fa=C3=A7a sua consulta agor=
+a mesmo em
+nosso site.</span></p><p style=3D"line-height:140%;">&nbsp;</p><p style=3D"=
+line-height:140%;"><span style=3D"line-height:22.4px;">No que mais voc=C3=
+=AA precisar, conte com a gente!</span></p></div>
+</td></tr></tbody></table></div></div></div></div></div></div><div class=3D=
+"a" style=3D"padding:0px;background-color:transparent"><div class=3D"g" sty=
+le=3D"margin:0 auto;min-width:320px;max-width:600px;overflow-wrap:break-wor=
+d;word-wrap:break-word;word-break:break-word;background-color:transparent;"=
+><div style=3D"border-collapse:collapse;display:table;width:100%;height:100=
+%;background-color:transparent;"><div class=3D"gw o" style=3D"max-width:320=
+px;min-width:600px;display:table-cell;vertical-align:top;"><div style=3D"ba=
+ckground-color:#f6f7fa;height:100%;width:100%!important;border-radius:0px;-=
+webkit-border-radius:0px;-moz-border-radius:0px;"><div class=3D"zd" style=
+=3D"box-sizing:border-box;height:100%;padding:0px;border-top:0px solid tran=
+sparent;border-left:0px solid transparent;border-right:0px solid transparen=
+t;border-bottom:0px solid transparent;border-radius:0px;-webkit-border-radi=
+us:0px;-moz-border-radius:0px;">
+<table id=3D"f" class=3D"p" style=3D"font-family:arial,helvetica,sans-serif=
+;" role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ border=3D"0"><tbody><tr><td class=3D"m" style=3D"overflow-wrap:break-word;=
+word-break:break-word;padding:16px 24px 0px;font-family:arial,helvetica,san=
+s-serif;" align=3D"left">
+<table role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tbody><tr><td class=3D"ig" style=3D"padding-right:0px;=
+padding-left:0px;" align=3D"center"> <a href=3D"http://mail-sa.acordocerto.=
+com.br/CL0/http:%2F%2Flinktr.ee%2FAcordoCerto%3Fdelivery_id=3D9d12d485-689d=
+-44c6-879d-00bd2b43563a%26e=3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmQi=
+OiJkODk1OWU2YTFjNzAzOGY0ZGRhMWE2ODVhNmU4ZDRlYWNjZjA4NDdlZmQ1ZWRjODI4YmZiZDc=
+xNmY2NjJiNzljYjFlYWEzMjQ4MDkyMWI5NTdhYmZlYzM0MGQyNiIsImV4cCI6MTc2OTE2NTY3MC=
+wic3ViIjoibmFyZG9nb21lc0BsaXZlLmNvbSJ9.Ph8dFfxp7IubOCuUYNfZgro8YLEwalEJk139=
+0UfU2iI%26utm_campaign=3D4b3b9578-29dd-4691-8cb0-d9de44de3e0c%26utm_medium=
+=3Demail%26utm_source=3Dengage/1/0103019bdb0c0ec2-48ac789e-5dba-4b42-a5f2-0=
+82fcd48c529-000000/pOgXwD03JZYUOWXFYWLjxSP2AyqZ9uFKYPsXnaPJU0s=3D246" targe=
+t=3D"_blank">
+<img align=3D"center" border=3D"0" src=3D"https://assets.acordocerto.com.br=
+/f/114280/1656x97/7ea7e26af2/footer-desk-bau-ac.png?w=3D1104px" alt=3D"Logo=
+ AC" title=3D"Logo AC" style=3D"outline:none;text-decoration:none;-ms-inter=
+polation-mode:bicubic;clear:both;display:inline-block!important;border:none=
+;height:auto;float:none;width:100%;max-width:552px;" width=3D"552" class=3D=
+"i pv"></a>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+<table id=3D"x" class=3D"z pd" style=3D"display:none;mso-hide:all;font-fami=
+ly:arial,helvetica,sans-serif;" role=3D"presentation" cellpadding=3D"0" cel=
+lspacing=3D"0" width=3D"100%" border=3D"0"><tbody><tr><td class=3D"m" style=
+=3D"overflow-wrap:break-word;word-break:break-word;padding:12px 24px 0px;fo=
+nt-family:arial,helvetica,sans-serif;" align=3D"left">
+<table role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tbody><tr><td class=3D"ig" style=3D"padding-right:0px;=
+padding-left:0px;" align=3D"center"> <a href=3D"http://mail-sa.acordocerto.=
+com.br/CL0/http:%2F%2Flinktr.ee%2FAcordoCerto%3Fdelivery_id=3D9d12d485-689d=
+-44c6-879d-00bd2b43563a%26e=3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmQi=
+OiJkODk1OWU2YTFjNzAzOGY0ZGRhMWE2ODVhNmU4ZDRlYWNjZjA4NDdlZmQ1ZWRjODI4YmZiZDc=
+xNmY2NjJiNzljYjFlYWEzMjQ4MDkyMWI5NTdhYmZlYzM0MGQyNiIsImV4cCI6MTc2OTE2NTY3MC=
+wic3ViIjoibmFyZG9nb21lc0BsaXZlLmNvbSJ9.Ph8dFfxp7IubOCuUYNfZgro8YLEwalEJk139=
+0UfU2iI%26utm_campaign=3D4b3b9578-29dd-4691-8cb0-d9de44de3e0c%26utm_medium=
+=3Demail%26utm_source=3Dengage/2/0103019bdb0c0ec2-48ac789e-5dba-4b42-a5f2-0=
+82fcd48c529-000000/PoIQ6SsYvnCJbksvCTuoJ6eyQqo5NDGUf9QaATLgZBY=3D246" targe=
+t=3D"_blank">
+<img align=3D"center" border=3D"0" src=3D"https://assets.acordocerto.com.br=
+/f/114280/816x366/80ea283fbe/footer-mob-bau-ac.png" alt=3D"Logo AC" title=
+=3D"Logo AC" style=3D"outline:none;text-decoration:none;-ms-interpolation-m=
+ode:bicubic;clear:both;display:inline-block!important;border:none;height:au=
+to;float:none;width:100%;max-width:552px;" width=3D"552" class=3D"i pv"></a=
+>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+<table id=3D"n" style=3D"font-family:arial,helvetica,sans-serif;" role=3D"p=
+resentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=3D"0=
+"><tbody><tr><td class=3D"m" style=3D"overflow-wrap:break-word;word-break:b=
+reak-word;padding:16px 24px 0px;font-family:arial,helvetica,sans-serif;" al=
+ign=3D"left">
+<table role=3D"presentation" aria-label=3D"divider" height=3D"0px" align=3D=
+"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" st=
+yle=3D"border-collapse:collapse;table-layout:fixed;border-spacing:0;mso-tab=
+le-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;border-top:1px solid =
+#BBBBBB;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%"><tbody><tr=
+ style=3D"vertical-align:top"><td style=3D"word-break:break-word;border-col=
+lapse:collapse!important;vertical-align:top;font-size:0px;line-height:
+0px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-siz=
+e-adjust:100%"> <span>&nbsp;</span>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+<table id=3D"u" style=3D"font-family:arial,helvetica,sans-serif;" role=3D"p=
+resentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=3D"0=
+"><tbody><tr><td class=3D"m" style=3D"overflow-wrap:break-word;word-break:b=
+reak-word;padding:24px;font-family:arial,helvetica,sans-serif;" align=3D"le=
+ft"><div class=3D"ig s" style=3D"font-size:14px;color:#313131;line-height:1=
+40%;text-align:center;word-wrap:break-word;"><p style=3D"line-height:140%;t=
+ext-align:left;"><span style=3D"line-height:19.6px;"><span style=3D"line-he=
+ight:14px;font-size:10px;color:rgb(255,255,255);"><span style=3D"line-heigh=
+t:19.6px;"></span><span style=3D"line-height:19.6px;"></span><span style=3D=
+"line-height:19.6px;color:rgb(49,49,49);">Rua Cardeal Arcoverde, 2365, Conj=
+. 81 a 84 Pinheiros, S=C3=A3o Paulo- SP, Brasil.&nbsp;CEP 05.407-003 CNPJ: =
+30.247.128/0001-15<br>N=C3=A3o realizamos atendimento presencial. </span></=
+span></span></p><p style=3D"line-height:140%;text-align:left;"><span style=
+=3D"line-height:19.6px;"><span style=3D"line-height:14px;
+font-size:10px;color:rgb(255,255,255);"><span style=3D"line-height:19.6px;c=
+olor:rgb(49,49,49);">Caso j=C3=A1 tenha realizado o pagamento, favor descon=
+siderar esta comunica=C3=A7=C3=A3o.</span></span></span></p><p style=3D"lin=
+e-height:140%;text-align:left;">&nbsp;</p><p style=3D"line-height:140%;text=
+-align:left;"><span style=3D"line-height:19.6px;"><span style=3D"line-heigh=
+t:14px;font-size:10px;color:rgb(255,255,255);"><br><span style=3D"color:rgb=
+(49,49,49);line-height:19.6px;"><span style=3D"line-height:19.6px;"><a rel=
+=3D"noopener" href=3D"https://mail-sa.acordocerto.com.br/CL0/https:%2F%2Fww=
+w.acordocerto.com.br%2Fcancelar-minha-inscricao%2Fmotivo%3Fdelivery_id=3D9d=
+12d485-689d-44c6-879d-00bd2b43563a%26e=3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVC=
+J9.eyJlbmQiOiJkODk1OWU2YTFjNzAzOGY0ZGRhMWE2ODVhNmU4ZDRlYWNjZjA4NDdlZmQ1ZWRj=
+ODI4YmZiZDcxNmY2NjJiNzljYjFlYWEzMjQ4MDkyMWI5NTdhYmZlYzM0MGQyNiIsImV4cCI6MTc=
+2OTE2NTY3MCwic3ViIjoibmFyZG9nb21lc0BsaXZlLmNvbSJ9.Ph8dFfxp7IubOCuUYNfZgro8Y=
+LEwalEJk1390UfU2iI%26email=3DbmFyZG9nb21lc0BsaXZlLmNvbQ__%26utm_campaign=3D=
+4b3b9578-29dd-4691-8cb0-d9de44de3e0c%26utm_medium=3Demail%26utm_source=3Den=
+gage%26workspace_id=3Da182f1ce-232a-499a-b6c8-f0e3a77a7767/1/0103019bdb0c0e=
+c2-48ac789e-5dba-4b42-a5f2-082fcd48c529-000000/qmorzeKJ6RTd6UCAnzkijg9NILaf=
+NbXAd0NKxiw1hCQ=3D246" target=3D"_blank" style=3D"color:rgb(49,49,49);">Par=
+ar de receber emails</a>&nbsp;</span>=C2=B7
+<a rel=3D"noopener" href=3D"https://mail-sa.acordocerto.com.br/CL0/https:%2=
+F%2Fwww.acordocerto.com.br%2Fcentral-de-ajuda%3Fdelivery_id=3D9d12d485-689d=
+-44c6-879d-00bd2b43563a%26e=3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmQi=
+OiJkODk1OWU2YTFjNzAzOGY0ZGRhMWE2ODVhNmU4ZDRlYWNjZjA4NDdlZmQ1ZWRjODI4YmZiZDc=
+xNmY2NjJiNzljYjFlYWEzMjQ4MDkyMWI5NTdhYmZlYzM0MGQyNiIsImV4cCI6MTc2OTE2NTY3MC=
+wic3ViIjoibmFyZG9nb21lc0BsaXZlLmNvbSJ9.Ph8dFfxp7IubOCuUYNfZgro8YLEwalEJk139=
+0UfU2iI%26utm_campaign=3D4b3b9578-29dd-4691-8cb0-d9de44de3e0c%26utm_medium=
+=3Demail%26utm_source=3Dengage/1/0103019bdb0c0ec2-48ac789e-5dba-4b42-a5f2-0=
+82fcd48c529-000000/nexNMNhpUhfbel0_Eors6KlIJjSvpleTXzawaoTfdMw=3D246" targe=
+t=3D"_blank" style=3D"color:rgb(49,49,49);">Ajuda</a></span><br><br><span s=
+tyle=3D"color:rgb(49,49,49);line-height:19.6px;">=C2=A9 2025 Consumidor Pos=
+itivo Ltda. =E2=80=93 Todos os direitos reservados</span></span></span><spa=
+n style=3D"font-size:10px;line-height:14px;color:rgb(49,49,49);"><span styl=
+e=3D"line-height:19.6px;"><br></span></span></p></div>
+</td></tr></tbody></table></div></div></div></div></div></div>
+</td></tr></tbody></table>
+<img alt=3D"" src=3D"http://mail-sa.acordocerto.com.br/CI0/0103019bdb0c0ec2=
+-48ac789e-5dba-4b42-a5f2-082fcd48c529-000000/mX6C3TO5tegHOrOOstNNQ3sje9mK0l=
+-B1p9a5JQ4l8w=3D246" style=3D"display: none; width: 1px; height: 1px;">
+</body>
+</html>

@@ -1,0 +1,212 @@
+# Content lure knowledge (offline, deterministic regexes).
+# simple: any pattern hit → finding
+# composite: all groups must hit (any pattern within a group)
+
+commodity_lures:
+  - CONTENT-CASINO-LURE
+  - CONTENT-ROMANCE-LURE
+  - CONTENT-FR-AIDES-LURE
+  - CONTENT-FR-CPF-LURE
+
+structured_lures:
+  - CONTENT-PROTESTO-LURE
+  - CONTENT-IRPF-LURE
+  - CONTENT-CRYPTO-WITHDRAW
+  - CONTENT-CRYPTO-AIRDROP
+  - CONTENT-CRYPTO-WALLET-UPDATE
+  - CONTENT-ADVANCE-FEE
+  - CONTENT-FR-AMENDE-LURE
+  - CONTENT-CONTACT-DOMAIN-MISMATCH
+
+simple:
+  - id: BEC-URGENCY
+    severity: low
+    confidence: 0.5
+    family: lure
+    patterns:
+      - '\burgent\b'
+      - '\bimmediately\b'
+      - '\bact now\b'
+      - '\bwithin\s+24\s*hours\b'
+      - '\burgente\b'
+      - '\bimediatamente\b'
+      - '\bagora mesmo\b'
+    explanation: Body uses urgency language common in social-engineering and BEC lures.
+    recommendation: Slow down; verify the request out-of-band with a known contact.
+
+  - id: BEC-PAYMENT
+    severity: low
+    confidence: 0.5
+    family: lure
+    patterns:
+      - '\bwire transfer\b'
+      - '\bbank transfer\b'
+      - '\bgift\s*cards?\b'
+      - '\btransfer[eê]ncia\b'
+      - '\bboleto\b'
+      - '\bpix\b'
+      - '\bpagamento\b'
+      - '\bdados banc[aá]rios\b'
+      - '\binvoice\b'
+      - '\bpayment\b'
+    explanation: Body references payment language. Alone this is weak (common in billing mail).
+    recommendation: Require corroboration (auth fail, odd domains, secrecy, dangerous attachment).
+
+  - id: BEC-CREDENTIAL
+    severity: low
+    confidence: 0.55
+    family: lure
+    patterns:
+      - '\bverify (your )?account\b'
+      - '\bconfirm (your )?password\b'
+      - '\blog[\s-]?in (to )?(your )?account\b'
+      - '\bsenha\b'
+      - '\batualiz[ea]\b.*\b(dados|cadastro|cpf)\b'
+      - '\bcpf\b'
+      - '\bvalide (sua|seu)\b'
+    explanation: Body mentions credentials or national ID. Alone this is weak in local billing mail.
+    recommendation: Corroborate with CTA links, auth failures, or domain mismatch before escalating.
+
+  - id: BEC-SECRECY
+    severity: medium
+    confidence: 0.65
+    family: lure
+    patterns:
+      - '\bdo not (tell|share|discuss)\b'
+      - '\bkeep this confidential\b'
+      - '\bn[aã]o (conte|comente|avise)\b'
+      - '\bfora do slack\b'
+      - '\bdo not discuss\b'
+    explanation: Body discourages talking to others — a stronger BEC isolation tactic.
+    recommendation: Treat secrecy requests as a red flag; involve a colleague or finance policy path.
+
+  - id: CONTENT-TECHSUPPORT-LURE
+    severity: medium
+    confidence: 0.75
+    family: lure
+    commodity: true
+    patterns:
+      - '\b(geek\s*squad|cyber\s+security\s+support|system\s+monitoring|digital\s+protection|installation\s+technician|remote\s+support\s+session)\b'
+    explanation: Unsolicited tech-support or monitoring copy is a common malware/callback pretext.
+    recommendation: Do not call numbers or open attachments from unsolicited support mail.
+
+  - id: CONTENT-ROMANCE-LURE
+    severity: medium
+    confidence: 0.7
+    family: lure
+    commodity: true
+    patterns:
+      - '(zullen\s+we\s+afspreken|ik\s+heb\s+je\s+profiel\s+gezien|waarom\s+hoor\s+ik\s+niks|hou\s+jij\s+van\s+een\s+vrouw|geven\s+wij\s+elkaar\s+die\s+kans|alleen\s+achter\s+mijn\s+scherm|een\s+buddy,?\s+een\s+lover|zoek\s+jij\s+ook\s+een\s+echte|zullen\s+we\s+ergens\s+rustig\s+afspreken|alleen\s+thuis|geheime\s+afspraak|per\s+ongeluk\?|opnieuw\s+starten\?|ik\s+zoek\s+een\s+(lieve\s+)?(jongen|man)|woon\s+jij\s+vlakbij|profiel\s+bekeken|single\s+vrouw|warme\s+aandacht|stoutste\s+foto|sweet\s+man|durf\s+jij\s+mij\s+te\s+ontdekken|jonge\s+vrouw\s+zoekt|meet\s+(me\s+)?tonight|lonely\s+(single|woman|girl)|looking\s+for\s+(a\s+)?(real\s+)?man)'
+    explanation: Unsolicited romance/dating solicitation with tracking CTAs.
+    recommendation: Do not click dating CTAs from unknown senders.
+
+  - id: CONTENT-FR-AIDES-LURE
+    severity: medium
+    confidence: 0.78
+    family: lure
+    commodity: true
+    patterns:
+      - '(pompe\s+[aà]\s+chaleur|clim(?:atisation)?\s+r[eé]versible|rachat\s+de\s+cr[eé]dits?|regroupement\s+de\s+cr[eé]dits?|aides?\s+de\s+l[''\s]?[eé]tat|prime\s+[eé]nergie|jusqu['']?\s*[aà]\s*10\s*800|all[eé]gez\s+vos\s+mensualit)'
+    explanation: Unsolicited French energy-aid / credit-consolidation pitch.
+    recommendation: Ignore cold-email eligibility/simulation links.
+
+  - id: CONTENT-FR-AMENDE-LURE
+    severity: high
+    confidence: 0.85
+    family: lure
+    patterns:
+      - '(antai|amende|infractions?|suivi\s+administratif\s+de\s+votre\s+dossier|agence\s+nationale\s+de\s+traitement)'
+    explanation: French ANTAI / amende administrative lure from unrelated domains.
+    recommendation: Pay fines only via official antai.gouv.fr.
+
+  - id: CONTENT-FR-CPF-LURE
+    severity: medium
+    confidence: 0.78
+    family: lure
+    commodity: true
+    patterns:
+      - '(droits?\s+cpf|budget\s+formation|vos\s+droits\s+[aà]\s+la\s+formation|cpf\s+disponibles|v[eé]rifiez\s+vos\s+droits)'
+    explanation: Unsolicited CPF / droits formation phishing funnel.
+    recommendation: Check CPF only on the official moncompteformation site.
+
+  - id: CONTENT-CASINO-LURE
+    severity: medium
+    confidence: 0.72
+    family: lure
+    commodity: true
+    patterns:
+      - '(free\s+spins|bonus\s+de\s+bienvenue|welcome\s+bonus|tours\s+gratuits|no\s+deposit|casino|claim\s+up\s+to\s+[€$]|willkommensbonus|freispiele|spielguthaben|anmeldebonus|jackpot\s+gewinner|gratis\s+spiel)'
+    explanation: Unsolicited gambling bonus lure — common malware/credential funnel.
+    recommendation: Do not claim bonuses from cold email.
+
+  - id: CONTENT-CRYPTO-AIRDROP
+    severity: high
+    confidence: 0.85
+    family: lure
+    patterns:
+      - '(airdrop|claim\s+(your\s+)?rewards?|snapshot\s+has\s+been\s+taken|steth|eligible\s+to\s+claim|community\s+rewards)'
+    explanation: Crypto airdrop / claim-rewards lure — classic wallet-drainer phishing.
+    recommendation: Never connect a wallet from an email link.
+
+  - id: CONTENT-CRYPTO-WALLET-UPDATE
+    severity: high
+    confidence: 0.88
+    family: lure
+    patterns:
+      - '(update\s+your\s+wallet|verify\s+your\s+wallet|wallet\s+compliance|bitcoin\s+wallet|desktop\s+(bitcoin\s+)?wallet|account\s+suspension\s+notification|prevent\s+suspension|urgent\s+compliance\s+notice|security\s+notice:\s*update\s+your\s+wallet)'
+    explanation: Crypto wallet update/verify/compliance lure (Electrum/Trust/Phantom style).
+    recommendation: Never update a wallet from email.
+
+  - id: CONTENT-DOC-SHARE-LURE
+    severity: medium
+    confidence: 0.72
+    family: lure
+    commodity: true
+    patterns:
+      - '(shared\s+(a\s+)?(file|document|link)|ready\s+for\s+your\s+(review\s+and\s+)?signature|review\s+and\s+sign|secured\s+document\s+has\s+been\s+shared|check\s+your\s+document|docsend\s+shared)'
+    explanation: Unsolicited document-share / e-sign solicitation.
+    recommendation: Open shared docs only via the real SaaS portal from known collaborators.
+
+  - id: CONTENT-ADVANCE-FEE
+    severity: high
+    confidence: 0.85
+    family: lure
+    patterns:
+      - '(our\s+ref\s*:|your\s+ref\s*:|no\s+previous\s+correspondence|next\s+of\s+kin|unclaimed\s+(fund|inheritance)|esq\.|barrister|solicitor\s+and\s+advocate|scam\s+victims?.{0,40}million|money\s*gram\s+service|heartfelt\s+appeal|urgent\s+humanitarian\s+assistance)'
+    explanation: Advance-fee / fake lawyer / IMF-MoneyGram / humanitarian appeal pattern.
+    recommendation: Do not reply or send documents/money; report as fraud.
+
+composite:
+  - id: CONTENT-PROTESTO-LURE
+    severity: high
+    confidence: 0.9
+    family: lure
+    evidence: protesto/cartório language + payment (boleto/PIX) + CPF/cancelamento/Serasa hooks
+    explanation: Notary/protest claims with payment and personal-data hooks — common BR phishing even when SPF/DKIM pass.
+    recommendation: Do not pay or send CPF via email links. Confirm only at the physical cartório.
+    require_all:
+      - ['\b(protesto|cart[oó]rio|tabeli[aã]o|tabelionato|cenprot|custas\s+cartor)']
+      - ['\b(boleto|pix|pagamento|custas)\b']
+      - ['\b(cpf|cancelar\s+(o\s+)?protesto|serasa|baixa\s+do\s+protesto|letras?\s+e\s+t[ií]tulos?)\b']
+
+  - id: CONTENT-IRPF-LURE
+    severity: high
+    confidence: 0.88
+    family: lure
+    evidence: IRPF/crédito IR language + annex/protocolo hooks
+    explanation: Brazilian tax-refund / IRPF liberation lure with annex — often freemail + hostile PDF.
+    recommendation: Do not open the attachment. Use only official Receita Federal channels.
+    require_all:
+      - ['\b(irpf|cr[eé]dito\s+ir|libera[cç][aã]o\s+de\s+ir|saldo\s+(foi\s+)?liberado|valor\s+dispon[ií]vel\s+para\s+cr[eé]dito|imposto\s+de\s+renda)\b']
+      - ['\b(anexo|em\s+anexo|protocolo|mais\s+informa[cç][oõ]es\s+em\s+anexo|pdf|documento)\b']
+
+  - id: CONTENT-CRYPTO-WITHDRAW
+    severity: high
+    confidence: 0.85
+    family: lure
+    evidence: crypto withdraw/wallet language + cancel/fraud urgency
+    explanation: Crypto exchange/wallet phishing with withdraw/cancel pressure on a non-official domain.
+    recommendation: Do not use email links for wallet actions.
+    require_all:
+      - ['\b(withdraw|withdrawal|cancel\s+(this\s+)?transaction|face\s+verification|seed\s+phrase|private\s+key|connect\s+(your\s+)?wallet|meta\s*mask|binance|coinbase|kraken|okx\b|web3\s+extension)\b']
+      - ['\b(don.?t\s+recognize|cancel\s+transaction|refund\s+your\s+funds|protect\s+you\s+against\s+fraud|allocation\s+program|activate\s+your\s+account)\b']

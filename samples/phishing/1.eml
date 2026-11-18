@@ -1,0 +1,613 @@
+Received: from CH0PR07MB8844.namprd07.prod.outlook.com (2603:10b6:610:105::10)
+ by BY5PR07MB7185.namprd07.prod.outlook.com with HTTPS; Fri, 14 Nov 2025
+ 12:08:59 +0000
+Received: from AS4P190CA0032.EURP190.PROD.OUTLOOK.COM (2603:10a6:20b:5d1::9)
+ by CH0PR07MB8844.namprd07.prod.outlook.com (2603:10b6:610:105::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9320.18; Fri, 14 Nov
+ 2025 12:08:57 +0000
+Received: from AM4PEPF00027A69.eurprd04.prod.outlook.com
+ (2603:10a6:20b:5d1:cafe::dd) by AS4P190CA0032.outlook.office365.com
+ (2603:10a6:20b:5d1::9) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9320.17 via Frontend Transport; Fri,
+ 14 Nov 2025 12:08:53 +0000
+Authentication-Results: spf=pass (sender IP is 187.18.17.196)
+ smtp.mailfrom=emktbbts.com.br; dkim=pass (signature was verified)
+ header.d=emktbbts.com.br;dmarc=pass action=none
+ header.from=emktbbts.com.br;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of emktbbts.com.br
+ designates 187.18.17.196 as permitted sender)
+ receiver=protection.outlook.com; client-ip=187.18.17.196;
+ helo=smtp2.emktbbts.com.br; pr=C
+Received: from smtp2.emktbbts.com.br (187.18.17.196) by
+ AM4PEPF00027A69.mail.protection.outlook.com (10.167.16.87) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9320.13
+ via Frontend Transport; Fri, 14 Nov 2025 12:08:56 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:B3EE4B7CA34750B88C28AB8F329945DA52C02F616CAD18AC6F56E3CEF0B7D180;UpperCasedChecksum:86349A5A220036B350A23600C39FF87AA5F0D4CB595CA511B4714E135D1F9A8A;SizeAsReceived:1503;Count:18
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=emktbbts; d=emktbbts.com.br;
+ h=List-ID:List-Unsubscribe-Post:List-Unsubscribe:From:To:Reply-To:Subject:
+ Message-ID:Content-Transfer-Encoding:Date:MIME-Version:Content-Type;
+ i=negociacao@emktbbts.com.br;
+ bh=5ONJZVmfDw6sJl6srPGrwVo0nGskc8w8/D6CIOF/9Gk=;
+ b=tuco9iX8H7RRhBWAlRs80l+SGPReEty91anbWRCGYF0wB0pGXBoilv1EY2tM2/ueyPzQt4iSQYOf
+   H6dURX0du2Vir+gooxT3xTBQLbiVmehNzKKOuPPn9gWaa0ex3Day+a2v6SZBObKRGmCidKjoA2tB
+   y8hN92VpWWUxIcxP/2U=
+Received: from [127.0.0.1] (10.197.3.234) by pmta.emktbbts.com.br id h2sdti3aul87 for <nardogomes@live.com>; Fri, 14 Nov 2025 08:23:30 -0300 (envelope-from <negociacao@emktbbts.com.br>)
+Campaign: EMKT_1311PF_LT2
+Tenant: facilita
+List-ID: <emails.emktbbts.com.br>
+Return-Path: negociacao@emktbbts.com.br
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Unsubscribe: <https://facilita.intevia.com.br/api/email/customer/subscription/eJyrVirJV7JSykssSslPz89NLXbIySxL1UvOz1XSUUpOzC1IzEzPU7JScvX1Dok3NDY0DHCL9wkxUtJRKqksSFWyUiouTVKqBQA9TxZv>
+X-Job: facilita
+From: =?UTF-8?Q?Negocia=C3=A7=C3=A3o_-_BB_Tecnologia_e_S?=
+ =?UTF-8?Q?ervi=C3=A7os?= <negociacao@emktbbts.com.br>
+To: nardogomes@live.com
+Reply-To: negociacao@bbts.com.br
+Subject: BBTS - Aproveite a nossa Black Friday!
+Message-ID: <90f7c60b-e4dc-8dea-d6d8-e6eb3a0fcdba@emktbbts.com.br>
+Content-Transfer-Encoding: quoted-printable
+Date: Fri, 14 Nov 2025 11:23:29 +0000
+Content-Type: text/html; charset=utf-8
+X-IncomingHeaderCount: 18
+X-MS-Exchange-Organization-ExpirationStartTime: 14 Nov 2025 12:08:56.6862
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: a0d16465-66cb-4488-b2c7-08de2376963c
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM4PEPF00027A69:EE_|CH0PR07MB8844:EE_|BY5PR07MB7185:EE_
+X-MS-Exchange-Organization-AuthSource: AM4PEPF00027A69.eurprd04.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 11/13/2025 6:45:23 PM
+X-MS-Office365-Filtering-Correlation-Id: a0d16465-66cb-4488-b2c7-08de2376963c
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 187.18.17.196
+X-SID-PRA: NEGOCIACAO@EMKTBBTS.COM.BR
+X-SID-Result: PASS
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:3;ARA:1444111002|461199028|68400799013|10300799035|1680799066|8900799020|9000799056|3600799018|9400799040|15092099004|3412199025|440099028|4302099013|1122599019|30041999003|26104999006|1380799030|1370799030|1360799030|1602099012|2406899039;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Nov 2025 12:08:56.1081
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: a0d16465-66cb-4488-b2c7-08de2376963c
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: AM4PEPF00027A69.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR07MB8844
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:03.8648783
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.9320.017
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;ex:0;auth:1;dest:I;ENG:(5062000311)(920221119095)(90000117)(920221120095)(90012020)(91020020)(91040095)(9050020)(9100341)(944500132)(4810010)(4910033)(9575002)(10195002)(9320005)(120001);
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MTtHRD0xO1NDTD0z
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?Szd4QWFvRmEwcWJEcXpSdkUweDhabmFwbHdpU0p6eTZyUWZQanhKU3NNdWZh?=
+ =?utf-8?B?N1BuekpZRC9ML3lZNzd2bUdCbHRSaVFaT0RDSU1HNjBTdjdpRmlpNTlnazlI?=
+ =?utf-8?B?dStOUWd2aU8xVVdVdXhFdmJNMkt1M2hENFA5NDRVdUpQQTVMbDMyRWdxWGVj?=
+ =?utf-8?B?SzRUeXBqWDlocW8vM0x3MEdVdndEaW9sY2o5cjROdC9JNWJKNXUyQUc1RnRG?=
+ =?utf-8?B?OWh6RnN0UEFUS0JIcUkreWlkRXRDWE5pWlZqekNnbzhpMTlLbHZ3dDVnNGlt?=
+ =?utf-8?B?czRCd2VEb09SSW9BYk9RMERVUy9mM1VLNDFmQ25ubXRNbVN4MExDZmEzWUFQ?=
+ =?utf-8?B?SFBybUg2SDAyaXUwelluWnQ0WGdYdlNSZVo1K0ZTSTRJb0tGUUxBYVM0aXVp?=
+ =?utf-8?B?NzRDazM5U2dCeEFXRDNTRHI1Q21GUnhyKzgxcnd5T1lkbmM2K3lQOHZJdnBY?=
+ =?utf-8?B?blk3MHBzVmZQamRaUHdFSm15OWphYUMvTVlhbmIyQzRQc0lnOVRNRGJhWk14?=
+ =?utf-8?B?VmZjWjhwS0kweFo1Qlp3UzY0Qmd6ajRvNlJOcm81MG1VMU51RXJ6enJBNjg5?=
+ =?utf-8?B?OU1JVFFTNWx2V3dHNERhdlNZaTlSZUJTZGt3WUpxRHRVM0d1MHk1bGU1b1hL?=
+ =?utf-8?B?MFI4MDhBY1pzVnVOQmVqMHNCUVZZWWZSUmpyNnNyQU5ZajJSRmF1VDZvYjNh?=
+ =?utf-8?B?bzBmdENhZmZIanpSMFZEVTh2RXcrQUh6aFZrU2JNNDFVOUc0NVFJSnZYU2RN?=
+ =?utf-8?B?aGx3K1JzbSs5VllkZkFpdUVuZWZJRFZoUVpicTdiNjFHQzJ2UDArUk9xWHlv?=
+ =?utf-8?B?NzNFYWFkelVNOWdRM01CNzl6UTdHNmZPOUp5N2tmb0o2RjBlaWloZG5xd2RY?=
+ =?utf-8?B?eXJqKzFDdDhLc0d4MEIzUVJDeDlxTzBTNGc0VW82MCsvUWpQSFNySk9lQTIw?=
+ =?utf-8?B?NkFwQ2JUR3I3dW81ejJydzdVZXIxWDdUKzNxRHhGU2paTzVLUXJXRGdYVGpV?=
+ =?utf-8?B?SnJvSTRrNTdqZ0FvZmZHQTNnOWQxUmJqZHFadm05NUV2VHRiM3Vjd2JNRjdz?=
+ =?utf-8?B?WnArSjVaMGN2YmFXYVdyQjZoVTA2RzBjZ3psR1NIdHNLUUZHL1pjdElkcms0?=
+ =?utf-8?B?L2c0VWtCRzkxaUsvTHU1enNwWUhhcWhsdnVRVnJ1dER4M0dOWVY0SlVHYTEy?=
+ =?utf-8?B?amhTQVF6R0JlRTFkY3ZaSVZWNFEyRmY5RjhtRUdBa1ZkcGxXMC9QY1QzSXQ1?=
+ =?utf-8?B?dzcxbUFxOVdIdWxIaUpPdEtTWm1ET3M2dEFlZ01vNjVFWEk3QStNYXRBZkd0?=
+ =?utf-8?B?V2NEQzJaSUw0RHp3bTRwcTBVak1zTUtFNXFzZkY3TWdBUmVyZzR6SlkzeWxW?=
+ =?utf-8?B?TEhWaktNdWFqU0JYRHNGUFczcGUzUm5peFgyQzU5MFFnQzZUMFg2azFsVTJ6?=
+ =?utf-8?B?QWk2ZEVYNVcyYmw3bGs1b2VGeE1scUloNFIrVEVrak9PVG1UaWM1Q2IrSUZV?=
+ =?utf-8?B?ZXBhUHB1L1hnL1VtL2lkamhRVFdObWxpWXlxcnJ2OFdPWTNqczVOaHJRc1ha?=
+ =?utf-8?B?djhraWVLQm9idEFFb0Y3bVJhYmFRUUE0cWdWWHVuVVN3NDFBT2ROellwK3Br?=
+ =?utf-8?B?MGRQc0dLM3IvNDAvRFRBSmZObE5od2VRTktVZ2YwSUxRQytvWVBoRDRvbDZZ?=
+ =?utf-8?B?Zy8ya2xQbm5LVElCSmh5VWRVU1BjSHlZdHFicVZzVDZ4RE9ZL2xDRVVsWUQ4?=
+ =?utf-8?B?RXRXaXVJMGE5QlFQemREUGxzWFVYaEwvSE1hOEMzNlZ0SGJOR2dLZi9NcWt5?=
+ =?utf-8?B?eXFHV1hVVmNLZlBLQjVyWVFOeWRFVFkwdjREL0JvbnVJTzB1WVUxUittV2NJ?=
+ =?utf-8?B?aHJIUDV2VjFJSFBTK2xFWTR6MmNaYWhtcUNXQks5UEJMUXFHQmZZWnc2M0l3?=
+ =?utf-8?B?cmhUZlB3blpEUW1ydEhWZ0FzYnlNbVh0eDBxNUFCdWxrSnBmd1JtelRJZko2?=
+ =?utf-8?B?UUI3RWkvRU9hbU5ib3lPMkwzYXd5U0oxQy9oTXIvY2ZJQStQV0J6VTRML0tz?=
+ =?utf-8?B?NDNqM3VoSk52bUdVeTd3ZjNlcHJjdFRROXBnRVpkNDg5dG9GSDlFSmFQVVlB?=
+ =?utf-8?B?dVVRQkNUei9GSUtNQUwxYlg2dm1McVJiaTBKYzVnSUtrVjd3M2NOWXc2NnJ3?=
+ =?utf-8?B?MjBjM2lZWWM5ZkVCa2NKa1ZIVVY0VmIrVUlEd0E0RElSTHhTQVpjMmMxUVdX?=
+ =?utf-8?B?NXNYa1B2dHZ3TGNDSnhwN1pGYjZWQWU2UlJtN0dETCs2M1pPaFZMMExVVEY5?=
+ =?utf-8?B?azV4OTFKL0pTREI3L3oxdnJKM3JvVGlMSEhPandHM1VDNnFubjNCZGJKcjR5?=
+ =?utf-8?B?dkZIelhLdXNCdW9WcERSalVPcWUzakpYUHFrSU11d1B4WkwrbExkZFpmR2Vm?=
+ =?utf-8?B?T0dYY3Y3UnNhZ28rajhyZ1lBRHlsazRCbk94QVNjWU53aDA2ZTRKMzVqUjdv?=
+ =?utf-8?B?ZUpRbVpYVnJ5SktZaVpabDF3MjNybzVuTmJDRkZ0T0VqR0xFTEZkNGhXejBH?=
+ =?utf-8?B?Z3ZJcktrVzBYcEpHQ09YNk4xWW1SN2FqbE1ERDlhWVV5NlN2MVdaeEFkMmMz?=
+ =?utf-8?B?T3RxWlRQZS90U1F4aDZYMk9GMWZpbFRVZ0lrblczbERwZlZXcTE2b2d5Y05Q?=
+ =?utf-8?B?a1dJc0JJeGlWSkdTKzl2VDN3VFg3ZlpIMHQzUCtqaFc4QjdOU2paaFNzUnlt?=
+ =?utf-8?B?bzAwb0t6UWFXOVpFcmE0UlNuSnZHOUhEeXJzSnBGQW1xQmN0dTAwNStrVDAv?=
+ =?utf-8?B?RTNFK25GNitONXBvaXVhUnNwVGQwUVkxa0J2QnR4VTJBYWdlQXhHRWdIWlJM?=
+ =?utf-8?Q?8zH1NxzT940oRwGxKzczA045EwZcPgKV6XE/rO0Y=3D?=
+MIME-Version: 1.0
+
+<html style=3D"box-sizing: border-box;"><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><s=
+tyle>
+.link {
+  text-decoration-line: none;
+  text-decoration-thickness: initial;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+  color: rgb(70, 94, 255);
+  text-align: center;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: rgb(70, 94, 255);
+  border-right-color: rgb(70, 94, 255);
+  border-bottom-color: rgb(70, 94, 255);
+  border-left-color: rgb(70, 94, 255);
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+@media (max-width: 768px) {
+  .gjs-cell {
+    width: 100%;
+    display: block;
+  }
+}
+@media only screen and (min-width: 480px) {
+  .mj-column-per-100 {
+    width: 100% !important;
+    max-width: 100%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  table.mj-full-width-mobile {
+    width: 100% !important;
+  }
+
+  td.mj-full-width-mobile {
+    width: auto !important;
+  }
+}
+</style>
+        </head>
+        <body style=3D"box-sizing: border-box; margin: 0;"><link rel=3D"sty=
+lesheet" href=3D"./css/style.css"><title>BBTS | Programa de Compliance</tit=
+le><meta https-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"><meta https-=
+equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8"><meta name=3D=
+"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1"><div id=3D"i=
+xxo" style=3D"box-sizing: border-box; display: none; font-size: 1px; color:=
+ rgb(255, 255, 255); line-height: 1px; max-height: 0px; max-width: 0px; opa=
+city: 0; overflow-x: hidden; overflow-y: hidden;"> Pre-header Text </div><d=
+iv id=3D"i5rz" style=3D"box-sizing: border-box; background-color: #fffbfb;"=
+><table role=3D"presentation" id=3D"iwdh" cellspacing=3D"0" cellpadding=3D"=
+0" border=3D"0" align=3D"center" width=3D"100%" background=3D"none" bgcolor=
+=3D"rgb(51, 51, 189)" style=3D"box-sizing: border-box; border-collapse: col=
+lapse; background-position-x: 0%; background-position-y: 0%; background-rep=
+eat: repeat; background-attachment: scroll; background-image: none; backgro=
+und-size: auto; background-origin: padding-box; background-clip: border-box=
+; background-color: rgb(51, 51, 189); width: 100%;"><tbody id=3D"i8oz3" sty=
+le=3D"box-sizing: border-box;"><tr id=3D"ip2iv" style=3D"box-sizing: border=
+-box;"><td id=3D"i5dij" bgcolor=3D"#fffbfb" style=3D"box-sizing: border-box=
+; border-collapse: collapse; color: rgb(252, 252, 48); background-color: #f=
+ffbfb;"><!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"" style=3D"width:600px;" width=3D"600" bg=
+color=3D"#3333BD" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-=
+height-rule:exactly;"><![endif]--><div id=3D"igi97" style=3D"box-sizing: bo=
+rder-box; margin-top: 0px; margin-right: auto; margin-bottom: 0px; margin-l=
+eft: auto; max-width: 600px;"><table role=3D"presentation" id=3D"i0azf" cel=
+lspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" width=3D"100=
+%" style=3D"box-sizing: border-box; border-collapse: collapse; width: 100%;=
+"><tbody id=3D"idinw" style=3D"box-sizing: border-box;"><tr id=3D"io5b3" st=
+yle=3D"box-sizing: border-box;"><td id=3D"i6pct" align=3D"center" style=3D"=
+box-sizing: border-box; border-collapse: collapse; direction: ltr; font-siz=
+e: 0px; padding-top: 20px; padding-right: 0px; padding-left: 0px; padding-b=
+ottom: 0px; text-align: center;"><!--[if mso | IE]><table role=3D"presentat=
+ion" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" st=
+yle=3D"vertical-align:top;width:600px;" ><![endif]--><div id=3D"i1adi" clas=
+s=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"box-sizing: border-bo=
+x; font-size: 0px; text-align: left; direction: ltr; display: inline-block;=
+ vertical-align: top; width: 100%;"><table role=3D"presentation" id=3D"iuhz=
+a" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" valign=
+=3D"top" style=3D"box-sizing: border-box; border-collapse: collapse; vertic=
+al-align: top;"><tbody id=3D"i617u" style=3D"box-sizing: border-box;"><tr i=
+d=3D"iqc5e" style=3D"box-sizing: border-box;"><td id=3D"i0tw5" align=3D"cen=
+ter" style=3D"box-sizing: border-box; border-collapse: collapse; font-size:=
+ 0px; word-break: break-word; padding-top: 10px; padding-right: 25px; paddi=
+ng-bottom: 22px; padding-left: 25px;"><table role=3D"presentation" id=3D"iq=
+2qs" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"box-sizing: =
+border-box; border-collapse: collapse; -webkit-border-horizontal-spacing: 0=
+px; -webkit-border-vertical-spacing: 0px;"><tbody id=3D"iqk8d" style=3D"box=
+-sizing: border-box;"><tr id=3D"icpcy" style=3D"box-sizing: border-box;"><t=
+d id=3D"i2z2g" width=3D"110" style=3D"box-sizing: border-box; border-collap=
+se: collapse; width: 110px;"><img id=3D"ir33i" draggable=3D"true" alt=3D"" =
+src=3D"https://intevia.blob.core.windows.net/media/dY8Z/2116c23a-42f9-4bde-=
+9007-b291d109d6e6.png" width=3D"100" height=3D"auto" style=3D"box-sizing: b=
+order-box; line-height: 100%; border-top-color: currentcolor; border-top-st=
+yle: none; border-top-width: 0px; border-right-color: currentcolor; border-=
+right-style: none; border-right-width: 0px; border-bottom-color: currentcol=
+or; border-bottom-style: none; border-bottom-width: 0px; border-left-color:=
+ currentcolor; border-left-style: none; border-left-width: 0px; border-imag=
+e-outset: 0; border-image-repeat: stretch; border-image-slice: 100%; border=
+-image-source: none; border-image-width: 1; display: block; outline-color: =
+currentcolor; outline-style: none; outline-width: medium; text-decoration-l=
+ine: none; text-decoration-style: solid; text-decoration-color: currentcolo=
+r; text-decoration-thickness: auto; height: auto; width: 100px; font-size: =
+13px; text-align: center;"></td></tr></tbody></table></td></tr><tr id=3D"ix=
+9b6" style=3D"box-sizing: border-box;"></tr><tr id=3D"iugpo" style=3D"box-s=
+izing: border-box;"><td id=3D"idwqk" align=3D"center" style=3D"box-sizing: =
+border-box; border-collapse: collapse; font-size: 0px; padding-top: 0px; pa=
+dding-right: 0px; padding-bottom: 0px; padding-left: 0px; word-break: break=
+-word;"><table role=3D"presentation" id=3D"i4atm" cellspacing=3D"0" cellpad=
+ding=3D"0" border=3D"0" style=3D"box-sizing: border-box; border-collapse: c=
+ollapse; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-sp=
+acing: 0px;"><tbody id=3D"i76sk" style=3D"box-sizing: border-box;"><tr id=
+=3D"iwd82" style=3D"box-sizing: border-box;"><td id=3D"i554j" width=3D"600"=
+ style=3D"box-sizing: border-box; border-collapse: collapse; width: 600px;"=
+><a href=3D"https://facilita.intevia.com.br/api/email/customer/tracking/eJw=
+1ybEOQDAUBdB_ubOQsr3JwoLEYJeGphptX6MlEfHvJmc9DxKD4OWxsmanYm3NpfKFHTKchwVhSy=
+nESEWhmbX9b5EuSKM9CM3QTbOohBjbuZ9KZEh3UCBY43e8H4WgIDw" target=3D"_blank" id=
+=3D"i5d3u" style=3D"box-sizing: border-box;"></a><img id=3D"ixwq6-3" dragga=
+ble=3D"true" alt=3D"" src=3D"https://intevia.blob.core.windows.net/media/7Y=
+y3/d0328321-d77a-4aa4-828e-4f07ec84c774.jpeg" width=3D"601.9994428710937" h=
+eight=3D"355" style=3D"box-sizing: border-box; border-top-color: currentcol=
+or; border-top-style: none; border-top-width: 0px; border-right-color: curr=
+entcolor; border-right-style: none; border-right-width: 0px; border-bottom-=
+color: currentcolor; border-bottom-style: none; border-bottom-width: 0px; b=
+order-left-color: currentcolor; border-left-style: none; border-left-width:=
+ 0px; border-image-outset: 0; border-image-repeat: stretch; border-image-sl=
+ice: 100%; border-image-source: none; border-image-width: 1; line-height: 1=
+00%; outline-color: currentcolor; outline-style: none; outline-width: mediu=
+m; text-decoration-line: none; text-decoration-style: solid; text-decoratio=
+n-color: currentcolor; text-decoration-thickness: auto; display: block; wid=
+th: 601.9994428710937px; height: 355px;"><a id=3D"ibvmgz-2" draggable=3D"tr=
+ue" href=3D"https://facilita.intevia.com.br/api/email/customer/tracking/eJw=
+VyrsKAjEQBdB_uXVIiHZTbaONChbbL5MY12BeJKMgi_8unvpskApC4X6ra81hTCm-g_Y1Q-HVEw=
+gPkTbImDv7mKKwdk7Gf2jXDRQ858ZxLSAcLqd5sXtrr8flPO-gIJ8WQEixPPH9AepWI5M" titl=
+e=3D"Portal Facilita" target=3D"_blank" class=3D"link" style=3D"box-sizing:=
+ border-box; text-decoration-line: none; text-decoration-thickness: initial=
+; text-decoration-style: initial; text-decoration-color: initial; color: rg=
+b(70, 94, 255); text-align: center; border-top-width: 0px; border-right-wid=
+th: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-style=
+: solid; border-right-style: solid; border-bottom-style: solid; border-left=
+-style: solid; border-top-color: rgb(70, 94, 255); border-right-color: rgb(=
+70, 94, 255); border-bottom-color: rgb(70, 94, 255); border-left-color: rgb=
+(70, 94, 255); border-image-source: initial; border-image-slice: initial; b=
+order-image-width: initial; border-image-outset: initial; border-image-repe=
+at: initial;"></a></td></tr></tbody></table></td></tr></tbody></table></div=
+><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table>=
+</div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></t=
+able><!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" class=3D"body-section-outlook" style=3D"width:600px;" =
+width=3D"600" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-heig=
+ht-rule:exactly;"><![endif]--><div id=3D"i8p12" class=3D"body-section" styl=
+e=3D"box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.15) 1px 4px 11px 0=
+px; margin-top: 0px; margin-right: auto; margin-bottom: 0px; margin-left: a=
+uto; max-width: 600px;"><table role=3D"presentation" id=3D"ifwgo" cellspaci=
+ng=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" width=3D"100%" sty=
+le=3D"box-sizing: border-box; border-collapse: collapse; width: 100%;"><tbo=
+dy id=3D"i9uce" style=3D"box-sizing: border-box;"><tr id=3D"ivrrl" style=3D=
+"box-sizing: border-box;"><td id=3D"idv9j" align=3D"center" style=3D"box-si=
+zing: border-box; border-collapse: collapse; direction: ltr; font-size: 0px=
+; padding-right: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: =
+0px; text-align: center;"><!--[if mso | IE]><table role=3D"presentation" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" width=3D"=
+600px" ><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"" style=3D"width:600px;" width=3D"600" bgcolor=3D"#ffffff" =
+><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactl=
+y;"><![endif]--><div id=3D"iwbsj" style=3D"box-sizing: border-box; backgrou=
+nd-position-x: 0%; background-position-y: 0%; background-repeat: repeat; ba=
+ckground-attachment: scroll; background-image: none; background-size: auto;=
+ background-origin: padding-box; background-clip: border-box; background-co=
+lor: rgb(255, 255, 255); margin-top: 0px; margin-right: auto; margin-bottom=
+: 0px; margin-left: auto; max-width: 600px;"><table role=3D"presentation" i=
+d=3D"i7vdm" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"cente=
+r" width=3D"100%" background=3D"none" bgcolor=3D"rgb(255, 255, 255)" style=
+=3D"box-sizing: border-box; border-collapse: collapse; background-position-=
+x: 0%; background-position-y: 0%; background-repeat: repeat; background-att=
+achment: scroll; background-image: none; background-size: auto; background-=
+origin: padding-box; background-clip: border-box; background-color: rgb(255=
+, 255, 255); width: 100%;"><tbody id=3D"i0nsb" style=3D"box-sizing: border-=
+box;"><tr id=3D"i7rkn" style=3D"box-sizing: border-box;"><td id=3D"irrwt" a=
+lign=3D"center" style=3D"box-sizing: border-box; border-collapse: collapse;=
+ direction: ltr; font-size: 0px; padding-top: 20px; padding-bottom: 20px; p=
+adding-left: 15px; padding-right: 15px; text-align: center; color: rgb(70, =
+94, 255);"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:=
+top;width:570px;" ><![endif]--><div id=3D"ibnak" class=3D"mj-column-per-100=
+ mj-outlook-group-fix" style=3D"box-sizing: border-box; font-size: 0px; tex=
+t-align: left; direction: ltr; display: inline-block; vertical-align: top; =
+width: 100%;"><table role=3D"presentation" id=3D"iz06f" width=3D"100%" cell=
+spacing=3D"0" cellpadding=3D"0" border=3D"0" valign=3D"top" style=3D"box-si=
+zing: border-box; border-collapse: collapse; vertical-align: top;"><tbody i=
+d=3D"igso4" style=3D"box-sizing: border-box; color: rgb(51, 51, 189);"><tr =
+id=3D"idnii" style=3D"box-sizing: border-box;"><td id=3D"ighgv" align=3D"le=
+ft" style=3D"box-sizing: border-box; border-collapse: collapse; font-size: =
+0px; padding-top: 10px; padding-right: 25px; padding-bottom: 10px; padding-=
+left: 25px; word-break: break-word; font-weight: 700;"><div id=3D"il3s6" dr=
+aggable=3D"true" style=3D"box-sizing: border-box; font-family: Arial, Helve=
+tica, sans-serif; font-size: 20px; font-weight: 700; line-height: 24px; tex=
+t-align: left; color: rgb(70, 94, 255);">Ol=C3=A1, Walterlins Lopes!
+</div></td></tr><tr id=3D"il50c" style=3D"box-sizing: border-box;"><td id=
+=3D"iyuc8" align=3D"left" style=3D"box-sizing: border-box; border-collapse:=
+ collapse; font-size: 0px; word-break: break-word; padding-top: 10px; paddi=
+ng-right: 25px; padding-bottom: 10px; padding-left: 25px; color: rgb(51, 51=
+, 189); font-family: 'Arial Black', Gadget, sans-serif;"><div id=3D"inu2tm"=
+ style=3D"box-sizing: border-box;"><span id=3D"iduhb" style=3D"box-sizing: =
+border-box;">Insert here your custom code</span></div><div id=3D"ig84p" dra=
+ggable=3D"true" style=3D"box-sizing: border-box; font-family: Arial, Helvet=
+ica, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; text=
+-align: left; color: rgb(51, 51, 189);"><p id=3D"idp9n-3" draggable=3D"true=
+" style=3D"box-sizing: border-box; color: rgb(70, 94, 255);"><b id=3D"id5nn=
+p" draggable=3D"true" style=3D"box-sizing: border-box;">A Black Friday cheg=
+ou trazendo uma oportunidade imperd=C3=ADvel para voc=C3=AA e para o seu ne=
+g=C3=B3cio!
+  </b><br id=3D"ikk1h" draggable=3D"true" style=3D"box-sizing: border-box;"=
+>
+  No Portal Facilita da BBTS, voc=C3=AA encontra condi=C3=A7=C3=B5es exclus=
+ivas para regularizar suas d=C3=ADvidas de forma r=C3=A1pida, simples e van=
+tajosa. Com apenas alguns cliques, sua negocia=C3=A7=C3=A3o =C3=A9 aprovada=
+! Aproveite descontos especiais e facilidades =C3=BAnicas durante este m=C3=
+=AAs para transformar sua pend=C3=AAncia em solu=C3=A7=C3=A3o.
+</p></div></td></tr><tr id=3D"ieig1" style=3D"box-sizing: border-box;"></tr=
+><tr id=3D"i0ndd" style=3D"box-sizing: border-box;"><td id=3D"i43gj" align=
+=3D"left" style=3D"box-sizing: border-box; border-collapse: collapse; font-=
+size: 0px; padding-right: 25px; padding-bottom: 10px; padding-left: 25px; p=
+adding-top: 20px; word-break: break-word;"><div id=3D"iwjcjf" draggable=3D"=
+true" style=3D"box-sizing: border-box; font-family: 'Helvetica Neue', Helve=
+tica, Arial, sans-serif; font-size: 14px; font-weight: bold; line-height: 2=
+4px; text-align: left; color: rgb(70, 94, 255);"> Consulte o Portal Facilit=
+a ou ligue para o nosso 0800&nbsp;
+</div></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><=
+![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></ta=
+ble></td></tr><tr><td class=3D"" width=3D"600px" ><table align=3D"center" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" style=3D"width:6=
+00px;" width=3D"600" bgcolor=3D"#ffffff" ><tr><td style=3D"line-height:0px;=
+font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div id=3D"i5jeu" =
+style=3D"box-sizing: border-box; background-position-x: 0%; background-posi=
+tion-y: 0%; background-repeat: repeat; background-attachment: scroll; backg=
+round-image: none; background-size: auto; background-origin: padding-box; b=
+ackground-clip: border-box; background-color: rgb(255, 255, 255); margin-to=
+p: 0px; margin-right: auto; margin-bottom: 0px; margin-left: auto; max-widt=
+h: 600px;"><table role=3D"presentation" id=3D"iec0k" cellspacing=3D"0" cell=
+padding=3D"0" border=3D"0" align=3D"center" width=3D"100%" background=3D"no=
+ne" bgcolor=3D"rgb(255, 255, 255)" style=3D"box-sizing: border-box; border-=
+collapse: collapse; background-position-x: 0%; background-position-y: 0%; b=
+ackground-repeat: repeat; background-attachment: scroll; background-image: =
+none; background-size: auto; background-origin: padding-box; background-cli=
+p: border-box; background-color: rgb(255, 255, 255); width: 100%;"><tbody i=
+d=3D"iltzx" style=3D"box-sizing: border-box;"><tr id=3D"imvzd" style=3D"box=
+-sizing: border-box;"><td id=3D"issp6" align=3D"center" style=3D"box-sizing=
+: border-box; border-collapse: collapse; direction: ltr; font-size: 0px; pa=
+dding-bottom: 20px; padding-left: 15px; padding-right: 15px; padding-top: 0=
+px; text-align: center; color: rgb(255, 255, 255);"><!--[if mso | IE]><tabl=
+e role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><t=
+r><td class=3D"" style=3D"vertical-align:top;width:570px;" ><![endif]--><di=
+v id=3D"iairg" class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"bo=
+x-sizing: border-box; font-size: 0px; text-align: left; direction: ltr; dis=
+play: inline-block; vertical-align: top; width: 100%;"><table role=3D"prese=
+ntation" id=3D"iuzrx" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" bo=
+rder=3D"0" valign=3D"top" style=3D"box-sizing: border-box; border-collapse:=
+ collapse; vertical-align: top;"><tbody id=3D"ifhoc" style=3D"box-sizing: b=
+order-box;">
+                            </tbody></table></div><!--[if mso | IE]></td><t=
+d class=3D"" style=3D"vertical-align:top;width:570px;" ><![endif]--><div id=
+=3D"ig9nn" class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"box-si=
+zing: border-box; font-size: 0px; text-align: left; direction: ltr; display=
+: inline-block; vertical-align: top; width: 100%;"><table role=3D"presentat=
+ion" id=3D"ibn2b" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" valign=3D"top" style=3D"box-sizing: border-box; border-collapse: col=
+lapse; vertical-align: top;"><tbody id=3D"i2pk8" style=3D"box-sizing: borde=
+r-box;"><tr id=3D"i8wfa" style=3D"box-sizing: border-box;"><td id=3D"ixruui=
+" align=3D"center" style=3D"box-sizing: border-box; border-collapse: collap=
+se; font-size: 0px; word-break: break-word; padding-top: 20px; padding-righ=
+t: 25px; padding-bottom: 20px; padding-left: 25px;"><div id=3D"isbseh" clas=
+s=3D"gjs-row" style=3D"box-sizing: border-box; display: table; padding-top:=
+ 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; width=
+: 100%;"><div id=3D"irlm4y" draggable=3D"true" style=3D"box-sizing: border-=
+box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size=
+: 18px; font-weight: bold; line-height: 24px; text-align: center; color: rg=
+b(70, 94, 255); background-color: rgb(70, 94, 255); width: 200px; padding-t=
+op: 10px; padding-right: 20px; padding-bottom: 10px; padding-left: 20px; bo=
+rder-top-left-radius: 25px; border-top-right-radius: 25px; border-bottom-ri=
+ght-radius: 25px; border-bottom-left-radius: 25px; box-shadow: rgba(0, 0, 0=
+, 0.19) 6px 6px 5px; border-top-width: 3px; border-right-width: 3px; border=
+-bottom-width: 3px; border-left-width: 3px; border-top-style: solid; border=
+-right-style: solid; border-bottom-style: solid; border-left-style: solid; =
+border-top-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255=
+); border-bottom-color: rgb(255, 255, 255); border-left-color: rgb(255, 255=
+, 255); border-image-source: initial; border-image-slice: initial; border-i=
+mage-width: initial; border-image-outset: initial; border-image-repeat: ini=
+tial; margin: 0 50px 0 0;"><a id=3D"iye3o4" draggable=3D"true" href=3D"http=
+s://facilita.intevia.com.br/api/email/customer/tracking/eJwFwbsKwjAYBtB3-eb=
+QXCxq_6lLXVrBIXsIMZRgLiWmghTf3XMOtAJCtvVZ1pL8e4zh4ztXEhj2GkFoPhLn4irERQ2qF2=
+cOBmfTZsOaQZjuszbyJOXjZhatwNC-mwchhvzC7w_cPx1W" title=3D"Portal Facilita" t=
+arget=3D"_blank" class=3D"link" style=3D"box-sizing: border-box; text-decor=
+ation-line: none; text-decoration-thickness: initial; text-decoration-style=
+: initial; text-decoration-color: initial; text-align: center; border-top-w=
+idth: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-w=
+idth: 0px; border-top-style: solid; border-right-style: solid; border-botto=
+m-style: solid; border-left-style: solid; border-top-color: rgb(70, 94, 255=
+); border-right-color: rgb(70, 94, 255); border-bottom-color: rgb(70, 94, 2=
+55); border-left-color: rgb(70, 94, 255); border-image-source: initial; bor=
+der-image-slice: initial; border-image-width: initial; border-image-outset:=
+ initial; border-image-repeat: initial; color: rgb(255, 255, 255);">0800 72=
+9 2406</a></div><div id=3D"imukb9" class=3D"gjs-cell" style=3D"box-sizing: =
+border-box; width: 8%; display: table-cell; height: 75px;"><div id=3D"iz525=
+w" style=3D"box-sizing: border-box; font-family: 'Helvetica Neue', Helvetic=
+a, Arial, sans-serif; font-size: 18px; font-weight: bold; line-height: 24px=
+; text-align: center; color: rgb(70, 94, 255); background-color: rgb(70, 94=
+, 255); width: 200px; padding-top: 10px; padding-right: 20px; padding-botto=
+m: 10px; padding-left: 20px; border-top-left-radius: 25px; border-top-right=
+-radius: 25px; border-bottom-right-radius: 25px; border-bottom-left-radius:=
+ 25px; box-shadow: rgba(0, 0, 0, 0.19) 6px 6px 5px; border-top-width: 3px; =
+border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; =
+border-top-style: solid; border-right-style: solid; border-bottom-style: so=
+lid; border-left-style: solid; border-top-color: rgb(255, 255, 255); border=
+-right-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); =
+border-left-color: rgb(255, 255, 255); border-image-source: initial; border=
+-image-slice: initial; border-image-width: initial; border-image-outset: in=
+itial; border-image-repeat: initial; margin: 0 20px 0 0;"><a id=3D"ibvmgz" =
+draggable=3D"true" href=3D"https://facilita.intevia.com.br/api/email/custom=
+er/tracking/eJwVyrsKAjEQBdB_uXVIiHZTbaONChbbL5MY12BeJKMgi_8unvpskApC4X6ra81=
+hTCm-g_Y1Q-HVEwgPkTbImDv7mKKwdk7Gf2jXDRQ858ZxLSAcLqd5sXtrr8flPO-gIJ8WQEixPP=
+H9AepWI5M" title=3D"Portal Facilita" target=3D"_blank" class=3D"link" style=
+=3D"box-sizing: border-box; text-decoration-line: none; text-decoration-thi=
+ckness: initial; text-decoration-style: initial; text-decoration-color: ini=
+tial; text-align: center; border-top-width: 0px; border-right-width: 0px; b=
+order-bottom-width: 0px; border-left-width: 0px; border-top-style: solid; b=
+order-right-style: solid; border-bottom-style: solid; border-left-style: so=
+lid; border-top-color: rgb(70, 94, 255); border-right-color: rgb(70, 94, 25=
+5); border-bottom-color: rgb(70, 94, 255); border-left-color: rgb(70, 94, 2=
+55); border-image-source: initial; border-image-slice: initial; border-imag=
+e-width: initial; border-image-outset: initial; border-image-repeat: initia=
+l; color: rgb(255, 255, 255);">Portal Facilita</a></div></div></div><div id=
+=3D"id9w6f" class=3D"gjs-row" style=3D"box-sizing: border-box; display: tab=
+le; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-l=
+eft: 10px; width: 100%;"></div><div id=3D"ikyqv2" class=3D"link" style=3D"b=
+ox-sizing: border-box; text-decoration-line: none; text-decoration-thicknes=
+s: initial; text-decoration-style: initial; text-decoration-color: initial;=
+ border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; =
+border-left-width: 0px; border-top-style: solid; border-right-style: solid;=
+ border-bottom-style: solid; border-left-style: solid; border-top-color: rg=
+b(70, 94, 255); border-right-color: rgb(70, 94, 255); border-bottom-color: =
+rgb(70, 94, 255); border-left-color: rgb(70, 94, 255); border-image-source:=
+ initial; border-image-slice: initial; border-image-width: initial; border-=
+image-outset: initial; border-image-repeat: initial; font-family: 'Helvetic=
+a Neue', Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; =
+line-height: 24px; text-align: center; color: rgb(51, 51, 189); margin-top:=
+ 30px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px;"><a href=3D=
+"https://facilita.intevia.com.br/api/email/customer/tracking/eJwVyj0LgiEUBt=
+D_8syiWJtTSy0VNLz7y9XMLvmF3oKI_nt05vOBNDhUGteWWolzl_kVdWgFCs-R4XAX6dMZc6PAm=
+YW09zL_Q_thQuZYJZoaUwtMAwqBSidOFQ7783FZ7dbay2E9LRsoyLtHOGSuD3x_oxUp7g" titl=
+e=3D"BB Tecnologia e Servi=C3=A7os" target=3D"_blank" id=3D"ifbo7a" class=
+=3D"link" style=3D"box-sizing: border-box; text-decoration-line: none; text=
+-decoration-thickness: initial; text-decoration-style: initial; text-decora=
+tion-color: initial; text-align: center; border-top-width: 0px; border-righ=
+t-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-=
+style: solid; border-right-style: solid; border-bottom-style: solid; border=
+-left-style: solid; border-top-color: rgb(70, 94, 255); border-right-color:=
+ rgb(70, 94, 255); border-bottom-color: rgb(70, 94, 255); border-left-color=
+: rgb(70, 94, 255); border-image-source: initial; border-image-slice: initi=
+al; border-image-width: initial; border-image-outset: initial; border-image=
+-repeat: initial; color: rgb(51, 51, 189); font-weight: 900;"><span id=3D"i=
+fo49n" style=3D"box-sizing: border-box; color: rgb(70, 94, 255);">BB Tecnol=
+ogia e Servi=C3=A7os</span></a><br id=3D"i953mf" style=3D"box-sizing: borde=
+r-box;"><a href=3D"https://facilita.intevia.com.br/api/email/customer/track=
+ing/eJwVyj0LgiEUBtD_8syiWJtTSy0VNLz7y9XMLvmF3oKI_nt05vOBNDhUGteWWolzl_kVdWg=
+FCs-R4XAX6dMZc6PAmYW09zL_Q_thQuZYJZoaUwtMAwqBSidOFQ7783FZ7dbay2E9LRsoyLtHOG=
+SuD3x_oxUp7g" target=3D"_blank" title=3D"facilita.bbts.com.br" id=3D"itcv7j=
+" class=3D"link" style=3D"box-sizing: border-box; text-decoration-line: non=
+e; text-decoration-thickness: initial; text-decoration-style: initial; text=
+-decoration-color: initial; text-align: center; border-top-width: 0px; bord=
+er-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; bord=
+er-top-style: solid; border-right-style: solid; border-bottom-style: solid;=
+ border-left-style: solid; border-top-color: rgb(70, 94, 255); border-right=
+-color: rgb(70, 94, 255); border-bottom-color: rgb(70, 94, 255); border-lef=
+t-color: rgb(70, 94, 255); border-image-source: initial; border-image-slice=
+: initial; border-image-width: initial; border-image-outset: initial; borde=
+r-image-repeat: initial; color: rgb(51, 51, 189); font-weight: 400;"><span =
+id=3D"iihghn" style=3D"box-sizing: border-box; color: rgb(70, 94, 255);">fa=
+cilita.bbts.com.br</span></a><br id=3D"ifoeth" style=3D"box-sizing: border-=
+box;"></div></td></tr><tr id=3D"i3lmyv" style=3D"box-sizing: border-box;"><=
+td id=3D"ib28d7" align=3D"center" style=3D"box-sizing: border-box; border-c=
+ollapse: collapse; font-size: 0px; padding-top: 10px; padding-right: 25px; =
+padding-left: 25px; padding-bottom: 30px; word-break: break-word;"><div id=
+=3D"iqwt7v" style=3D"box-sizing: border-box; font-family: Arial, Helvetica,=
+ sans-serif; font-size: 11px; font-weight: 400; line-height: 16px; text-ali=
+gn: center; color: rgb(255, 255, 255); padding-top: 0px; padding-right: 0px=
+; padding-bottom: 15px; padding-left: 0px;"><span id=3D"ixvngj" style=3D"bo=
+x-sizing: border-box; color: rgb(70, 94, 255); font-family: Arial, Helvetic=
+a, sans-serif; font-size: 12px; text-align: start;">A BBTS =C3=A9 uma empre=
+sa parceira do Banco do Brasil de atendimento humanizado para oferecer como=
+didade e seguran=C3=A7a aos seus clientes&nbsp;</span></div><div id=3D"i57c=
+56" style=3D"box-sizing: border-box; font-family: 'Helvetica Neue', Helveti=
+ca, Arial, sans-serif; font-size: 11px; font-weight: 400; line-height: 16px=
+; text-align: center; color: rgb(70, 94, 255); padding-top: 15px; padding-r=
+ight: 0px; padding-bottom: 0px; padding-left: 0px;">=C2=A9 BB Tecnologia e =
+Servi=C3=A7os, Todos os direitos reservados.</div><table id=3D"ihopvv" widt=
+h=3D"100%" style=3D"box-sizing: border-box; border-collapse: collapse; widt=
+h: 100%; margin-top: 10px; margin-bottom: 10px;"><tbody id=3D"irve6k" style=
+=3D"box-sizing: border-box;"><tr id=3D"itowif" style=3D"box-sizing: border-=
+box;"></tr></tbody></table><p id=3D"i4pe9r" class=3D"paragraph" style=3D"bo=
+x-sizing: border-box; display: block; margin-top: 13px; margin-right: 0px; =
+margin-bottom: 13px; margin-left: 0px;">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiu=
+smod tempor incididunt ut labore et dolore magna aliqua
+      </p><h1 id=3D"izn3pi" draggable=3D"true" class=3D"heading" style=3D"b=
+ox-sizing: border-box; font-size: 8px;"><a id=3D"ixb8xn-3" draggable=3D"tru=
+e" href=3D"https://facilita.intevia.com.br/api/email/customer/subscription/=
+eJyrVirJV7JSykssSslPz89NLXbIySxL1UvOz1XSUUpOzC1IzEzPU7JScvX1Dok3NDY0DHCL9wk=
+xUtJRKqksSFWyUiouTVKqBQA9TxZv" style=3D"box-sizing: border-box;"><span id=
+=3D"iehsrg" style=3D"box-sizing: border-box; color: rgb(70, 94, 255);">Para=
+ gerenciar sua inscri=C3=A7=C3=A3o nessa lista de e-mails, clique aqu</span=
+>i</a><br id=3D"i3kwm1" draggable=3D"true" style=3D"box-sizing: border-box;=
+"></h1></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table>=
+<![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></t=
+able></td></tr><tr><td class=3D"" width=3D"600px" ><table align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" style=3D"width:=
+600px;" width=3D"600" ><tr><td style=3D"line-height:0px;font-size:0px;mso-l=
+ine-height-rule:exactly;"><![endif]--><div id=3D"i0dxxe" style=3D"box-sizin=
+g: border-box; margin-top: 0px; margin-right: auto; margin-bottom: 0px; mar=
+gin-left: auto; max-width: 600px;"><table role=3D"presentation" id=3D"ils90=
+y" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" width=
+=3D"100%" style=3D"box-sizing: border-box; border-collapse: collapse; width=
+: 100%;"><tbody id=3D"i1dq4i" style=3D"box-sizing: border-box;"><tr id=3D"i=
+1jltp" style=3D"box-sizing: border-box;"><td id=3D"ixu2un" align=3D"center"=
+ style=3D"box-sizing: border-box; border-collapse: collapse; direction: ltr=
+; font-size: 0px; padding-right: 0px; padding-bottom: 20px; padding-left: 0=
+px; padding-top: 0px; text-align: center;"><!--[if mso | IE]><table role=3D=
+"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td cla=
+ss=3D"" style=3D"width:600px;" ><![endif]--><div id=3D"ibiu3w" class=3D"mj-=
+column-per-100 mj-outlook-group-fix" style=3D"box-sizing: border-box; font-=
+size: 0px; line-height: 0; text-align: left; display: inline-block; width: =
+100%; direction: ltr;"><!--[if mso | IE]><table border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" role=3D"presentation" ><tr><td style=3D"vertical-alig=
+n:top;width:600px;" ><![endif]--><div id=3D"i0ldtx" class=3D"mj-column-per-=
+100 mj-outlook-group-fix" style=3D"box-sizing: border-box; font-size: 0px; =
+text-align: left; direction: ltr; display: inline-block; vertical-align: to=
+p; width: 100%;"><table role=3D"presentation" width=3D"100%" cellspacing=3D=
+"0" cellpadding=3D"0" border=3D"0" id=3D"i9tc6i" style=3D"box-sizing: borde=
+r-box; border-collapse: collapse;"><tbody id=3D"irwm3u" style=3D"box-sizing=
+: border-box;"><tr id=3D"i82di1" style=3D"box-sizing: border-box;"><td id=
+=3D"itjipq" valign=3D"top" style=3D"box-sizing: border-box; border-collapse=
+: collapse; vertical-align: top; padding-right: 0px;"><table role=3D"presen=
+tation" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" id=
+=3D"itnexh" style=3D"box-sizing: border-box; border-collapse: collapse;"><t=
+body id=3D"iigkct" style=3D"box-sizing: border-box;">
+                                      </tbody></table></td></tr></tbody></t=
+able></div><!--[if mso | IE]></td></tr></table><![endif]--></div><!--[if ms=
+o | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[=
+if mso | IE]></td></tr></table></td></tr></table><![endif]--></td></tr></tb=
+ody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></div>
+     =20
+      <img src=3D"https://facilita.intevia.com.br/api/email/customer/tracki=
+ng/eJyrVirJV7JSykssSslPz89NLXbIySxL1UvOz1XSUUpOzC1IzEzPU7JScvX1Dok3NDY0DHCL=
+9wkxUtJRKqksSFWyUirIrEjNUaoFAGvYF0c" style=3D"display:none;">
+      <div style=3D"opacity: 0.01; position: absolute; z-index: -1; height:=
+ 1px; width: 1px; overflow: hidden;">
+         <a href=3D"https://facilita.intevia.com.br/api/email/customer/trac=
+king/eJwVystSgzAUANB_ueu2EavWshJS-oAyvgrUFRPSFG_JA5NQxnH8d8ezPj_gDYSgmT2Z1i=
+jhniRexYwbBRMYrIQQPr3vXUjImXGU6NkMtRdXZP9p1ljCeiRCMZSED84bJSzxlvEOdUtEOq7HJ=
+slaGhXxKa6HJk-CoSmKzq1XIsCljdpzmV13WVov7sfjo3qnI_9KtRtpLJZ4kn6Xb3DT2OzhRveu=
+OUzLIqab1-N-O5rkos_VdF6-3V0k_aiqVTc8XxYRp-U2MTABzlTPsNUQQpJnhzqYB8HLut4fbmE=
+C_rsXEIJE3cHvH2umWRw" tabindex=3D"-1" aria-hidden=3D"true">N=C3=A3o clique =
+aqui</a>
+      </div>
+    </body></html>

@@ -1,0 +1,19 @@
+From: "CEO Office ceo@acme-corp.example" <attacker@evil.example>
+To: finance@acme-corp.example
+Subject: Urgent wire transfer
+Message-ID: <phish-001@evil.example>
+Date: Mon, 17 Nov 2026 11:00:00 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Reply-To: payments@evil.example
+Return-Path: <bounce@evil.example>
+Authentication-Results: mx.acme-corp.example;
+	spf=fail smtp.mailfrom=evil.example;
+	dkim=fail header.d=evil.example;
+	dmarc=fail header.from=acme-corp.example
+
+Please process the payment today. Do not discuss on Slack.
+
+Open the secure portal:
+https://192.0.2.10/login?next=https://evil.example/steal
+Or click http://pay-acme.evil.example/wire
